@@ -1,0 +1,1754 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Tue Aug 13 16:30:27 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4580
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	text5,global,reloc=2,class=CODE,delta=1,group=1
+    14                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    15                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    16   000000                     
+    17                           ; Generated 17/10/2023 GMT
+    18                           ; 
+    19                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    20                           ; All rights reserved.
+    21                           ; 
+    22                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    23                           ; 
+    24                           ; Redistribution and use in source and binary forms, with or without modification, are
+    25                           ; permitted provided that the following conditions are met:
+    26                           ; 
+    27                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    28                           ;        conditions and the following disclaimer.
+    29                           ; 
+    30                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    31                           ;        of conditions and the following disclaimer in the documentation and/or other
+    32                           ;        materials provided with the distribution. Publication is not required when
+    33                           ;        this file is used in an embedded application.
+    34                           ; 
+    35                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    36                           ;        software without specific prior written permission.
+    37                           ; 
+    38                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    39                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    40                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    41                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    42                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    43                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    44                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    45                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    46                           ; 
+    47                           ; 
+    48                           ; Code-generator required, PIC18F4580 Definitions
+    49                           ; 
+    50                           ; SFR Addresses
+    51   000000                     _PORTC	set	3970
+    52   000000                     _RC7	set	31767
+    53   000000                     _RC6	set	31766
+    54   000000                     _RC5	set	31765
+    55   000000                     _RC4	set	31764
+    56   000000                     _RC3	set	31763
+    57   000000                     _RB7	set	31759
+    58   000000                     _RB6	set	31758
+    59   000000                     _RB5	set	31757
+    60   000000                     _RB4	set	31756
+    61   000000                     _RC2	set	31762
+    62   000000                     _RC1	set	31761
+    63   000000                     _PORTB	set	3969
+    64   000000                     _RC0	set	31760
+    65   000000                     _TRISB	set	3987
+    66   000000                     _ADCON1	set	4033
+    67   000000                     _PORTD	set	3971
+    68   000000                     _TRISD	set	3989
+    69   000000                     _TRISC	set	3988
+    70                           
+    71                           	psect	smallconst
+    72   000600                     __psmallconst:
+    73                           	callstack 0
+    74   000600  00                 	db	0
+    75   000601                     STR_8:
+    76   000601  43                 	db	67	;'C'
+    77   000602  4F                 	db	79	;'O'
+    78   000603  52                 	db	82	;'R'
+    79   000604  52                 	db	82	;'R'
+    80   000605  45                 	db	69	;'E'
+    81   000606  43                 	db	67	;'C'
+    82   000607  54                 	db	84	;'T'
+    83   000608  20                 	db	32
+    84   000609  50                 	db	80	;'P'
+    85   00060A  41                 	db	65	;'A'
+    86   00060B  53                 	db	83	;'S'
+    87   00060C  53                 	db	83	;'S'
+    88   00060D  57                 	db	87	;'W'
+    89   00060E  4F                 	db	79	;'O'
+    90   00060F  52                 	db	82	;'R'
+    91   000610  44                 	db	68	;'D'
+    92   000611  00                 	db	0
+    93   000612                     STR_9:
+    94   000612  57                 	db	87	;'W'
+    95   000613  52                 	db	82	;'R'
+    96   000614  4F                 	db	79	;'O'
+    97   000615  4E                 	db	78	;'N'
+    98   000616  47                 	db	71	;'G'
+    99   000617  20                 	db	32
+   100   000618  50                 	db	80	;'P'
+   101   000619  41                 	db	65	;'A'
+   102   00061A  53                 	db	83	;'S'
+   103   00061B  53                 	db	83	;'S'
+   104   00061C  57                 	db	87	;'W'
+   105   00061D  4F                 	db	79	;'O'
+   106   00061E  52                 	db	82	;'R'
+   107   00061F  44                 	db	68	;'D'
+   108   000620  00                 	db	0
+   109   000621                     STR_13:
+   110   000621  45                 	db	69	;'E'
+   111   000622  4E                 	db	78	;'N'
+   112   000623  54                 	db	84	;'T'
+   113   000624  45                 	db	69	;'E'
+   114   000625  52                 	db	82	;'R'
+   115   000626  20                 	db	32
+   116   000627  50                 	db	80	;'P'
+   117   000628  41                 	db	65	;'A'
+   118   000629  53                 	db	83	;'S'
+   119   00062A  53                 	db	83	;'S'
+   120   00062B  57                 	db	87	;'W'
+   121   00062C  4F                 	db	79	;'O'
+   122   00062D  52                 	db	82	;'R'
+   123   00062E  44                 	db	68	;'D'
+   124   00062F  00                 	db	0
+   125   000630                     STR_7:
+   126   000630  20                 	db	32
+   127   000631  20                 	db	32
+   128   000632  20                 	db	32
+   129   000633  20                 	db	32
+   130   000634  20                 	db	32
+   131   000635  20                 	db	32
+   132   000636  20                 	db	32
+   133   000637  20                 	db	32
+   134   000638  20                 	db	32
+   135   000639  20                 	db	32
+   136   00063A  00                 	db	0
+   137   00063B                     STR_14:
+   138   00063B  30                 	db	48	;'0'
+   139   00063C  00                 	db	0
+   140   00063D                     STR_10:
+   141   00063D  31                 	db	49	;'1'
+   142   00063E  00                 	db	0
+   143   00063F                     STR_11:
+   144   00063F  32                 	db	50	;'2'
+   145   000640  00                 	db	0
+   146   000641                     STR_12:
+   147   000641  33                 	db	51	;'3'
+   148   000642  00                 	db	0
+   149   000643                     STR_4:
+   150   000643  34                 	db	52	;'4'
+   151   000644  00                 	db	0
+   152   000645                     STR_5:
+   153   000645  35                 	db	53	;'5'
+   154   000646  00                 	db	0
+   155   000647                     STR_6:
+   156   000647  36                 	db	54	;'6'
+   157   000648  00                 	db	0
+   158   000649                     STR_1:
+   159   000649  37                 	db	55	;'7'
+   160   00064A  00                 	db	0
+   161   00064B                     STR_2:
+   162   00064B  38                 	db	56	;'8'
+   163   00064C  00                 	db	0
+   164   00064D                     STR_3:
+   165   00064D  39                 	db	57	;'9'
+   166   00064E  00                 	db	0
+   167   00064F  00                 	db	0	; dummy byte at the end
+   168   000000                     
+   169                           ; #config settings
+   170                           
+   171                           	psect	cinit
+   172   000CAE                     __pcinit:
+   173                           	callstack 0
+   174   000CAE                     start_initialization:
+   175                           	callstack 0
+   176   000CAE                     __initialization:
+   177                           	callstack 0
+   178   000CAE                     end_of_initialization:
+   179                           	callstack 0
+   180   000CAE                     __end_of__initialization:
+   181                           	callstack 0
+   182   000CAE  0E00               	movlw	low (__Lsmallconst shr (0+16))
+   183   000CB0  6EF8               	movwf	tblptru,c
+   184   000CB2  0E06               	movlw	high __Lsmallconst
+   185   000CB4  6EF7               	movwf	tblptrh,c
+   186   000CB6  0100               	movlb	0
+   187   000CB8  EF28  F003         	goto	_main	;jump to C main() function
+   188                           
+   189                           	psect	cstackCOMRAM
+   190   000001                     __pcstackCOMRAM:
+   191                           	callstack 0
+   192   000001                     ?___wmul:
+   193                           	callstack 0
+   194   000001                     ___wmul@multiplier:
+   195                           	callstack 0
+   196   000001                     delay@j:
+   197                           	callstack 0
+   198                           
+   199                           ; 4 bytes @ 0x0
+   200   000001                     	ds	2
+   201   000003                     ___wmul@multiplicand:
+   202                           	callstack 0
+   203                           
+   204                           ; 2 bytes @ 0x2
+   205   000003                     	ds	2
+   206   000005                     ??_delay:
+   207   000005                     ___wmul@product:
+   208                           	callstack 0
+   209                           
+   210                           ; 2 bytes @ 0x4
+   211   000005                     	ds	1
+   212   000006                     delay@i:
+   213                           	callstack 0
+   214                           
+   215                           ; 4 bytes @ 0x5
+   216   000006                     	ds	4
+   217   00000A                     start_func@a:
+   218                           	callstack 0
+   219   00000A                     data@a:
+   220                           	callstack 0
+   221                           
+   222                           ; 1 bytes @ 0x9
+   223   00000A                     	ds	1
+   224   00000B                     display@p:
+   225                           	callstack 0
+   226                           
+   227                           ; 1 bytes @ 0xA
+   228   00000B                     	ds	1
+   229   00000C                     main@count:
+   230                           	callstack 0
+   231                           
+   232                           ; 2 bytes @ 0xB
+   233   00000C                     	ds	2
+   234   00000E                     main@pwd:
+   235                           	callstack 0
+   236                           
+   237                           ; 2 bytes @ 0xD
+   238   00000E                     	ds	2
+   239   000010                     main@i:
+   240                           	callstack 0
+   241                           
+   242                           ; 2 bytes @ 0xF
+   243   000010                     	ds	2
+   244   000012                     main@i_75:
+   245                           	callstack 0
+   246                           
+   247                           ; 2 bytes @ 0x11
+   248   000012                     	ds	2
+   249   000014                     main@count1:
+   250                           	callstack 0
+   251                           
+   252                           ; 2 bytes @ 0x13
+   253   000014                     	ds	2
+   254   000016                     main@pass:
+   255                           	callstack 0
+   256                           
+   257                           ; 2 bytes @ 0x15
+   258   000016                     	ds	2
+   259                           
+   260 ;;
+   261 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   262 ;;
+   263 ;; *************** function _main *****************
+   264 ;; Defined at:
+   265 ;;		line 43 in file "MatrixKeypad.c"
+   266 ;; Parameters:    Size  Location     Type
+   267 ;;		None
+   268 ;; Auto vars:     Size  Location     Type
+   269 ;;  i               2   17[COMRAM] int 
+   270 ;;  i               2   15[COMRAM] int 
+   271 ;;  pass            2   21[COMRAM] int 
+   272 ;;  count1          2   19[COMRAM] int 
+   273 ;;  pwd             2   13[COMRAM] int 
+   274 ;;  count           2   11[COMRAM] int 
+   275 ;; Return value:  Size  Location     Type
+   276 ;;                  1    wreg      void 
+   277 ;; Registers used:
+   278 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, prodl, prodh, cstack
+   279 ;; Tracked objects:
+   280 ;;		On entry : 0/0
+   281 ;;		On exit  : 0/0
+   282 ;;		Unchanged: 0/0
+   283 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   284 ;;      Params:         0       0       0       0       0       0       0
+   285 ;;      Locals:        12       0       0       0       0       0       0
+   286 ;;      Temps:          0       0       0       0       0       0       0
+   287 ;;      Totals:        12       0       0       0       0       0       0
+   288 ;;Total ram usage:       12 bytes
+   289 ;; Hardware stack levels required when called: 3
+   290 ;; This function calls:
+   291 ;;		___wmul
+   292 ;;		_data
+   293 ;;		_delay
+   294 ;;		_display
+   295 ;;		_start_func
+   296 ;; This function is called by:
+   297 ;;		Startup code after reset
+   298 ;; This function uses a non-reentrant model
+   299 ;;
+   300                           
+   301                           	psect	text0
+   302   000650                     __ptext0:
+   303                           	callstack 0
+   304   000650                     _main:
+   305                           	callstack 28
+   306   000650                     
+   307                           ;MatrixKeypad.c: 45:     ADCON1=0X0F;
+   308   000650  0E0F               	movlw	15
+   309   000652  6EC1               	movwf	193,c	;volatile
+   310                           
+   311                           ;MatrixKeypad.c: 46:     TRISB=0XF0;
+   312   000654  0EF0               	movlw	240
+   313   000656  6E93               	movwf	147,c	;volatile
+   314                           
+   315                           ;MatrixKeypad.c: 47:     TRISC=0X00;
+   316   000658  0E00               	movlw	0
+   317   00065A  6E94               	movwf	148,c	;volatile
+   318                           
+   319                           ;MatrixKeypad.c: 48:     TRISD=0x00;
+   320   00065C  0E00               	movlw	0
+   321   00065E  6E95               	movwf	149,c	;volatile
+   322   000660                     
+   323                           ;MatrixKeypad.c: 49:     PORTC=0xff;
+   324   000660  6882               	setf	130,c	;volatile
+   325                           
+   326                           ;MatrixKeypad.c: 50:     int count=0,count1=0,pwd=5678,pass=0;
+   327   000662  0E00               	movlw	0
+   328   000664  6E0D               	movwf	(main@count+1)^0,c
+   329   000666  0E00               	movlw	0
+   330   000668  6E0C               	movwf	main@count^0,c
+   331   00066A  0E00               	movlw	0
+   332   00066C  6E15               	movwf	(main@count1+1)^0,c
+   333   00066E  0E00               	movlw	0
+   334   000670  6E14               	movwf	main@count1^0,c
+   335   000672  0E16               	movlw	22
+   336   000674  6E0F               	movwf	(main@pwd+1)^0,c
+   337   000676  0E2E               	movlw	46
+   338   000678  6E0E               	movwf	main@pwd^0,c
+   339   00067A  0E00               	movlw	0
+   340   00067C  6E17               	movwf	(main@pass+1)^0,c
+   341   00067E  0E00               	movlw	0
+   342   000680  6E16               	movwf	main@pass^0,c
+   343   000682                     l61:
+   344                           
+   345                           ;MatrixKeypad.c: 52:     {;MatrixKeypad.c: 53:         PORTB=0X0E;
+   346   000682  0E0E               	movlw	14
+   347   000684  6E81               	movwf	129,c	;volatile
+   348   000686                     
+   349                           ;MatrixKeypad.c: 54:         if(RB4==0)
+   350   000686  B881               	btfsc	3969,4,c	;volatile
+   351   000688  EF48  F003         	goto	u411
+   352   00068C  EF4A  F003         	goto	u410
+   353   000690                     u411:
+   354   000690  EF66  F003         	goto	l62
+   355   000694                     u410:
+   356   000694                     
+   357                           ;MatrixKeypad.c: 55:         {;MatrixKeypad.c: 56:             RC0=1;
+   358   000694  8082               	bsf	3970,0,c	;volatile
+   359   000696                     
+   360                           ;MatrixKeypad.c: 57:             display("7");
+   361   000696  0E49               	movlw	low STR_1
+   362   000698  6E0B               	movwf	display@p^0,c
+   363   00069A  EC2E  F006         	call	_display	;wreg free
+   364   00069E                     
+   365                           ;MatrixKeypad.c: 58:             pass=(pass*10)+8;
+   366   00069E  C016  F001         	movff	main@pass,___wmul@multiplier
+   367   0006A2  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   368   0006A6  0E00               	movlw	0
+   369   0006A8  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   370   0006AA  0E0A               	movlw	10
+   371   0006AC  6E03               	movwf	___wmul@multiplicand^0,c
+   372   0006AE  EC44  F006         	call	___wmul	;wreg free
+   373   0006B2  0E08               	movlw	8
+   374   0006B4  2401               	addwf	?___wmul^0,w,c
+   375   0006B6  6E16               	movwf	main@pass^0,c
+   376   0006B8  0E00               	movlw	0
+   377   0006BA  2002               	addwfc	(?___wmul+1)^0,w,c
+   378   0006BC  6E17               	movwf	(main@pass+1)^0,c
+   379   0006BE                     l63:
+   380   0006BE  A881               	btfss	3969,4,c	;volatile
+   381   0006C0  EF64  F003         	goto	u421
+   382   0006C4  EF66  F003         	goto	u420
+   383   0006C8                     u421:
+   384   0006C8  EF5F  F003         	goto	l63
+   385   0006CC                     u420:
+   386   0006CC                     l62:
+   387                           
+   388                           ;MatrixKeypad.c: 61:         if(RB5==0)
+   389   0006CC  BA81               	btfsc	3969,5,c	;volatile
+   390   0006CE  EF6B  F003         	goto	u431
+   391   0006D2  EF6D  F003         	goto	u430
+   392   0006D6                     u431:
+   393   0006D6  EF8B  F003         	goto	l66
+   394   0006DA                     u430:
+   395   0006DA                     
+   396                           ;MatrixKeypad.c: 62:         {;MatrixKeypad.c: 63:             RC1=1;
+   397   0006DA  8282               	bsf	3970,1,c	;volatile
+   398   0006DC                     
+   399                           ;MatrixKeypad.c: 64:             display("8");
+   400   0006DC  0E4B               	movlw	low STR_2
+   401   0006DE  6E0B               	movwf	display@p^0,c
+   402   0006E0  EC2E  F006         	call	_display	;wreg free
+   403   0006E4                     
+   404                           ;MatrixKeypad.c: 65:             pass=(pass*10)+8;
+   405   0006E4  C016  F001         	movff	main@pass,___wmul@multiplier
+   406   0006E8  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   407   0006EC  0E00               	movlw	0
+   408   0006EE  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   409   0006F0  0E0A               	movlw	10
+   410   0006F2  6E03               	movwf	___wmul@multiplicand^0,c
+   411   0006F4  EC44  F006         	call	___wmul	;wreg free
+   412   0006F8  0E08               	movlw	8
+   413   0006FA  2401               	addwf	?___wmul^0,w,c
+   414   0006FC  6E16               	movwf	main@pass^0,c
+   415   0006FE  0E00               	movlw	0
+   416   000700  2002               	addwfc	(?___wmul+1)^0,w,c
+   417   000702  6E17               	movwf	(main@pass+1)^0,c
+   418   000704                     l67:
+   419   000704  AA81               	btfss	3969,5,c	;volatile
+   420   000706  EF87  F003         	goto	u441
+   421   00070A  EF89  F003         	goto	u440
+   422   00070E                     u441:
+   423   00070E  EF82  F003         	goto	l67
+   424   000712                     u440:
+   425   000712  EFCA  F003         	goto	l1083
+   426   000716                     l66:
+   427   000716  BC81               	btfsc	3969,6,c	;volatile
+   428   000718  EF90  F003         	goto	u451
+   429   00071C  EF92  F003         	goto	u450
+   430   000720                     u451:
+   431   000720  EFB0  F003         	goto	l71
+   432   000724                     u450:
+   433   000724                     
+   434                           ;MatrixKeypad.c: 69:         {;MatrixKeypad.c: 70:             RC2=1;
+   435   000724  8482               	bsf	3970,2,c	;volatile
+   436   000726                     
+   437                           ;MatrixKeypad.c: 71:             display("9");
+   438   000726  0E4D               	movlw	low STR_3
+   439   000728  6E0B               	movwf	display@p^0,c
+   440   00072A  EC2E  F006         	call	_display	;wreg free
+   441   00072E                     
+   442                           ;MatrixKeypad.c: 72:             pass=(pass*10)+9;
+   443   00072E  C016  F001         	movff	main@pass,___wmul@multiplier
+   444   000732  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   445   000736  0E00               	movlw	0
+   446   000738  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   447   00073A  0E0A               	movlw	10
+   448   00073C  6E03               	movwf	___wmul@multiplicand^0,c
+   449   00073E  EC44  F006         	call	___wmul	;wreg free
+   450   000742  0E09               	movlw	9
+   451   000744  2401               	addwf	?___wmul^0,w,c
+   452   000746  6E16               	movwf	main@pass^0,c
+   453   000748  0E00               	movlw	0
+   454   00074A  2002               	addwfc	(?___wmul+1)^0,w,c
+   455   00074C  6E17               	movwf	(main@pass+1)^0,c
+   456   00074E                     l72:
+   457   00074E  AC81               	btfss	3969,6,c	;volatile
+   458   000750  EFAC  F003         	goto	u461
+   459   000754  EFAE  F003         	goto	u460
+   460   000758                     u461:
+   461   000758  EFA7  F003         	goto	l72
+   462   00075C                     u460:
+   463   00075C  EFCA  F003         	goto	l1083
+   464   000760                     l71:
+   465   000760  BE81               	btfsc	3969,7,c	;volatile
+   466   000762  EFB5  F003         	goto	u471
+   467   000766  EFB7  F003         	goto	u470
+   468   00076A                     u471:
+   469   00076A  EFCA  F003         	goto	l1083
+   470   00076E                     u470:
+   471   00076E                     
+   472                           ;MatrixKeypad.c: 76:         {;MatrixKeypad.c: 77:             RC3=1;
+   473   00076E  8682               	bsf	3970,3,c	;volatile
+   474   000770                     
+   475                           ;MatrixKeypad.c: 78:             start_func(0x10);
+   476   000770  0E10               	movlw	16
+   477   000772  ECF6  F005         	call	_start_func
+   478                           
+   479                           ;MatrixKeypad.c: 79:             data(' ');
+   480   000776  0E20               	movlw	32
+   481   000778  EC12  F006         	call	_data
+   482                           
+   483                           ;MatrixKeypad.c: 80:             start_func(0x10);
+   484   00077C  0E10               	movlw	16
+   485   00077E  ECF6  F005         	call	_start_func
+   486   000782                     
+   487                           ;MatrixKeypad.c: 81:             count++;
+   488   000782  4A0C               	infsnz	main@count^0,f,c
+   489   000784  2A0D               	incf	(main@count+1)^0,f,c
+   490   000786                     l77:
+   491   000786  AE81               	btfss	3969,7,c	;volatile
+   492   000788  EFC8  F003         	goto	u481
+   493   00078C  EFCA  F003         	goto	u480
+   494   000790                     u481:
+   495   000790  EFC3  F003         	goto	l77
+   496   000794                     u480:
+   497   000794                     l1083:
+   498                           
+   499                           ;MatrixKeypad.c: 84:         PORTB=0X0D;
+   500   000794  0E0D               	movlw	13
+   501   000796  6E81               	movwf	129,c	;volatile
+   502   000798                     
+   503                           ;MatrixKeypad.c: 85:         if(RB4==0)
+   504   000798  B881               	btfsc	3969,4,c	;volatile
+   505   00079A  EFD1  F003         	goto	u491
+   506   00079E  EFD3  F003         	goto	u490
+   507   0007A2                     u491:
+   508   0007A2  EFF1  F003         	goto	l80
+   509   0007A6                     u490:
+   510   0007A6                     
+   511                           ;MatrixKeypad.c: 86:         {;MatrixKeypad.c: 87:             RC4=1;
+   512   0007A6  8882               	bsf	3970,4,c	;volatile
+   513   0007A8                     
+   514                           ;MatrixKeypad.c: 88:             display("4");
+   515   0007A8  0E43               	movlw	low STR_4
+   516   0007AA  6E0B               	movwf	display@p^0,c
+   517   0007AC  EC2E  F006         	call	_display	;wreg free
+   518   0007B0                     
+   519                           ;MatrixKeypad.c: 89:             pass=(pass*10)+4;
+   520   0007B0  C016  F001         	movff	main@pass,___wmul@multiplier
+   521   0007B4  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   522   0007B8  0E00               	movlw	0
+   523   0007BA  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   524   0007BC  0E0A               	movlw	10
+   525   0007BE  6E03               	movwf	___wmul@multiplicand^0,c
+   526   0007C0  EC44  F006         	call	___wmul	;wreg free
+   527   0007C4  0E04               	movlw	4
+   528   0007C6  2401               	addwf	?___wmul^0,w,c
+   529   0007C8  6E16               	movwf	main@pass^0,c
+   530   0007CA  0E00               	movlw	0
+   531   0007CC  2002               	addwfc	(?___wmul+1)^0,w,c
+   532   0007CE  6E17               	movwf	(main@pass+1)^0,c
+   533   0007D0                     l81:
+   534   0007D0  A881               	btfss	3969,4,c	;volatile
+   535   0007D2  EFED  F003         	goto	u501
+   536   0007D6  EFEF  F003         	goto	u500
+   537   0007DA                     u501:
+   538   0007DA  EFE8  F003         	goto	l81
+   539   0007DE                     u500:
+   540   0007DE  EFDC  F004         	goto	l1147
+   541   0007E2                     l80:
+   542   0007E2  BA81               	btfsc	3969,5,c	;volatile
+   543   0007E4  EFF6  F003         	goto	u511
+   544   0007E8  EFF8  F003         	goto	u510
+   545   0007EC                     u511:
+   546   0007EC  EF16  F004         	goto	l85
+   547   0007F0                     u510:
+   548   0007F0                     
+   549                           ;MatrixKeypad.c: 93:         {;MatrixKeypad.c: 94:             RC5=1;
+   550   0007F0  8A82               	bsf	3970,5,c	;volatile
+   551   0007F2                     
+   552                           ;MatrixKeypad.c: 95:             display("5");
+   553   0007F2  0E45               	movlw	low STR_5
+   554   0007F4  6E0B               	movwf	display@p^0,c
+   555   0007F6  EC2E  F006         	call	_display	;wreg free
+   556   0007FA                     
+   557                           ;MatrixKeypad.c: 96:             pass=(pass*10)+5;
+   558   0007FA  C016  F001         	movff	main@pass,___wmul@multiplier
+   559   0007FE  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   560   000802  0E00               	movlw	0
+   561   000804  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   562   000806  0E0A               	movlw	10
+   563   000808  6E03               	movwf	___wmul@multiplicand^0,c
+   564   00080A  EC44  F006         	call	___wmul	;wreg free
+   565   00080E  0E05               	movlw	5
+   566   000810  2401               	addwf	?___wmul^0,w,c
+   567   000812  6E16               	movwf	main@pass^0,c
+   568   000814  0E00               	movlw	0
+   569   000816  2002               	addwfc	(?___wmul+1)^0,w,c
+   570   000818  6E17               	movwf	(main@pass+1)^0,c
+   571   00081A                     l86:
+   572   00081A  AA81               	btfss	3969,5,c	;volatile
+   573   00081C  EF12  F004         	goto	u521
+   574   000820  EF14  F004         	goto	u520
+   575   000824                     u521:
+   576   000824  EF0D  F004         	goto	l86
+   577   000828                     u520:
+   578   000828  EFDC  F004         	goto	l1147
+   579   00082C                     l85:
+   580   00082C  BC81               	btfsc	3969,6,c	;volatile
+   581   00082E  EF1B  F004         	goto	u531
+   582   000832  EF1D  F004         	goto	u530
+   583   000836                     u531:
+   584   000836  EF3B  F004         	goto	l90
+   585   00083A                     u530:
+   586   00083A                     
+   587                           ;MatrixKeypad.c: 100:         {;MatrixKeypad.c: 101:             RC6=1;
+   588   00083A  8C82               	bsf	3970,6,c	;volatile
+   589   00083C                     
+   590                           ;MatrixKeypad.c: 102:             display("6");
+   591   00083C  0E47               	movlw	low STR_6
+   592   00083E  6E0B               	movwf	display@p^0,c
+   593   000840  EC2E  F006         	call	_display	;wreg free
+   594   000844                     
+   595                           ;MatrixKeypad.c: 103:             pass=(pass*10)+6;
+   596   000844  C016  F001         	movff	main@pass,___wmul@multiplier
+   597   000848  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   598   00084C  0E00               	movlw	0
+   599   00084E  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   600   000850  0E0A               	movlw	10
+   601   000852  6E03               	movwf	___wmul@multiplicand^0,c
+   602   000854  EC44  F006         	call	___wmul	;wreg free
+   603   000858  0E06               	movlw	6
+   604   00085A  2401               	addwf	?___wmul^0,w,c
+   605   00085C  6E16               	movwf	main@pass^0,c
+   606   00085E  0E00               	movlw	0
+   607   000860  2002               	addwfc	(?___wmul+1)^0,w,c
+   608   000862  6E17               	movwf	(main@pass+1)^0,c
+   609   000864                     l91:
+   610   000864  AC81               	btfss	3969,6,c	;volatile
+   611   000866  EF37  F004         	goto	u541
+   612   00086A  EF39  F004         	goto	u540
+   613   00086E                     u541:
+   614   00086E  EF32  F004         	goto	l91
+   615   000872                     u540:
+   616   000872  EFDC  F004         	goto	l1147
+   617   000876                     l90:
+   618   000876  BE81               	btfsc	3969,7,c	;volatile
+   619   000878  EF40  F004         	goto	u551
+   620   00087C  EF42  F004         	goto	u550
+   621   000880                     u551:
+   622   000880  EFDC  F004         	goto	l1147
+   623   000884                     u550:
+   624   000884                     
+   625                           ;MatrixKeypad.c: 107:         {;MatrixKeypad.c: 108:             RC7=1;
+   626   000884  8E82               	bsf	3970,7,c	;volatile
+   627   000886                     
+   628                           ;MatrixKeypad.c: 109:             start_func(0xC0);
+   629   000886  0EC0               	movlw	192
+   630   000888  ECF6  F005         	call	_start_func
+   631   00088C                     
+   632                           ;MatrixKeypad.c: 110:             display("          ");
+   633   00088C  0E30               	movlw	low STR_7
+   634   00088E  6E0B               	movwf	display@p^0,c
+   635   000890  EC2E  F006         	call	_display	;wreg free
+   636   000894                     
+   637                           ;MatrixKeypad.c: 111:             if(pass==pwd)
+   638   000894  500E               	movf	main@pwd^0,w,c
+   639   000896  1816               	xorwf	main@pass^0,w,c
+   640   000898  E107               	bnz	u561
+   641   00089A  500F               	movf	(main@pwd+1)^0,w,c
+   642   00089C  1817               	xorwf	(main@pass+1)^0,w,c
+   643   00089E  A4D8               	btfss	status,2,c
+   644   0008A0  EF54  F004         	goto	u561
+   645   0008A4  EF56  F004         	goto	u560
+   646   0008A8                     u561:
+   647   0008A8  EF94  F004         	goto	l1129
+   648   0008AC                     u560:
+   649   0008AC                     
+   650                           ;MatrixKeypad.c: 112:             {;MatrixKeypad.c: 113:                start_func(0xC0)
+      +                          ;
+   651   0008AC  0EC0               	movlw	192
+   652   0008AE  ECF6  F005         	call	_start_func
+   653   0008B2                     
+   654                           ;MatrixKeypad.c: 114:                display("CORRECT PASSWORD");
+   655   0008B2  0E01               	movlw	low STR_8
+   656   0008B4  6E0B               	movwf	display@p^0,c
+   657   0008B6  EC2E  F006         	call	_display	;wreg free
+   658   0008BA                     
+   659                           ;MatrixKeypad.c: 115:                for(int i=0;i<=10;i++)
+   660   0008BA  0E00               	movlw	0
+   661   0008BC  6E11               	movwf	(main@i+1)^0,c
+   662   0008BE  0E00               	movlw	0
+   663   0008C0  6E10               	movwf	main@i^0,c
+   664   0008C2                     l1123:
+   665                           
+   666                           ;MatrixKeypad.c: 116:                {;MatrixKeypad.c: 117:                 start_func(0
+      +                          x08);
+   667   0008C2  0E08               	movlw	8
+   668   0008C4  ECF6  F005         	call	_start_func
+   669                           
+   670                           ;MatrixKeypad.c: 118:                 delay(1000);
+   671   0008C8  0EE8               	movlw	232
+   672   0008CA  6E01               	movwf	delay@j^0,c
+   673   0008CC  0E03               	movlw	3
+   674   0008CE  6E02               	movwf	(delay@j+1)^0,c
+   675   0008D0  0E00               	movlw	0
+   676   0008D2  6E03               	movwf	(delay@j+2)^0,c
+   677   0008D4  0E00               	movlw	0
+   678   0008D6  6E04               	movwf	(delay@j+3)^0,c
+   679   0008D8  ECD2  F005         	call	_delay	;wreg free
+   680                           
+   681                           ;MatrixKeypad.c: 119:                 start_func(0x0E);
+   682   0008DC  0E0E               	movlw	14
+   683   0008DE  ECF6  F005         	call	_start_func
+   684                           
+   685                           ;MatrixKeypad.c: 120:                 delay(1000);
+   686   0008E2  0EE8               	movlw	232
+   687   0008E4  6E01               	movwf	delay@j^0,c
+   688   0008E6  0E03               	movlw	3
+   689   0008E8  6E02               	movwf	(delay@j+1)^0,c
+   690   0008EA  0E00               	movlw	0
+   691   0008EC  6E03               	movwf	(delay@j+2)^0,c
+   692   0008EE  0E00               	movlw	0
+   693   0008F0  6E04               	movwf	(delay@j+3)^0,c
+   694   0008F2  ECD2  F005         	call	_delay	;wreg free
+   695   0008F6                     
+   696                           ;MatrixKeypad.c: 121:                }
+   697   0008F6  4A10               	infsnz	main@i^0,f,c
+   698   0008F8  2A11               	incf	(main@i+1)^0,f,c
+   699   0008FA  BE11               	btfsc	(main@i+1)^0,7,c
+   700   0008FC  EF89  F004         	goto	u571
+   701   000900  5011               	movf	(main@i+1)^0,w,c
+   702   000902  E109               	bnz	u570
+   703   000904  0E0B               	movlw	11
+   704   000906  5C10               	subwf	main@i^0,w,c
+   705   000908  A0D8               	btfss	status,0,c
+   706   00090A  EF89  F004         	goto	u571
+   707   00090E  EF8B  F004         	goto	u570
+   708   000912                     u571:
+   709   000912  EF61  F004         	goto	l1123
+   710   000916                     u570:
+   711   000916                     l99:
+   712   000916  AE81               	btfss	3969,7,c	;volatile
+   713   000918  EF90  F004         	goto	u581
+   714   00091C  EF92  F004         	goto	u580
+   715   000920                     u581:
+   716   000920  EF8B  F004         	goto	l99
+   717   000924                     u580:
+   718   000924  EFDC  F004         	goto	l1147
+   719   000928                     l1129:
+   720   000928  500E               	movf	main@pwd^0,w,c
+   721   00092A  1816               	xorwf	main@pass^0,w,c
+   722   00092C  E109               	bnz	u590
+   723   00092E  500F               	movf	(main@pwd+1)^0,w,c
+   724   000930  1817               	xorwf	(main@pass+1)^0,w,c
+   725   000932  B4D8               	btfsc	status,2,c
+   726   000934  EF9E  F004         	goto	u591
+   727   000938  EFA0  F004         	goto	u590
+   728   00093C                     u591:
+   729   00093C  EFDC  F004         	goto	l1147
+   730   000940                     u590:
+   731   000940                     
+   732                           ;MatrixKeypad.c: 125:             {;MatrixKeypad.c: 126:                start_func(0xC0)
+      +                          ;
+   733   000940  0EC0               	movlw	192
+   734   000942  ECF6  F005         	call	_start_func
+   735   000946                     
+   736                           ;MatrixKeypad.c: 127:                display("WRONG PASSWORD");
+   737   000946  0E12               	movlw	low STR_9
+   738   000948  6E0B               	movwf	display@p^0,c
+   739   00094A  EC2E  F006         	call	_display	;wreg free
+   740   00094E                     
+   741                           ;MatrixKeypad.c: 128:                for(int i=0;i<=10;i++)
+   742   00094E  0E00               	movlw	0
+   743   000950  6E13               	movwf	(main@i_75+1)^0,c
+   744   000952  0E00               	movlw	0
+   745   000954  6E12               	movwf	main@i_75^0,c
+   746   000956                     l1141:
+   747                           
+   748                           ;MatrixKeypad.c: 129:                {;MatrixKeypad.c: 130:                 start_func(0
+      +                          x08);
+   749   000956  0E08               	movlw	8
+   750   000958  ECF6  F005         	call	_start_func
+   751                           
+   752                           ;MatrixKeypad.c: 131:                 delay(1000);
+   753   00095C  0EE8               	movlw	232
+   754   00095E  6E01               	movwf	delay@j^0,c
+   755   000960  0E03               	movlw	3
+   756   000962  6E02               	movwf	(delay@j+1)^0,c
+   757   000964  0E00               	movlw	0
+   758   000966  6E03               	movwf	(delay@j+2)^0,c
+   759   000968  0E00               	movlw	0
+   760   00096A  6E04               	movwf	(delay@j+3)^0,c
+   761   00096C  ECD2  F005         	call	_delay	;wreg free
+   762                           
+   763                           ;MatrixKeypad.c: 132:                 start_func(0x0E);
+   764   000970  0E0E               	movlw	14
+   765   000972  ECF6  F005         	call	_start_func
+   766                           
+   767                           ;MatrixKeypad.c: 133:                 delay(1000);
+   768   000976  0EE8               	movlw	232
+   769   000978  6E01               	movwf	delay@j^0,c
+   770   00097A  0E03               	movlw	3
+   771   00097C  6E02               	movwf	(delay@j+1)^0,c
+   772   00097E  0E00               	movlw	0
+   773   000980  6E03               	movwf	(delay@j+2)^0,c
+   774   000982  0E00               	movlw	0
+   775   000984  6E04               	movwf	(delay@j+3)^0,c
+   776   000986  ECD2  F005         	call	_delay	;wreg free
+   777   00098A                     
+   778                           ;MatrixKeypad.c: 134:                }
+   779   00098A  4A12               	infsnz	main@i_75^0,f,c
+   780   00098C  2A13               	incf	(main@i_75+1)^0,f,c
+   781   00098E  BE13               	btfsc	(main@i_75+1)^0,7,c
+   782   000990  EFD3  F004         	goto	u601
+   783   000994  5013               	movf	(main@i_75+1)^0,w,c
+   784   000996  E109               	bnz	u600
+   785   000998  0E0B               	movlw	11
+   786   00099A  5C12               	subwf	main@i_75^0,w,c
+   787   00099C  A0D8               	btfss	status,0,c
+   788   00099E  EFD3  F004         	goto	u601
+   789   0009A2  EFD5  F004         	goto	u600
+   790   0009A6                     u601:
+   791   0009A6  EFAB  F004         	goto	l1141
+   792   0009AA                     u600:
+   793   0009AA                     l106:
+   794   0009AA  AE81               	btfss	3969,7,c	;volatile
+   795   0009AC  EFDA  F004         	goto	u611
+   796   0009B0  EFDC  F004         	goto	u610
+   797   0009B4                     u611:
+   798   0009B4  EFD5  F004         	goto	l106
+   799   0009B8                     u610:
+   800   0009B8                     l1147:
+   801                           
+   802                           ;MatrixKeypad.c: 138:         PORTB=0X0B;
+   803   0009B8  0E0B               	movlw	11
+   804   0009BA  6E81               	movwf	129,c	;volatile
+   805   0009BC                     
+   806                           ;MatrixKeypad.c: 139:         if(RB4==0)
+   807   0009BC  B881               	btfsc	3969,4,c	;volatile
+   808   0009BE  EFE3  F004         	goto	u621
+   809   0009C2  EFE5  F004         	goto	u620
+   810   0009C6                     u621:
+   811   0009C6  EF03  F005         	goto	l109
+   812   0009CA                     u620:
+   813   0009CA                     
+   814                           ;MatrixKeypad.c: 140:         {;MatrixKeypad.c: 141:             RC0=1;
+   815   0009CA  8082               	bsf	3970,0,c	;volatile
+   816   0009CC                     
+   817                           ;MatrixKeypad.c: 142:             display("1");
+   818   0009CC  0E3D               	movlw	low STR_10
+   819   0009CE  6E0B               	movwf	display@p^0,c
+   820   0009D0  EC2E  F006         	call	_display	;wreg free
+   821   0009D4                     
+   822                           ;MatrixKeypad.c: 143:             pass=(pass*10)+1;
+   823   0009D4  C016  F001         	movff	main@pass,___wmul@multiplier
+   824   0009D8  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   825   0009DC  0E00               	movlw	0
+   826   0009DE  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   827   0009E0  0E0A               	movlw	10
+   828   0009E2  6E03               	movwf	___wmul@multiplicand^0,c
+   829   0009E4  EC44  F006         	call	___wmul	;wreg free
+   830   0009E8  0E01               	movlw	1
+   831   0009EA  2401               	addwf	?___wmul^0,w,c
+   832   0009EC  6E16               	movwf	main@pass^0,c
+   833   0009EE  0E00               	movlw	0
+   834   0009F0  2002               	addwfc	(?___wmul+1)^0,w,c
+   835   0009F2  6E17               	movwf	(main@pass+1)^0,c
+   836   0009F4                     l110:
+   837   0009F4  A881               	btfss	3969,4,c	;volatile
+   838   0009F6  EFFF  F004         	goto	u631
+   839   0009FA  EF01  F005         	goto	u630
+   840   0009FE                     u631:
+   841   0009FE  EFFA  F004         	goto	l110
+   842   000A02                     u630:
+   843   000A02  EF4B  F005         	goto	l1169
+   844   000A06                     l109:
+   845   000A06  BA81               	btfsc	3969,5,c	;volatile
+   846   000A08  EF08  F005         	goto	u641
+   847   000A0C  EF0A  F005         	goto	u640
+   848   000A10                     u641:
+   849   000A10  EF28  F005         	goto	l114
+   850   000A14                     u640:
+   851   000A14                     
+   852                           ;MatrixKeypad.c: 147:         {;MatrixKeypad.c: 148:             RC1=1;
+   853   000A14  8282               	bsf	3970,1,c	;volatile
+   854   000A16                     
+   855                           ;MatrixKeypad.c: 149:             display("2");
+   856   000A16  0E3F               	movlw	low STR_11
+   857   000A18  6E0B               	movwf	display@p^0,c
+   858   000A1A  EC2E  F006         	call	_display	;wreg free
+   859   000A1E                     
+   860                           ;MatrixKeypad.c: 150:             pass=(pass*10)+2;
+   861   000A1E  C016  F001         	movff	main@pass,___wmul@multiplier
+   862   000A22  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   863   000A26  0E00               	movlw	0
+   864   000A28  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   865   000A2A  0E0A               	movlw	10
+   866   000A2C  6E03               	movwf	___wmul@multiplicand^0,c
+   867   000A2E  EC44  F006         	call	___wmul	;wreg free
+   868   000A32  0E02               	movlw	2
+   869   000A34  2401               	addwf	?___wmul^0,w,c
+   870   000A36  6E16               	movwf	main@pass^0,c
+   871   000A38  0E00               	movlw	0
+   872   000A3A  2002               	addwfc	(?___wmul+1)^0,w,c
+   873   000A3C  6E17               	movwf	(main@pass+1)^0,c
+   874   000A3E                     l115:
+   875   000A3E  AA81               	btfss	3969,5,c	;volatile
+   876   000A40  EF24  F005         	goto	u651
+   877   000A44  EF26  F005         	goto	u650
+   878   000A48                     u651:
+   879   000A48  EF1F  F005         	goto	l115
+   880   000A4C                     u650:
+   881   000A4C  EF4B  F005         	goto	l1169
+   882   000A50                     l114:
+   883   000A50  BC81               	btfsc	3969,6,c	;volatile
+   884   000A52  EF2D  F005         	goto	u661
+   885   000A56  EF2F  F005         	goto	u660
+   886   000A5A                     u661:
+   887   000A5A  EF4B  F005         	goto	l1169
+   888   000A5E                     u660:
+   889   000A5E                     
+   890                           ;MatrixKeypad.c: 154:         {;MatrixKeypad.c: 155:             RC2=1;
+   891   000A5E  8482               	bsf	3970,2,c	;volatile
+   892   000A60                     
+   893                           ;MatrixKeypad.c: 156:             display("3");
+   894   000A60  0E41               	movlw	low STR_12
+   895   000A62  6E0B               	movwf	display@p^0,c
+   896   000A64  EC2E  F006         	call	_display	;wreg free
+   897   000A68                     
+   898                           ;MatrixKeypad.c: 157:             pass=(pass*10)+3;
+   899   000A68  C016  F001         	movff	main@pass,___wmul@multiplier
+   900   000A6C  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+   901   000A70  0E00               	movlw	0
+   902   000A72  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+   903   000A74  0E0A               	movlw	10
+   904   000A76  6E03               	movwf	___wmul@multiplicand^0,c
+   905   000A78  EC44  F006         	call	___wmul	;wreg free
+   906   000A7C  0E03               	movlw	3
+   907   000A7E  2401               	addwf	?___wmul^0,w,c
+   908   000A80  6E16               	movwf	main@pass^0,c
+   909   000A82  0E00               	movlw	0
+   910   000A84  2002               	addwfc	(?___wmul+1)^0,w,c
+   911   000A86  6E17               	movwf	(main@pass+1)^0,c
+   912   000A88                     l120:
+   913   000A88  AC81               	btfss	3969,6,c	;volatile
+   914   000A8A  EF49  F005         	goto	u671
+   915   000A8E  EF4B  F005         	goto	u670
+   916   000A92                     u671:
+   917   000A92  EF44  F005         	goto	l120
+   918   000A96                     u670:
+   919   000A96                     l1169:
+   920                           
+   921                           ;MatrixKeypad.c: 166:        PORTB=0X07;
+   922   000A96  0E07               	movlw	7
+   923   000A98  6E81               	movwf	129,c	;volatile
+   924   000A9A                     
+   925                           ;MatrixKeypad.c: 167:        if(RB4==0)
+   926   000A9A  B881               	btfsc	3969,4,c	;volatile
+   927   000A9C  EF52  F005         	goto	u681
+   928   000AA0  EF54  F005         	goto	u680
+   929   000AA4                     u681:
+   930   000AA4  EF97  F005         	goto	l123
+   931   000AA8                     u680:
+   932   000AA8                     
+   933                           ;MatrixKeypad.c: 168:         {;MatrixKeypad.c: 169:             RC4=1;
+   934   000AA8  8882               	bsf	3970,4,c	;volatile
+   935   000AAA                     
+   936                           ;MatrixKeypad.c: 170:             if(count1==0)
+   937   000AAA  5014               	movf	main@count1^0,w,c
+   938   000AAC  1015               	iorwf	(main@count1+1)^0,w,c
+   939   000AAE  A4D8               	btfss	status,2,c
+   940   000AB0  EF5C  F005         	goto	u691
+   941   000AB4  EF5E  F005         	goto	u690
+   942   000AB8                     u691:
+   943   000AB8  EF7E  F005         	goto	l1185
+   944   000ABC                     u690:
+   945   000ABC                     
+   946                           ;MatrixKeypad.c: 171:             {;MatrixKeypad.c: 172:                 start_func(0x0f
+      +                          );
+   947   000ABC  0E0F               	movlw	15
+   948   000ABE  ECF6  F005         	call	_start_func
+   949                           
+   950                           ;MatrixKeypad.c: 173:                 start_func(0x01);
+   951   000AC2  0E01               	movlw	1
+   952   000AC4  ECF6  F005         	call	_start_func
+   953                           
+   954                           ;MatrixKeypad.c: 174:                 start_func(0x38);
+   955   000AC8  0E38               	movlw	56
+   956   000ACA  ECF6  F005         	call	_start_func
+   957                           
+   958                           ;MatrixKeypad.c: 175:                 start_func(0x80);
+   959   000ACE  0E80               	movlw	128
+   960   000AD0  ECF6  F005         	call	_start_func
+   961   000AD4                     
+   962                           ;MatrixKeypad.c: 176:                 display("ENTER PASSWORD");
+   963   000AD4  0E21               	movlw	low STR_13
+   964   000AD6  6E0B               	movwf	display@p^0,c
+   965   000AD8  EC2E  F006         	call	_display	;wreg free
+   966   000ADC                     
+   967                           ;MatrixKeypad.c: 177:                 count1=1;
+   968   000ADC  0E00               	movlw	0
+   969   000ADE  6E15               	movwf	(main@count1+1)^0,c
+   970   000AE0  0E01               	movlw	1
+   971   000AE2  6E14               	movwf	main@count1^0,c
+   972   000AE4                     
+   973                           ;MatrixKeypad.c: 178:                 start_func(0xC0);
+   974   000AE4  0EC0               	movlw	192
+   975   000AE6  ECF6  F005         	call	_start_func
+   976   000AEA                     l125:
+   977   000AEA  A881               	btfss	3969,4,c	;volatile
+   978   000AEC  EF7A  F005         	goto	u701
+   979   000AF0  EF7C  F005         	goto	u700
+   980   000AF4                     u701:
+   981   000AF4  EF75  F005         	goto	l125
+   982   000AF8                     u700:
+   983   000AF8  EF41  F003         	goto	l61
+   984   000AFC                     l1185:
+   985   000AFC  0414               	decf	main@count1^0,w,c
+   986   000AFE  1015               	iorwf	(main@count1+1)^0,w,c
+   987   000B00  A4D8               	btfss	status,2,c
+   988   000B02  EF85  F005         	goto	u711
+   989   000B06  EF87  F005         	goto	u710
+   990   000B0A                     u711:
+   991   000B0A  EFCE  F005         	goto	l133
+   992   000B0E                     u710:
+   993   000B0E                     
+   994                           ;MatrixKeypad.c: 182:             {;MatrixKeypad.c: 183:                 start_func(0x08
+      +                          );
+   995   000B0E  0E08               	movlw	8
+   996   000B10  ECF6  F005         	call	_start_func
+   997   000B14                     
+   998                           ;MatrixKeypad.c: 184:                 count1=0;
+   999   000B14  0E00               	movlw	0
+  1000   000B16  6E15               	movwf	(main@count1+1)^0,c
+  1001   000B18  0E00               	movlw	0
+  1002   000B1A  6E14               	movwf	main@count1^0,c
+  1003   000B1C                     l130:
+  1004   000B1C  A881               	btfss	3969,4,c	;volatile
+  1005   000B1E  EF93  F005         	goto	u721
+  1006   000B22  EF95  F005         	goto	u720
+  1007   000B26                     u721:
+  1008   000B26  EF8E  F005         	goto	l130
+  1009   000B2A                     u720:
+  1010   000B2A  EF41  F003         	goto	l61
+  1011   000B2E                     l123:
+  1012   000B2E  BA81               	btfsc	3969,5,c	;volatile
+  1013   000B30  EF9C  F005         	goto	u731
+  1014   000B34  EF9E  F005         	goto	u730
+  1015   000B38                     u731:
+  1016   000B38  EFBA  F005         	goto	l134
+  1017   000B3C                     u730:
+  1018   000B3C                     
+  1019                           ;MatrixKeypad.c: 190:         {;MatrixKeypad.c: 191:             RC5=1;
+  1020   000B3C  8A82               	bsf	3970,5,c	;volatile
+  1021   000B3E                     
+  1022                           ;MatrixKeypad.c: 192:             display("0");
+  1023   000B3E  0E3B               	movlw	low STR_14
+  1024   000B40  6E0B               	movwf	display@p^0,c
+  1025   000B42  EC2E  F006         	call	_display	;wreg free
+  1026   000B46                     
+  1027                           ;MatrixKeypad.c: 193:             pass=(pass*10)+0;
+  1028   000B46  C016  F001         	movff	main@pass,___wmul@multiplier
+  1029   000B4A  C017  F002         	movff	main@pass+1,___wmul@multiplier+1
+  1030   000B4E  0E00               	movlw	0
+  1031   000B50  6E04               	movwf	(___wmul@multiplicand+1)^0,c
+  1032   000B52  0E0A               	movlw	10
+  1033   000B54  6E03               	movwf	___wmul@multiplicand^0,c
+  1034   000B56  EC44  F006         	call	___wmul	;wreg free
+  1035   000B5A  C001  F016         	movff	?___wmul,main@pass
+  1036   000B5E  C002  F017         	movff	?___wmul+1,main@pass+1
+  1037   000B62                     l135:
+  1038   000B62  AA81               	btfss	3969,5,c	;volatile
+  1039   000B64  EFB6  F005         	goto	u741
+  1040   000B68  EFB8  F005         	goto	u740
+  1041   000B6C                     u741:
+  1042   000B6C  EFB1  F005         	goto	l135
+  1043   000B70                     u740:
+  1044   000B70  EF41  F003         	goto	l61
+  1045   000B74                     l134:
+  1046   000B74  BC81               	btfsc	3969,6,c	;volatile
+  1047   000B76  EFBF  F005         	goto	u751
+  1048   000B7A  EFC1  F005         	goto	u750
+  1049   000B7E                     u751:
+  1050   000B7E  EFCE  F005         	goto	l133
+  1051   000B82                     u750:
+  1052   000B82                     
+  1053                           ;MatrixKeypad.c: 197:         {;MatrixKeypad.c: 198:             RC6=1;
+  1054   000B82  8C82               	bsf	3970,6,c	;volatile
+  1055   000B84                     
+  1056                           ;MatrixKeypad.c: 199:             start_func(0x01);
+  1057   000B84  0E01               	movlw	1
+  1058   000B86  ECF6  F005         	call	_start_func
+  1059   000B8A                     l140:
+  1060   000B8A  AC81               	btfss	3969,6,c	;volatile
+  1061   000B8C  EFCA  F005         	goto	u761
+  1062   000B90  EFCC  F005         	goto	u760
+  1063   000B94                     u761:
+  1064   000B94  EFC5  F005         	goto	l140
+  1065   000B98                     u760:
+  1066   000B98  EF41  F003         	goto	l61
+  1067   000B9C                     l133:
+  1068   000B9C  EF41  F003         	goto	l61
+  1069   000BA0  EF00  F000         	goto	start
+  1070   000BA4                     __end_of_main:
+  1071                           	callstack 0
+  1072                           
+  1073 ;; *************** function _start_func *****************
+  1074 ;; Defined at:
+  1075 ;;		line 14 in file "MatrixKeypad.c"
+  1076 ;; Parameters:    Size  Location     Type
+  1077 ;;  a               1    wreg     unsigned char 
+  1078 ;; Auto vars:     Size  Location     Type
+  1079 ;;  a               1    9[COMRAM] unsigned char 
+  1080 ;; Return value:  Size  Location     Type
+  1081 ;;                  1    wreg      void 
+  1082 ;; Registers used:
+  1083 ;;		wreg, status,2, status,0, cstack
+  1084 ;; Tracked objects:
+  1085 ;;		On entry : 0/0
+  1086 ;;		On exit  : 0/0
+  1087 ;;		Unchanged: 0/0
+  1088 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1089 ;;      Params:         0       0       0       0       0       0       0
+  1090 ;;      Locals:         1       0       0       0       0       0       0
+  1091 ;;      Temps:          0       0       0       0       0       0       0
+  1092 ;;      Totals:         1       0       0       0       0       0       0
+  1093 ;;Total ram usage:        1 bytes
+  1094 ;; Hardware stack levels used: 1
+  1095 ;; Hardware stack levels required when called: 1
+  1096 ;; This function calls:
+  1097 ;;		_delay
+  1098 ;; This function is called by:
+  1099 ;;		_main
+  1100 ;; This function uses a non-reentrant model
+  1101 ;;
+  1102                           
+  1103                           	psect	text1
+  1104   000BEC                     __ptext1:
+  1105                           	callstack 0
+  1106   000BEC                     _start_func:
+  1107                           	callstack 29
+  1108                           
+  1109                           ;incstack = 0
+  1110                           ;start_func@a stored from wreg
+  1111   000BEC  6E0A               	movwf	start_func@a^0,c
+  1112   000BEE                     
+  1113                           ;MatrixKeypad.c: 14: void start_func(unsigned char a);MatrixKeypad.c: 15: {;MatrixKeypad
+      +                          .c: 16:     RC0=0;
+  1114   000BEE  9082               	bcf	3970,0,c	;volatile
+  1115                           
+  1116                           ;MatrixKeypad.c: 17:     RC1=0;
+  1117   000BF0  9282               	bcf	3970,1,c	;volatile
+  1118   000BF2                     
+  1119                           ;MatrixKeypad.c: 18:     PORTD=a;
+  1120   000BF2  C00A  FF83         	movff	start_func@a,3971	;volatile
+  1121   000BF6                     
+  1122                           ;MatrixKeypad.c: 19:     RC2=1;
+  1123   000BF6  8482               	bsf	3970,2,c	;volatile
+  1124   000BF8                     
+  1125                           ;MatrixKeypad.c: 20:     delay(100);
+  1126   000BF8  0E64               	movlw	100
+  1127   000BFA  6E01               	movwf	delay@j^0,c
+  1128   000BFC  0E00               	movlw	0
+  1129   000BFE  6E02               	movwf	(delay@j+1)^0,c
+  1130   000C00  0E00               	movlw	0
+  1131   000C02  6E03               	movwf	(delay@j+2)^0,c
+  1132   000C04  0E00               	movlw	0
+  1133   000C06  6E04               	movwf	(delay@j+3)^0,c
+  1134   000C08  ECD2  F005         	call	_delay	;wreg free
+  1135   000C0C                     
+  1136                           ;MatrixKeypad.c: 21:     RC2=0;
+  1137   000C0C  9482               	bcf	3970,2,c	;volatile
+  1138   000C0E                     
+  1139                           ;MatrixKeypad.c: 22:     delay(5000);
+  1140   000C0E  0E88               	movlw	136
+  1141   000C10  6E01               	movwf	delay@j^0,c
+  1142   000C12  0E13               	movlw	19
+  1143   000C14  6E02               	movwf	(delay@j+1)^0,c
+  1144   000C16  0E00               	movlw	0
+  1145   000C18  6E03               	movwf	(delay@j+2)^0,c
+  1146   000C1A  0E00               	movlw	0
+  1147   000C1C  6E04               	movwf	(delay@j+3)^0,c
+  1148   000C1E  ECD2  F005         	call	_delay	;wreg free
+  1149   000C22  0012               	return		;funcret
+  1150   000C24                     __end_of_start_func:
+  1151                           	callstack 0
+  1152                           
+  1153 ;; *************** function _display *****************
+  1154 ;; Defined at:
+  1155 ;;		line 35 in file "MatrixKeypad.c"
+  1156 ;; Parameters:    Size  Location     Type
+  1157 ;;  p               1   10[COMRAM] PTR const unsigned char 
+  1158 ;;		 -> STR_14(2), STR_13(15), STR_12(2), STR_11(2), 
+  1159 ;;		 -> STR_10(2), STR_9(15), STR_8(17), STR_7(11), 
+  1160 ;;		 -> STR_6(2), STR_5(2), STR_4(2), STR_3(2), 
+  1161 ;;		 -> STR_2(2), STR_1(2), 
+  1162 ;; Auto vars:     Size  Location     Type
+  1163 ;;		None
+  1164 ;; Return value:  Size  Location     Type
+  1165 ;;                  1    wreg      void 
+  1166 ;; Registers used:
+  1167 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+  1168 ;; Tracked objects:
+  1169 ;;		On entry : 0/0
+  1170 ;;		On exit  : 0/0
+  1171 ;;		Unchanged: 0/0
+  1172 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1173 ;;      Params:         1       0       0       0       0       0       0
+  1174 ;;      Locals:         0       0       0       0       0       0       0
+  1175 ;;      Temps:          0       0       0       0       0       0       0
+  1176 ;;      Totals:         1       0       0       0       0       0       0
+  1177 ;;Total ram usage:        1 bytes
+  1178 ;; Hardware stack levels used: 1
+  1179 ;; Hardware stack levels required when called: 2
+  1180 ;; This function calls:
+  1181 ;;		_data
+  1182 ;; This function is called by:
+  1183 ;;		_main
+  1184 ;; This function uses a non-reentrant model
+  1185 ;;
+  1186                           
+  1187                           	psect	text2
+  1188   000C5C                     __ptext2:
+  1189                           	callstack 0
+  1190   000C5C                     _display:
+  1191                           	callstack 28
+  1192   000C5C                     
+  1193                           ;MatrixKeypad.c: 35: void display(const char *p);MatrixKeypad.c: 36: {;MatrixKeypad.c: 3
+      +                          7:     while(*p)
+  1194   000C5C  EF37  F006         	goto	l1045
+  1195   000C60                     l1041:
+  1196                           
+  1197                           ;MatrixKeypad.c: 38:     {;MatrixKeypad.c: 39:         data(*p);
+  1198   000C60  C00B  FFF6         	movff	display@p,tblptrl
+  1199   000C64                     	if	0	;There is only one active tblptr byte
+  1200   000C64                     	endif
+  1201   000C64                     	if	0	;tblptru may be non-zero
+  1202   000C64                     	endif
+  1203   000C64                     	if	0	;tblptru may be non-zero
+  1204   000C64                     	endif
+  1205   000C64  0008               	tblrd		*
+  1206   000C66  50F5               	movf	tablat,w,c
+  1207   000C68  EC12  F006         	call	_data
+  1208   000C6C                     
+  1209                           ;MatrixKeypad.c: 40:         p++;
+  1210   000C6C  2A0B               	incf	display@p^0,f,c
+  1211   000C6E                     l1045:
+  1212                           
+  1213                           ;MatrixKeypad.c: 37:     while(*p)
+  1214   000C6E  C00B  FFF6         	movff	display@p,tblptrl
+  1215   000C72                     	if	0	;There is only one active tblptr byte
+  1216   000C72                     	endif
+  1217   000C72                     	if	0	;tblptru may be non-zero
+  1218   000C72                     	endif
+  1219   000C72                     	if	0	;tblptru may be non-zero
+  1220   000C72                     	endif
+  1221   000C72  0008               	tblrd		*
+  1222   000C74  50F5               	movf	tablat,w,c
+  1223   000C76  0900               	iorlw	0
+  1224   000C78  A4D8               	btfss	status,2,c
+  1225   000C7A  EF41  F006         	goto	u401
+  1226   000C7E  EF43  F006         	goto	u400
+  1227   000C82                     u401:
+  1228   000C82  EF30  F006         	goto	l1041
+  1229   000C86                     u400:
+  1230   000C86  0012               	return		;funcret
+  1231   000C88                     __end_of_display:
+  1232                           	callstack 0
+  1233                           
+  1234 ;; *************** function _data *****************
+  1235 ;; Defined at:
+  1236 ;;		line 24 in file "MatrixKeypad.c"
+  1237 ;; Parameters:    Size  Location     Type
+  1238 ;;  a               1    wreg     unsigned char 
+  1239 ;; Auto vars:     Size  Location     Type
+  1240 ;;  a               1    9[COMRAM] unsigned char 
+  1241 ;; Return value:  Size  Location     Type
+  1242 ;;                  1    wreg      void 
+  1243 ;; Registers used:
+  1244 ;;		wreg, status,2, status,0, cstack
+  1245 ;; Tracked objects:
+  1246 ;;		On entry : 0/0
+  1247 ;;		On exit  : 0/0
+  1248 ;;		Unchanged: 0/0
+  1249 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1250 ;;      Params:         0       0       0       0       0       0       0
+  1251 ;;      Locals:         1       0       0       0       0       0       0
+  1252 ;;      Temps:          0       0       0       0       0       0       0
+  1253 ;;      Totals:         1       0       0       0       0       0       0
+  1254 ;;Total ram usage:        1 bytes
+  1255 ;; Hardware stack levels used: 1
+  1256 ;; Hardware stack levels required when called: 1
+  1257 ;; This function calls:
+  1258 ;;		_delay
+  1259 ;; This function is called by:
+  1260 ;;		_display
+  1261 ;;		_main
+  1262 ;; This function uses a non-reentrant model
+  1263 ;;
+  1264                           
+  1265                           	psect	text3
+  1266   000C24                     __ptext3:
+  1267                           	callstack 0
+  1268   000C24                     _data:
+  1269                           	callstack 28
+  1270                           
+  1271                           ;incstack = 0
+  1272                           ;data@a stored from wreg
+  1273   000C24  6E0A               	movwf	data@a^0,c
+  1274   000C26                     
+  1275                           ;MatrixKeypad.c: 24: void data(unsigned char a);MatrixKeypad.c: 25: {;MatrixKeypad.c: 26
+      +                          :     RC0=1;
+  1276   000C26  8082               	bsf	3970,0,c	;volatile
+  1277                           
+  1278                           ;MatrixKeypad.c: 27:     RC1=0;
+  1279   000C28  9282               	bcf	3970,1,c	;volatile
+  1280   000C2A                     
+  1281                           ;MatrixKeypad.c: 28:     PORTD=a;
+  1282   000C2A  C00A  FF83         	movff	data@a,3971	;volatile
+  1283   000C2E                     
+  1284                           ;MatrixKeypad.c: 29:     RC2=1;
+  1285   000C2E  8482               	bsf	3970,2,c	;volatile
+  1286   000C30                     
+  1287                           ;MatrixKeypad.c: 30:     delay(100);
+  1288   000C30  0E64               	movlw	100
+  1289   000C32  6E01               	movwf	delay@j^0,c
+  1290   000C34  0E00               	movlw	0
+  1291   000C36  6E02               	movwf	(delay@j+1)^0,c
+  1292   000C38  0E00               	movlw	0
+  1293   000C3A  6E03               	movwf	(delay@j+2)^0,c
+  1294   000C3C  0E00               	movlw	0
+  1295   000C3E  6E04               	movwf	(delay@j+3)^0,c
+  1296   000C40  ECD2  F005         	call	_delay	;wreg free
+  1297   000C44                     
+  1298                           ;MatrixKeypad.c: 32:     RC2=0;
+  1299   000C44  9482               	bcf	3970,2,c	;volatile
+  1300   000C46                     
+  1301                           ;MatrixKeypad.c: 33:     delay(5000);
+  1302   000C46  0E88               	movlw	136
+  1303   000C48  6E01               	movwf	delay@j^0,c
+  1304   000C4A  0E13               	movlw	19
+  1305   000C4C  6E02               	movwf	(delay@j+1)^0,c
+  1306   000C4E  0E00               	movlw	0
+  1307   000C50  6E03               	movwf	(delay@j+2)^0,c
+  1308   000C52  0E00               	movlw	0
+  1309   000C54  6E04               	movwf	(delay@j+3)^0,c
+  1310   000C56  ECD2  F005         	call	_delay	;wreg free
+  1311   000C5A  0012               	return		;funcret
+  1312   000C5C                     __end_of_data:
+  1313                           	callstack 0
+  1314                           
+  1315 ;; *************** function _delay *****************
+  1316 ;; Defined at:
+  1317 ;;		line 10 in file "MatrixKeypad.c"
+  1318 ;; Parameters:    Size  Location     Type
+  1319 ;;  j               4    0[COMRAM] long 
+  1320 ;; Auto vars:     Size  Location     Type
+  1321 ;;  i               4    5[COMRAM] long 
+  1322 ;; Return value:  Size  Location     Type
+  1323 ;;                  1    wreg      void 
+  1324 ;; Registers used:
+  1325 ;;		wreg, status,2, status,0
+  1326 ;; Tracked objects:
+  1327 ;;		On entry : 0/0
+  1328 ;;		On exit  : 0/0
+  1329 ;;		Unchanged: 0/0
+  1330 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1331 ;;      Params:         4       0       0       0       0       0       0
+  1332 ;;      Locals:         4       0       0       0       0       0       0
+  1333 ;;      Temps:          1       0       0       0       0       0       0
+  1334 ;;      Totals:         9       0       0       0       0       0       0
+  1335 ;;Total ram usage:        9 bytes
+  1336 ;; Hardware stack levels used: 1
+  1337 ;; This function calls:
+  1338 ;;		Nothing
+  1339 ;; This function is called by:
+  1340 ;;		_start_func
+  1341 ;;		_data
+  1342 ;;		_main
+  1343 ;; This function uses a non-reentrant model
+  1344 ;;
+  1345                           
+  1346                           	psect	text4
+  1347   000BA4                     __ptext4:
+  1348                           	callstack 0
+  1349   000BA4                     _delay:
+  1350                           	callstack 29
+  1351   000BA4                     
+  1352                           ;MatrixKeypad.c: 10: void delay(long j);MatrixKeypad.c: 11: {;MatrixKeypad.c: 12:     fo
+      +                          r(long i=0;i<=j;i++);
+  1353   000BA4  0E00               	movlw	0
+  1354   000BA6  6E06               	movwf	delay@i^0,c
+  1355   000BA8  0E00               	movlw	0
+  1356   000BAA  6E07               	movwf	(delay@i+1)^0,c
+  1357   000BAC  0E00               	movlw	0
+  1358   000BAE  6E08               	movwf	(delay@i+2)^0,c
+  1359   000BB0  0E00               	movlw	0
+  1360   000BB2  6E09               	movwf	(delay@i+3)^0,c
+  1361   000BB4  EFE2  F005         	goto	l41
+  1362   000BB8                     l1013:
+  1363   000BB8  0E01               	movlw	1
+  1364   000BBA  2606               	addwf	delay@i^0,f,c
+  1365   000BBC  0E00               	movlw	0
+  1366   000BBE  2207               	addwfc	(delay@i+1)^0,f,c
+  1367   000BC0  2208               	addwfc	(delay@i+2)^0,f,c
+  1368   000BC2  2209               	addwfc	(delay@i+3)^0,f,c
+  1369   000BC4                     l41:
+  1370   000BC4  5006               	movf	delay@i^0,w,c
+  1371   000BC6  5C01               	subwf	delay@j^0,w,c
+  1372   000BC8  5007               	movf	(delay@i+1)^0,w,c
+  1373   000BCA  5802               	subwfb	(delay@j+1)^0,w,c
+  1374   000BCC  5008               	movf	(delay@i+2)^0,w,c
+  1375   000BCE  5803               	subwfb	(delay@j+2)^0,w,c
+  1376   000BD0  5004               	movf	(delay@j+3)^0,w,c
+  1377   000BD2  0A80               	xorlw	128
+  1378   000BD4  6E05               	movwf	??_delay^0,c
+  1379   000BD6  5009               	movf	(delay@i+3)^0,w,c
+  1380   000BD8  0A80               	xorlw	128
+  1381   000BDA  5805               	subwfb	??_delay^0,w,c
+  1382   000BDC  B0D8               	btfsc	status,0,c
+  1383   000BDE  EFF3  F005         	goto	u391
+  1384   000BE2  EFF5  F005         	goto	u390
+  1385   000BE6                     u391:
+  1386   000BE6  EFDC  F005         	goto	l1013
+  1387   000BEA                     u390:
+  1388   000BEA  0012               	return		;funcret
+  1389   000BEC                     __end_of_delay:
+  1390                           	callstack 0
+  1391                           
+  1392 ;; *************** function ___wmul *****************
+  1393 ;; Defined at:
+  1394 ;;		line 15 in file "C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul16.c"
+  1395 ;; Parameters:    Size  Location     Type
+  1396 ;;  multiplier      2    0[COMRAM] unsigned int 
+  1397 ;;  multiplicand    2    2[COMRAM] unsigned int 
+  1398 ;; Auto vars:     Size  Location     Type
+  1399 ;;  product         2    4[COMRAM] unsigned int 
+  1400 ;; Return value:  Size  Location     Type
+  1401 ;;                  2    0[COMRAM] unsigned int 
+  1402 ;; Registers used:
+  1403 ;;		wreg, status,2, status,0, prodl, prodh
+  1404 ;; Tracked objects:
+  1405 ;;		On entry : 0/0
+  1406 ;;		On exit  : 0/0
+  1407 ;;		Unchanged: 0/0
+  1408 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+  1409 ;;      Params:         4       0       0       0       0       0       0
+  1410 ;;      Locals:         2       0       0       0       0       0       0
+  1411 ;;      Temps:          0       0       0       0       0       0       0
+  1412 ;;      Totals:         6       0       0       0       0       0       0
+  1413 ;;Total ram usage:        6 bytes
+  1414 ;; Hardware stack levels used: 1
+  1415 ;; This function calls:
+  1416 ;;		Nothing
+  1417 ;; This function is called by:
+  1418 ;;		_main
+  1419 ;; This function uses a non-reentrant model
+  1420 ;;
+  1421                           
+  1422                           	psect	text5
+  1423   000C88                     __ptext5:
+  1424                           	callstack 0
+  1425   000C88                     ___wmul:
+  1426                           	callstack 30
+  1427   000C88  5001               	movf	___wmul@multiplier^0,w,c
+  1428   000C8A  0203               	mulwf	___wmul@multiplicand^0,c
+  1429   000C8C  CFF3 F005          	movff	prodl,___wmul@product
+  1430   000C90  CFF4 F006          	movff	prodh,___wmul@product+1
+  1431   000C94  5001               	movf	___wmul@multiplier^0,w,c
+  1432   000C96  0204               	mulwf	(___wmul@multiplicand+1)^0,c
+  1433   000C98  50F3               	movf	243,w,c
+  1434   000C9A  2606               	addwf	(___wmul@product+1)^0,f,c
+  1435   000C9C  5002               	movf	(___wmul@multiplier+1)^0,w,c
+  1436   000C9E  0203               	mulwf	___wmul@multiplicand^0,c
+  1437   000CA0  50F3               	movf	243,w,c
+  1438   000CA2  2606               	addwf	(___wmul@product+1)^0,f,c
+  1439   000CA4  C005  F001         	movff	___wmul@product,?___wmul
+  1440   000CA8  C006  F002         	movff	___wmul@product+1,?___wmul+1
+  1441   000CAC  0012               	return		;funcret
+  1442   000CAE                     __end_of___wmul:
+  1443                           	callstack 0
+  1444                           
+  1445                           	psect	rparam
+  1446   000000                     tosu	equ	0xFFF
+  1447                           tosh	equ	0xFFE
+  1448                           tosl	equ	0xFFD
+  1449                           stkptr	equ	0xFFC
+  1450                           pclatu	equ	0xFFB
+  1451                           pclath	equ	0xFFA
+  1452                           pcl	equ	0xFF9
+  1453                           tblptru	equ	0xFF8
+  1454                           tblptrh	equ	0xFF7
+  1455                           tblptrl	equ	0xFF6
+  1456                           tablat	equ	0xFF5
+  1457                           prodh	equ	0xFF4
+  1458                           prodl	equ	0xFF3
+  1459                           indf0	equ	0xFEF
+  1460                           postinc0	equ	0xFEE
+  1461                           postdec0	equ	0xFED
+  1462                           preinc0	equ	0xFEC
+  1463                           plusw0	equ	0xFEB
+  1464                           fsr0h	equ	0xFEA
+  1465                           fsr0l	equ	0xFE9
+  1466                           wreg	equ	0xFE8
+  1467                           indf1	equ	0xFE7
+  1468                           postinc1	equ	0xFE6
+  1469                           postdec1	equ	0xFE5
+  1470                           preinc1	equ	0xFE4
+  1471                           plusw1	equ	0xFE3
+  1472                           fsr1h	equ	0xFE2
+  1473                           fsr1l	equ	0xFE1
+  1474                           bsr	equ	0xFE0
+  1475                           indf2	equ	0xFDF
+  1476                           postinc2	equ	0xFDE
+  1477                           postdec2	equ	0xFDD
+  1478                           preinc2	equ	0xFDC
+  1479                           plusw2	equ	0xFDB
+  1480                           fsr2h	equ	0xFDA
+  1481                           fsr2l	equ	0xFD9
+  1482                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     78
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     23      23
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    display@p	PTR const unsigned char  size(1) Largest target is 17
+		 -> STR_1(CODE[2]), STR_10(CODE[2]), STR_11(CODE[2]), STR_12(CODE[2]), 
+		 -> STR_13(CODE[15]), STR_14(CODE[2]), STR_2(CODE[2]), STR_3(CODE[2]), 
+		 -> STR_4(CODE[2]), STR_5(CODE[2]), STR_6(CODE[2]), STR_7(CODE[11]), 
+		 -> STR_8(CODE[17]), STR_9(CODE[15]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_display
+    _start_func->_delay
+    _display->_data
+    _data->_delay
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                12    12      0    5931
+                                             11 COMRAM    12    12      0
+                             ___wmul
+                               _data
+                              _delay
+                            _display
+                         _start_func
+ ---------------------------------------------------------------------------------
+ (1) _start_func                                           1     1      0     676
+                                              9 COMRAM     1     1      0
+                              _delay
+ ---------------------------------------------------------------------------------
+ (1) _display                                              1     0      1    1785
+                                             10 COMRAM     1     0      1
+                               _data
+ ---------------------------------------------------------------------------------
+ (2) _data                                                 1     1      0     676
+                                              9 COMRAM     1     1      0
+                              _delay
+ ---------------------------------------------------------------------------------
+ (2) _delay                                                9     5      4     654
+                                              0 COMRAM     9     5      4
+ ---------------------------------------------------------------------------------
+ (1) ___wmul                                               6     2      4    1679
+                                              0 COMRAM     6     2      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   ___wmul
+   _data
+     _delay
+   _delay
+   _display
+     _data
+   _start_func
+     _delay
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F     17      17       1       24.2%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBIGSFRhh         3E      0       0      16        0.0%
+BITBIGSFRhlh        2B      0       0      17        0.0%
+BITBIGSFRhll         F      0       0      18        0.0%
+BITBIGSFRl         281      0       0      19        0.0%
+ABS                  0      0       0      20        0.0%
+BIGRAM             5FF      0       0      21        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Tue Aug 13 16:30:27 2024
+
+                     l41 0BC4                       l50 0C5A                       l44 0BEA  
+                     l61 0682                       l62 06CC                       l47 0C22  
+                     l71 0760                       l63 06BE                       l56 0C86  
+                     l80 07E2                       l72 074E                       l81 07D0  
+                     l90 0876                       l66 0716                       l91 0864  
+                     l67 0704                       l85 082C                       l77 0786  
+                     l86 081A                       l99 0916      ___wmul@multiplicand 0003  
+                    l110 09F4                      l120 0A88                      l130 0B1C  
+                    l114 0A50                      l106 09AA                      l123 0B2E  
+                    l115 0A3E                      l140 0B8A                      l133 0B9C  
+                    l125 0AEA                      l109 0A06                      l134 0B74  
+                    l135 0B62                      l148 0CAC                      _RC0 7C10  
+                    _RC1 7C11                      _RC2 7C12                      _RB4 7C0C  
+                    _RB5 7C0D                      _RC3 7C13                      _RB6 7C0E  
+                    _RC4 7C14                      _RB7 7C0F                      _RC5 7C15  
+                    _RC6 7C16                      _RC7 7C17                      u400 0C86  
+                    u401 0C82                      u410 0694                      u411 0690  
+                    u500 07DE                      u420 06CC                      u501 07DA  
+                    u421 06C8                      u510 07F0                      u430 06DA  
+                    u511 07EC                      u431 06D6                      u600 09AA  
+                    u520 0828                      u440 0712                      u601 09A6  
+                    u521 0824                      u441 070E                      u610 09B8  
+                    u530 083A                      u450 0724                      u611 09B4  
+                    u531 0836                      u451 0720                      u700 0AF8  
+                    u620 09CA                      u540 0872                      u460 075C  
+                    u701 0AF4                      u621 09C6                      u541 086E  
+                    u461 0758                      u390 0BEA                      u710 0B0E  
+                    u630 0A02                      u550 0884                      u470 076E  
+                    u391 0BE6                      u711 0B0A                      u631 09FE  
+                    u551 0880                      u471 076A                      u720 0B2A  
+                    u640 0A14                      u560 08AC                      u480 0794  
+                    u721 0B26                      u641 0A10                      u561 08A8  
+                    u481 0790                      u730 0B3C                      u650 0A4C  
+                    u570 0916                      u490 07A6                      u731 0B38  
+                    u651 0A48                      u571 0912                      u491 07A2  
+                    u740 0B70                      u660 0A5E                      u580 0924  
+                    u741 0B6C                      u661 0A5A                      u581 0920  
+                    u750 0B82                      u670 0A96                      u590 0940  
+                    u751 0B7E                      u671 0A92                      u591 093C  
+                    u760 0B98                      u680 0AA8                      u761 0B94  
+                    u681 0AA4                      u690 0ABC                      u691 0AB8  
+                   l1011 0BA4                     l1013 0BB8                     l1021 0C30  
+                   l1101 083C                     l1023 0C44                     l1015 0C26  
+                   l1031 0BF6                     l1111 0894                     l1103 0844  
+                   l1025 0C46                     l1017 0C2A                     l1041 0C60  
+                   l1033 0BF8                     l1113 08AC                     l1105 0884  
+                   l1019 0C2E                     l1043 0C6C                     l1035 0C0C  
+                   l1027 0BEE                     l1131 0940                     l1123 08C2  
+                   l1115 08B2                     l1107 0886                     l1045 0C6E  
+                   l1037 0C0E                     l1029 0BF2                     l1141 0956  
+                   l1133 0946                     l1125 08F6                     l1117 08BA  
+                   l1109 088C                     l1061 0696                     l1053 0650  
+                   l1047 0C88                     l1039 0C5C                     l1151 09CA  
+                   l1143 098A                     l1135 094E                     l1127 08FA  
+                   l1071 0724                     l1063 069E                     l1055 0660  
+                   l1049 0CA4                     l1161 0A1E                     l1153 09CC  
+                   l1145 098E                     l1129 0928                     l1081 0782  
+                   l1073 0726                     l1065 06DA                     l1057 0686  
+                   l1171 0A9A                     l1163 0A5E                     l1155 09D4  
+                   l1147 09B8                     l1091 07B0                     l1075 072E  
+                   l1083 0794                     l1067 06DC                     l1059 0694  
+                   l1181 0ADC                     l1173 0AA8                     l1165 0A60  
+                   l1157 0A14                     l1149 09BC                     l1093 07F0  
+                   l1085 0798                     l1077 076E                     l1069 06E4  
+                   l1191 0B3C                     l1183 0AE4                     l1175 0AAA  
+                   l1167 0A68                     l1159 0A16                     l1095 07F2  
+                   l1087 07A6                     l1079 0770                     l1193 0B3E  
+                   l1177 0ABC                     l1185 0AFC                     l1169 0A96  
+                   l1097 07FA                     l1089 07A8                     l1195 0B46  
+                   l1187 0B0E                     l1179 0AD4                     l1099 083A  
+                   l1197 0B82                     l1189 0B14                     l1199 0B84  
+                   STR_1 0649                     STR_2 064B                     STR_3 064D  
+                   STR_4 0643                     STR_5 0645                     STR_6 0647  
+                   STR_7 0630                     STR_8 0601                     STR_9 0612  
+                   _data 0C24                     _main 0650                     prodh 0FF4  
+                   prodl 0FF3                     start 0000             ___param_bank 0000  
+                  ?_data 0001                    ?_main 0001                    STR_10 063D  
+                  STR_11 063F                    STR_12 0641                    STR_13 0621  
+                  STR_14 063B                    _PORTB 0F81                    _PORTC 0F82  
+                  _PORTD 0F83                    _TRISB 0F93                    _TRISC 0F94  
+                  _TRISD 0F95          __end_of_display 0C88                    _delay 0BA4  
+                  data@a 000A                    main@i 0010                    tablat 0FF5  
+                  status 0FD8          __initialization 0CAE             __end_of_data 0C5C  
+           __end_of_main 0BA4                   ??_data 000A                   ??_main 000C  
+          __activetblptr 0001                   ?_delay 0001                   _ADCON1 0FC1  
+                 ___wmul 0C88                   delay@i 0006                   delay@j 0001  
+                 isa$std 0001                ??_display 000C             __mediumconst 0000  
+                 tblptrh 0FF7                   tblptrl 0FF6                   tblptru 0FF8  
+             __accesstop 0060  __end_of__initialization 0CAE            ___rparam_used 0001  
+         __pcstackCOMRAM 0001            __end_of_delay 0BEC                  ??_delay 0005  
+                ?___wmul 0001                  __Hparam 0000                  __Lparam 0000  
+           __psmallconst 0600                  __pcinit 0CAE                  __ramtop 0600  
+                __ptext0 0650                  __ptext1 0BEC                  __ptext2 0C5C  
+                __ptext3 0C24                  __ptext4 0BA4                  __ptext5 0C88  
+                _display 0C5C                  main@pwd 000E     end_of_initialization 0CAE  
+             _start_func 0BEC               main@count1 0014           __end_of___wmul 0CAE  
+    start_initialization 0CAE                 ??___wmul 0005              start_func@a 000A  
+            ?_start_func 0001                 ?_display 000B              __smallconst 0600  
+         ___wmul@product 0005        ___wmul@multiplier 0001                main@count 000C  
+               __Hrparam 0000                 __Lrparam 0000             __Lsmallconst 0600  
+               isa$xinst 0000                 main@i_75 0012                 display@p 000B  
+               main@pass 0016             ??_start_func 000A       __end_of_start_func 0C24  

@@ -1,0 +1,26 @@
+### HEXMate logfile and output summary ###
+
+### Command-line arguments ###
+ C:\Users\ASUS\AppData\Local\Temp\xcAsi48.\driver_tmp_3.o
+ -Odist/default/debug\Intro_1.X.debug.hex
+ -logfile=dist/default/debug\Intro_1.X.debug.hxl
+ -addressing=1
+ -break=300000
+
+### Memory Usage ###
+ Input file ranges:
+  0h - 3h		(C:\Users\ASUS\AppData\Local\Temp\xcAsi48.\driver_tmp_3.o)
+  600h - 60Fh		(C:\Users\ASUS\AppData\Local\Temp\xcAsi48.\driver_tmp_3.o)
+ Unused ranges:
+  4h - 5FFh
+
+### Hex Memory Map ###
+ Legend:
+  -- = Unused memory
+  H1 = Input file             (C:\Users\ASUS\AppData\Local\Temp\xcAsi48.\driver_tmp_3.o)
+----------------------------------------------------------
+         | 00 01 02 03 04 05 06 07 08 09 0A 0B 0C 0D 0E 0F
+----------------------------------------------------------
+00000000 | H1 H1 H1 H1 -- -- -- -- -- -- -- -- -- -- -- --
+----------------------------------------------------------
+00000600 | H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1 H1

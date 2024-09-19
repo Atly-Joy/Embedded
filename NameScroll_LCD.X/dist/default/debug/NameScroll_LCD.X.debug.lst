@@ -1,0 +1,802 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Tue Aug 06 10:28:50 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4580
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	smallconst,global,reloc=2,class=SMALLCONST,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    14                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    15   000000                     
+    16                           ; Generated 17/10/2023 GMT
+    17                           ; 
+    18                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    19                           ; All rights reserved.
+    20                           ; 
+    21                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    22                           ; 
+    23                           ; Redistribution and use in source and binary forms, with or without modification, are
+    24                           ; permitted provided that the following conditions are met:
+    25                           ; 
+    26                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    27                           ;        conditions and the following disclaimer.
+    28                           ; 
+    29                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    30                           ;        of conditions and the following disclaimer in the documentation and/or other
+    31                           ;        materials provided with the distribution. Publication is not required when
+    32                           ;        this file is used in an embedded application.
+    33                           ; 
+    34                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    35                           ;        software without specific prior written permission.
+    36                           ; 
+    37                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    38                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    39                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    40                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    41                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    42                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    43                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    44                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    45                           ; 
+    46                           ; 
+    47                           ; Code-generator required, PIC18F4580 Definitions
+    48                           ; 
+    49                           ; SFR Addresses
+    50   000000                     _RC3	set	31763
+    51   000000                     _RC2	set	31762
+    52   000000                     _RC1	set	31761
+    53   000000                     _RC0	set	31760
+    54   000000                     _TRISC	set	3988
+    55   000000                     _PORTD	set	3971
+    56   000000                     _TRISD	set	3989
+    57                           
+    58                           	psect	smallconst
+    59   000600                     __psmallconst:
+    60                           	callstack 0
+    61   000600  00                 	db	0
+    62   000601                     STR_1:
+    63   000601  4D                 	db	77	;'M'
+    64   000602  4F                 	db	79	;'O'
+    65   000603  54                 	db	84	;'T'
+    66   000604  4F                 	db	79	;'O'
+    67   000605  52                 	db	82	;'R'
+    68   000606  31                 	db	49	;'1'
+    69   000607  3A                 	db	58	;':'
+    70   000608  43                 	db	67	;'C'
+    71   000609  4C                 	db	76	;'L'
+    72   00060A  4F                 	db	79	;'O'
+    73   00060B  43                 	db	67	;'C'
+    74   00060C  4B                 	db	75	;'K'
+    75   00060D  57                 	db	87	;'W'
+    76   00060E  49                 	db	73	;'I'
+    77   00060F  53                 	db	83	;'S'
+    78   000610  45                 	db	69	;'E'
+    79   000611  00                 	db	0
+    80   000612  00                 	db	0	; dummy byte at the end
+    81   000000                     
+    82                           ; #config settings
+    83                           
+    84                           	psect	cinit
+    85   000778                     __pcinit:
+    86                           	callstack 0
+    87   000778                     start_initialization:
+    88                           	callstack 0
+    89   000778                     __initialization:
+    90                           	callstack 0
+    91   000778                     end_of_initialization:
+    92                           	callstack 0
+    93   000778                     __end_of__initialization:
+    94                           	callstack 0
+    95   000778  0E00               	movlw	low (__Lsmallconst shr (0+16))
+    96   00077A  6EF8               	movwf	tblptru,c
+    97   00077C  0E06               	movlw	high __Lsmallconst
+    98   00077E  6EF7               	movwf	tblptrh,c
+    99   000780  0100               	movlb	0
+   100   000782  EF0A  F003         	goto	_main	;jump to C main() function
+   101                           
+   102                           	psect	cstackCOMRAM
+   103   000001                     __pcstackCOMRAM:
+   104                           	callstack 0
+   105   000001                     delay@j:
+   106                           	callstack 0
+   107                           
+   108                           ; 4 bytes @ 0x0
+   109   000001                     	ds	4
+   110   000005                     ??_delay:
+   111                           
+   112                           ; 1 bytes @ 0x4
+   113   000005                     	ds	1
+   114   000006                     delay@i:
+   115                           	callstack 0
+   116                           
+   117                           ; 4 bytes @ 0x5
+   118   000006                     	ds	4
+   119   00000A                     start_func@a:
+   120                           	callstack 0
+   121   00000A                     data@a:
+   122                           	callstack 0
+   123                           
+   124                           ; 1 bytes @ 0x9
+   125   00000A                     	ds	1
+   126   00000B                     display@p:
+   127                           	callstack 0
+   128                           
+   129                           ; 1 bytes @ 0xA
+   130   00000B                     	ds	1
+   131   00000C                     main@i:
+   132                           	callstack 0
+   133                           
+   134                           ; 2 bytes @ 0xB
+   135   00000C                     	ds	2
+   136                           
+   137 ;;
+   138 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   139 ;;
+   140 ;; *************** function _main *****************
+   141 ;; Defined at:
+   142 ;;		line 44 in file "NameScroll.c"
+   143 ;; Parameters:    Size  Location     Type
+   144 ;;		None
+   145 ;; Auto vars:     Size  Location     Type
+   146 ;;  i               2   11[COMRAM] int 
+   147 ;;  count           2    0        int 
+   148 ;; Return value:  Size  Location     Type
+   149 ;;                  1    wreg      void 
+   150 ;; Registers used:
+   151 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   152 ;; Tracked objects:
+   153 ;;		On entry : 0/0
+   154 ;;		On exit  : 0/0
+   155 ;;		Unchanged: 0/0
+   156 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   157 ;;      Params:         0       0       0       0       0       0       0
+   158 ;;      Locals:         2       0       0       0       0       0       0
+   159 ;;      Temps:          0       0       0       0       0       0       0
+   160 ;;      Totals:         2       0       0       0       0       0       0
+   161 ;;Total ram usage:        2 bytes
+   162 ;; Hardware stack levels required when called: 3
+   163 ;; This function calls:
+   164 ;;		_delay
+   165 ;;		_display
+   166 ;;		_start_func
+   167 ;; This function is called by:
+   168 ;;		Startup code after reset
+   169 ;; This function uses a non-reentrant model
+   170 ;;
+   171                           
+   172                           	psect	text0
+   173   000614                     __ptext0:
+   174                           	callstack 0
+   175   000614                     _main:
+   176                           	callstack 28
+   177   000614                     
+   178                           ;NameScroll.c: 46:     TRISC=0x00;
+   179   000614  0E00               	movlw	0
+   180   000616  6E94               	movwf	148,c	;volatile
+   181                           
+   182                           ;NameScroll.c: 47:     TRISD=0x00;
+   183   000618  0E00               	movlw	0
+   184   00061A  6E95               	movwf	149,c	;volatile
+   185   00061C                     
+   186                           ;NameScroll.c: 50:     {;NameScroll.c: 51:         start_func(0x01);
+   187   00061C  0E01               	movlw	1
+   188   00061E  EC6E  F003         	call	_start_func
+   189   000622                     
+   190                           ;NameScroll.c: 52:         start_func(0x0f);
+   191   000622  0E0F               	movlw	15
+   192   000624  EC6E  F003         	call	_start_func
+   193   000628                     
+   194                           ;NameScroll.c: 54:         if(RC3==1)
+   195   000628  A682               	btfss	3970,3,c	;volatile
+   196   00062A  EF19  F003         	goto	u71
+   197   00062E  EF1B  F003         	goto	u70
+   198   000632                     u71:
+   199   000632  EF48  F003         	goto	l44
+   200   000636                     u70:
+   201   000636                     
+   202                           ;NameScroll.c: 55:         {;NameScroll.c: 56:             start_func(0x8f);
+   203   000636  0E8F               	movlw	143
+   204   000638  EC6E  F003         	call	_start_func
+   205   00063C                     
+   206                           ;NameScroll.c: 57:             display("MOTOR1:CLOCKWISE");
+   207   00063C  0E01               	movlw	low STR_1
+   208   00063E  6E0B               	movwf	display@p^0,c
+   209   000640  ECA6  F003         	call	_display	;wreg free
+   210   000644                     l832:
+   211                           
+   212                           ;NameScroll.c: 59:             {;NameScroll.c: 60:                 for(int i=0;i<18;i++)
+   213   000644  0E00               	movlw	0
+   214   000646  6E0D               	movwf	(main@i+1)^0,c
+   215   000648  0E00               	movlw	0
+   216   00064A  6E0C               	movwf	main@i^0,c
+   217   00064C                     l838:
+   218                           
+   219                           ;NameScroll.c: 61:                 {;NameScroll.c: 62:                     start_func(0x
+      +                          18);
+   220   00064C  0E18               	movlw	24
+   221   00064E  EC6E  F003         	call	_start_func
+   222                           
+   223                           ;NameScroll.c: 63:                     delay(5000);
+   224   000652  0E88               	movlw	136
+   225   000654  6E01               	movwf	delay@j^0,c
+   226   000656  0E13               	movlw	19
+   227   000658  6E02               	movwf	(delay@j+1)^0,c
+   228   00065A  0E00               	movlw	0
+   229   00065C  6E03               	movwf	(delay@j+2)^0,c
+   230   00065E  0E00               	movlw	0
+   231   000660  6E04               	movwf	(delay@j+3)^0,c
+   232   000662  EC4A  F003         	call	_delay	;wreg free
+   233   000666                     
+   234                           ;NameScroll.c: 64:                 }
+   235   000666  4A0C               	infsnz	main@i^0,f,c
+   236   000668  2A0D               	incf	(main@i+1)^0,f,c
+   237   00066A  BE0D               	btfsc	(main@i+1)^0,7,c
+   238   00066C  EF41  F003         	goto	u81
+   239   000670  500D               	movf	(main@i+1)^0,w,c
+   240   000672  E109               	bnz	u80
+   241   000674  0E12               	movlw	18
+   242   000676  5C0C               	subwf	main@i^0,w,c
+   243   000678  A0D8               	btfss	status,0,c
+   244   00067A  EF41  F003         	goto	u81
+   245   00067E  EF43  F003         	goto	u80
+   246   000682                     u81:
+   247   000682  EF26  F003         	goto	l838
+   248   000686                     u80:
+   249   000686                     
+   250                           ;NameScroll.c: 65:                 start_func(0x02);
+   251   000686  0E02               	movlw	2
+   252   000688  EC6E  F003         	call	_start_func
+   253   00068C  EF22  F003         	goto	l832
+   254   000690                     l44:
+   255   000690  EF00  F000         	goto	start
+   256   000694                     __end_of_main:
+   257                           	callstack 0
+   258                           
+   259 ;; *************** function _start_func *****************
+   260 ;; Defined at:
+   261 ;;		line 14 in file "NameScroll.c"
+   262 ;; Parameters:    Size  Location     Type
+   263 ;;  a               1    wreg     unsigned char 
+   264 ;; Auto vars:     Size  Location     Type
+   265 ;;  a               1    9[COMRAM] unsigned char 
+   266 ;; Return value:  Size  Location     Type
+   267 ;;                  1    wreg      void 
+   268 ;; Registers used:
+   269 ;;		wreg, status,2, status,0, cstack
+   270 ;; Tracked objects:
+   271 ;;		On entry : 0/0
+   272 ;;		On exit  : 0/0
+   273 ;;		Unchanged: 0/0
+   274 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   275 ;;      Params:         0       0       0       0       0       0       0
+   276 ;;      Locals:         1       0       0       0       0       0       0
+   277 ;;      Temps:          0       0       0       0       0       0       0
+   278 ;;      Totals:         1       0       0       0       0       0       0
+   279 ;;Total ram usage:        1 bytes
+   280 ;; Hardware stack levels used: 1
+   281 ;; Hardware stack levels required when called: 1
+   282 ;; This function calls:
+   283 ;;		_delay
+   284 ;; This function is called by:
+   285 ;;		_main
+   286 ;; This function uses a non-reentrant model
+   287 ;;
+   288                           
+   289                           	psect	text1
+   290   0006DC                     __ptext1:
+   291                           	callstack 0
+   292   0006DC                     _start_func:
+   293                           	callstack 29
+   294                           
+   295                           ;incstack = 0
+   296                           ;start_func@a stored from wreg
+   297   0006DC  6E0A               	movwf	start_func@a^0,c
+   298   0006DE                     
+   299                           ;NameScroll.c: 14: void start_func(unsigned char a);NameScroll.c: 15: {;NameScroll.c: 16
+      +                          :     RC0=0;
+   300   0006DE  9082               	bcf	3970,0,c	;volatile
+   301                           
+   302                           ;NameScroll.c: 17:     RC1=0;
+   303   0006E0  9282               	bcf	3970,1,c	;volatile
+   304   0006E2                     
+   305                           ;NameScroll.c: 18:     PORTD=a;
+   306   0006E2  C00A  FF83         	movff	start_func@a,3971	;volatile
+   307   0006E6                     
+   308                           ;NameScroll.c: 19:     RC2=1;
+   309   0006E6  8482               	bsf	3970,2,c	;volatile
+   310   0006E8                     
+   311                           ;NameScroll.c: 20:     delay(100);
+   312   0006E8  0E64               	movlw	100
+   313   0006EA  6E01               	movwf	delay@j^0,c
+   314   0006EC  0E00               	movlw	0
+   315   0006EE  6E02               	movwf	(delay@j+1)^0,c
+   316   0006F0  0E00               	movlw	0
+   317   0006F2  6E03               	movwf	(delay@j+2)^0,c
+   318   0006F4  0E00               	movlw	0
+   319   0006F6  6E04               	movwf	(delay@j+3)^0,c
+   320   0006F8  EC4A  F003         	call	_delay	;wreg free
+   321   0006FC                     
+   322                           ;NameScroll.c: 21:     RC2=0;
+   323   0006FC  9482               	bcf	3970,2,c	;volatile
+   324   0006FE                     
+   325                           ;NameScroll.c: 22:     delay(5000);
+   326   0006FE  0E88               	movlw	136
+   327   000700  6E01               	movwf	delay@j^0,c
+   328   000702  0E13               	movlw	19
+   329   000704  6E02               	movwf	(delay@j+1)^0,c
+   330   000706  0E00               	movlw	0
+   331   000708  6E03               	movwf	(delay@j+2)^0,c
+   332   00070A  0E00               	movlw	0
+   333   00070C  6E04               	movwf	(delay@j+3)^0,c
+   334   00070E  EC4A  F003         	call	_delay	;wreg free
+   335   000712  0012               	return		;funcret
+   336   000714                     __end_of_start_func:
+   337                           	callstack 0
+   338                           
+   339 ;; *************** function _display *****************
+   340 ;; Defined at:
+   341 ;;		line 35 in file "NameScroll.c"
+   342 ;; Parameters:    Size  Location     Type
+   343 ;;  p               1   10[COMRAM] PTR const unsigned char 
+   344 ;;		 -> STR_1(17), 
+   345 ;; Auto vars:     Size  Location     Type
+   346 ;;		None
+   347 ;; Return value:  Size  Location     Type
+   348 ;;                  1    wreg      void 
+   349 ;; Registers used:
+   350 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   351 ;; Tracked objects:
+   352 ;;		On entry : 0/0
+   353 ;;		On exit  : 0/0
+   354 ;;		Unchanged: 0/0
+   355 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   356 ;;      Params:         1       0       0       0       0       0       0
+   357 ;;      Locals:         0       0       0       0       0       0       0
+   358 ;;      Temps:          0       0       0       0       0       0       0
+   359 ;;      Totals:         1       0       0       0       0       0       0
+   360 ;;Total ram usage:        1 bytes
+   361 ;; Hardware stack levels used: 1
+   362 ;; Hardware stack levels required when called: 2
+   363 ;; This function calls:
+   364 ;;		_data
+   365 ;; This function is called by:
+   366 ;;		_main
+   367 ;; This function uses a non-reentrant model
+   368 ;;
+   369                           
+   370                           	psect	text2
+   371   00074C                     __ptext2:
+   372                           	callstack 0
+   373   00074C                     _display:
+   374                           	callstack 28
+   375   00074C                     
+   376                           ;NameScroll.c: 35: void display(const char *p);NameScroll.c: 36: {;NameScroll.c: 37:    
+      +                           while(*p)
+   377   00074C  EFAF  F003         	goto	l818
+   378   000750                     l814:
+   379                           
+   380                           ;NameScroll.c: 38:     {;NameScroll.c: 39:         data(*p);
+   381   000750  C00B  FFF6         	movff	display@p,tblptrl
+   382   000754                     	if	0	;There is only one active tblptr byte
+   383   000754                     	endif
+   384   000754                     	if	0	;tblptru may be non-zero
+   385   000754                     	endif
+   386   000754                     	if	0	;tblptru may be non-zero
+   387   000754                     	endif
+   388   000754  0008               	tblrd		*
+   389   000756  50F5               	movf	tablat,w,c
+   390   000758  EC8A  F003         	call	_data
+   391   00075C                     
+   392                           ;NameScroll.c: 40:         p++;
+   393   00075C  2A0B               	incf	display@p^0,f,c
+   394   00075E                     l818:
+   395                           
+   396                           ;NameScroll.c: 37:     while(*p)
+   397   00075E  C00B  FFF6         	movff	display@p,tblptrl
+   398   000762                     	if	0	;There is only one active tblptr byte
+   399   000762                     	endif
+   400   000762                     	if	0	;tblptru may be non-zero
+   401   000762                     	endif
+   402   000762                     	if	0	;tblptru may be non-zero
+   403   000762                     	endif
+   404   000762  0008               	tblrd		*
+   405   000764  50F5               	movf	tablat,w,c
+   406   000766  0900               	iorlw	0
+   407   000768  A4D8               	btfss	status,2,c
+   408   00076A  EFB9  F003         	goto	u61
+   409   00076E  EFBB  F003         	goto	u60
+   410   000772                     u61:
+   411   000772  EFA8  F003         	goto	l814
+   412   000776                     u60:
+   413   000776  0012               	return		;funcret
+   414   000778                     __end_of_display:
+   415                           	callstack 0
+   416                           
+   417 ;; *************** function _data *****************
+   418 ;; Defined at:
+   419 ;;		line 24 in file "NameScroll.c"
+   420 ;; Parameters:    Size  Location     Type
+   421 ;;  a               1    wreg     unsigned char 
+   422 ;; Auto vars:     Size  Location     Type
+   423 ;;  a               1    9[COMRAM] unsigned char 
+   424 ;; Return value:  Size  Location     Type
+   425 ;;                  1    wreg      void 
+   426 ;; Registers used:
+   427 ;;		wreg, status,2, status,0, cstack
+   428 ;; Tracked objects:
+   429 ;;		On entry : 0/0
+   430 ;;		On exit  : 0/0
+   431 ;;		Unchanged: 0/0
+   432 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   433 ;;      Params:         0       0       0       0       0       0       0
+   434 ;;      Locals:         1       0       0       0       0       0       0
+   435 ;;      Temps:          0       0       0       0       0       0       0
+   436 ;;      Totals:         1       0       0       0       0       0       0
+   437 ;;Total ram usage:        1 bytes
+   438 ;; Hardware stack levels used: 1
+   439 ;; Hardware stack levels required when called: 1
+   440 ;; This function calls:
+   441 ;;		_delay
+   442 ;; This function is called by:
+   443 ;;		_display
+   444 ;; This function uses a non-reentrant model
+   445 ;;
+   446                           
+   447                           	psect	text3
+   448   000714                     __ptext3:
+   449                           	callstack 0
+   450   000714                     _data:
+   451                           	callstack 28
+   452                           
+   453                           ;incstack = 0
+   454                           ;data@a stored from wreg
+   455   000714  6E0A               	movwf	data@a^0,c
+   456   000716                     
+   457                           ;NameScroll.c: 24: void data(unsigned char a);NameScroll.c: 25: {;NameScroll.c: 26:     
+      +                          RC0=1;
+   458   000716  8082               	bsf	3970,0,c	;volatile
+   459                           
+   460                           ;NameScroll.c: 27:     RC1=0;
+   461   000718  9282               	bcf	3970,1,c	;volatile
+   462   00071A                     
+   463                           ;NameScroll.c: 28:     PORTD=a;
+   464   00071A  C00A  FF83         	movff	data@a,3971	;volatile
+   465   00071E                     
+   466                           ;NameScroll.c: 29:     RC2=1;
+   467   00071E  8482               	bsf	3970,2,c	;volatile
+   468   000720                     
+   469                           ;NameScroll.c: 30:     delay(100);
+   470   000720  0E64               	movlw	100
+   471   000722  6E01               	movwf	delay@j^0,c
+   472   000724  0E00               	movlw	0
+   473   000726  6E02               	movwf	(delay@j+1)^0,c
+   474   000728  0E00               	movlw	0
+   475   00072A  6E03               	movwf	(delay@j+2)^0,c
+   476   00072C  0E00               	movlw	0
+   477   00072E  6E04               	movwf	(delay@j+3)^0,c
+   478   000730  EC4A  F003         	call	_delay	;wreg free
+   479   000734                     
+   480                           ;NameScroll.c: 32:     RC2=0;
+   481   000734  9482               	bcf	3970,2,c	;volatile
+   482   000736                     
+   483                           ;NameScroll.c: 33:     delay(5000);
+   484   000736  0E88               	movlw	136
+   485   000738  6E01               	movwf	delay@j^0,c
+   486   00073A  0E13               	movlw	19
+   487   00073C  6E02               	movwf	(delay@j+1)^0,c
+   488   00073E  0E00               	movlw	0
+   489   000740  6E03               	movwf	(delay@j+2)^0,c
+   490   000742  0E00               	movlw	0
+   491   000744  6E04               	movwf	(delay@j+3)^0,c
+   492   000746  EC4A  F003         	call	_delay	;wreg free
+   493   00074A  0012               	return		;funcret
+   494   00074C                     __end_of_data:
+   495                           	callstack 0
+   496                           
+   497 ;; *************** function _delay *****************
+   498 ;; Defined at:
+   499 ;;		line 10 in file "NameScroll.c"
+   500 ;; Parameters:    Size  Location     Type
+   501 ;;  j               4    0[COMRAM] long 
+   502 ;; Auto vars:     Size  Location     Type
+   503 ;;  i               4    5[COMRAM] long 
+   504 ;; Return value:  Size  Location     Type
+   505 ;;                  1    wreg      void 
+   506 ;; Registers used:
+   507 ;;		wreg, status,2, status,0
+   508 ;; Tracked objects:
+   509 ;;		On entry : 0/0
+   510 ;;		On exit  : 0/0
+   511 ;;		Unchanged: 0/0
+   512 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   513 ;;      Params:         4       0       0       0       0       0       0
+   514 ;;      Locals:         4       0       0       0       0       0       0
+   515 ;;      Temps:          1       0       0       0       0       0       0
+   516 ;;      Totals:         9       0       0       0       0       0       0
+   517 ;;Total ram usage:        9 bytes
+   518 ;; Hardware stack levels used: 1
+   519 ;; This function calls:
+   520 ;;		Nothing
+   521 ;; This function is called by:
+   522 ;;		_start_func
+   523 ;;		_data
+   524 ;;		_main
+   525 ;; This function uses a non-reentrant model
+   526 ;;
+   527                           
+   528                           	psect	text4
+   529   000694                     __ptext4:
+   530                           	callstack 0
+   531   000694                     _delay:
+   532                           	callstack 29
+   533   000694                     
+   534                           ;NameScroll.c: 10: void delay(long j);NameScroll.c: 11: {;NameScroll.c: 12:     for(long
+      +                           i=0;i<=j;i++);
+   535   000694  0E00               	movlw	0
+   536   000696  6E06               	movwf	delay@i^0,c
+   537   000698  0E00               	movlw	0
+   538   00069A  6E07               	movwf	(delay@i+1)^0,c
+   539   00069C  0E00               	movlw	0
+   540   00069E  6E08               	movwf	(delay@i+2)^0,c
+   541   0006A0  0E00               	movlw	0
+   542   0006A2  6E09               	movwf	(delay@i+3)^0,c
+   543   0006A4  EF5A  F003         	goto	l17
+   544   0006A8                     l786:
+   545   0006A8  0E01               	movlw	1
+   546   0006AA  2606               	addwf	delay@i^0,f,c
+   547   0006AC  0E00               	movlw	0
+   548   0006AE  2207               	addwfc	(delay@i+1)^0,f,c
+   549   0006B0  2208               	addwfc	(delay@i+2)^0,f,c
+   550   0006B2  2209               	addwfc	(delay@i+3)^0,f,c
+   551   0006B4                     l17:
+   552   0006B4  5006               	movf	delay@i^0,w,c
+   553   0006B6  5C01               	subwf	delay@j^0,w,c
+   554   0006B8  5007               	movf	(delay@i+1)^0,w,c
+   555   0006BA  5802               	subwfb	(delay@j+1)^0,w,c
+   556   0006BC  5008               	movf	(delay@i+2)^0,w,c
+   557   0006BE  5803               	subwfb	(delay@j+2)^0,w,c
+   558   0006C0  5004               	movf	(delay@j+3)^0,w,c
+   559   0006C2  0A80               	xorlw	128
+   560   0006C4  6E05               	movwf	??_delay^0,c
+   561   0006C6  5009               	movf	(delay@i+3)^0,w,c
+   562   0006C8  0A80               	xorlw	128
+   563   0006CA  5805               	subwfb	??_delay^0,w,c
+   564   0006CC  B0D8               	btfsc	status,0,c
+   565   0006CE  EF6B  F003         	goto	u51
+   566   0006D2  EF6D  F003         	goto	u50
+   567   0006D6                     u51:
+   568   0006D6  EF54  F003         	goto	l786
+   569   0006DA                     u50:
+   570   0006DA  0012               	return		;funcret
+   571   0006DC                     __end_of_delay:
+   572                           	callstack 0
+   573                           
+   574                           	psect	rparam
+   575   000000                     tosu	equ	0xFFF
+   576                           tosh	equ	0xFFE
+   577                           tosl	equ	0xFFD
+   578                           stkptr	equ	0xFFC
+   579                           pclatu	equ	0xFFB
+   580                           pclath	equ	0xFFA
+   581                           pcl	equ	0xFF9
+   582                           tblptru	equ	0xFF8
+   583                           tblptrh	equ	0xFF7
+   584                           tblptrl	equ	0xFF6
+   585                           tablat	equ	0xFF5
+   586                           prodh	equ	0xFF4
+   587                           prodl	equ	0xFF3
+   588                           indf0	equ	0xFEF
+   589                           postinc0	equ	0xFEE
+   590                           postdec0	equ	0xFED
+   591                           preinc0	equ	0xFEC
+   592                           plusw0	equ	0xFEB
+   593                           fsr0h	equ	0xFEA
+   594                           fsr0l	equ	0xFE9
+   595                           wreg	equ	0xFE8
+   596                           indf1	equ	0xFE7
+   597                           postinc1	equ	0xFE6
+   598                           postdec1	equ	0xFE5
+   599                           preinc1	equ	0xFE4
+   600                           plusw1	equ	0xFE3
+   601                           fsr1h	equ	0xFE2
+   602                           fsr1l	equ	0xFE1
+   603                           bsr	equ	0xFE0
+   604                           indf2	equ	0xFDF
+   605                           postinc2	equ	0xFDE
+   606                           postdec2	equ	0xFDD
+   607                           preinc2	equ	0xFDC
+   608                           plusw2	equ	0xFDB
+   609                           fsr2h	equ	0xFDA
+   610                           fsr2l	equ	0xFD9
+   611                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     17
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     13      13
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    display@p	PTR const unsigned char  size(1) Largest target is 17
+		 -> STR_1(CODE[17]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_display
+    _start_func->_delay
+    _display->_data
+    _data->_delay
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 4     4      0    1490
+                                             11 COMRAM     2     2      0
+                              _delay
+                            _display
+                         _start_func
+ ---------------------------------------------------------------------------------
+ (1) _start_func                                           1     1      0     448
+                                              9 COMRAM     1     1      0
+                              _delay
+ ---------------------------------------------------------------------------------
+ (1) _display                                              1     0      1     569
+                                             10 COMRAM     1     0      1
+                               _data
+ ---------------------------------------------------------------------------------
+ (2) _data                                                 1     1      0     448
+                                              9 COMRAM     1     1      0
+                              _delay
+ ---------------------------------------------------------------------------------
+ (2) _delay                                                9     5      4     426
+                                              0 COMRAM     9     5      4
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _delay
+   _display
+     _data
+       _delay
+   _start_func
+     _delay
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      D       D       1       13.7%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBIGSFRhh         6A      0       0      16        0.0%
+BITBIGSFRhl         10      0       0      17        0.0%
+BITBIGSFRl         282      0       0      18        0.0%
+ABS                  0      0       0      19        0.0%
+BIGRAM             5FF      0       0      20        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Tue Aug 06 10:28:50 2024
+
+                     l20 06DA                       l23 0712                       l32 0776  
+                     l17 06B4                       l26 074A                       l44 0690  
+                     u50 06DA                       u51 06D6                       u60 0776  
+                     u61 0772                       u70 0636                       u71 0632  
+                     u80 0686                       u81 0682                      l800 06DE  
+                    l810 06FE                      l802 06E2                      l812 074C  
+                    l804 06E6                      l820 0614                      l814 0750  
+                    l806 06E8                      l830 063C                      l822 061C  
+                    l816 075C                      l808 06FC                      l840 0666  
+                    l832 0644                      l824 0622                      l818 075E  
+                    l842 066A                      l826 0628                      l844 0686  
+                    l828 0636                      l790 071A                      l838 064C  
+                    l784 0694                      l792 071E                      l786 06A8  
+                    l794 0720                      l796 0734                      l788 0716  
+                    l798 0736                      _RC0 7C10                      _RC1 7C11  
+                    _RC2 7C12                      _RC3 7C13                     STR_1 0601  
+                   _data 0714                     _main 0614                     start 0000  
+           ___param_bank 0000                    ?_data 0001                    ?_main 0001  
+                  _PORTD 0F83                    _TRISC 0F94                    _TRISD 0F95  
+        __end_of_display 0778                    _delay 0694                    data@a 000A  
+                  main@i 000C                    tablat 0FF5                    status 0FD8  
+        __initialization 0778             __end_of_data 074C             __end_of_main 0694  
+                 ??_data 000A                   ??_main 000C            __activetblptr 0001  
+                 ?_delay 0001                   delay@i 0006                   delay@j 0001  
+                 isa$std 0001                ??_display 000C             __mediumconst 0000  
+                 tblptrh 0FF7                   tblptrl 0FF6                   tblptru 0FF8  
+             __accesstop 0060  __end_of__initialization 0778            ___rparam_used 0001  
+         __pcstackCOMRAM 0001            __end_of_delay 06DC                  ??_delay 0005  
+                __Hparam 0000                  __Lparam 0000             __psmallconst 0600  
+                __pcinit 0778                  __ramtop 0600                  __ptext0 0614  
+                __ptext1 06DC                  __ptext2 074C                  __ptext3 0714  
+                __ptext4 0694                  _display 074C     end_of_initialization 0778  
+             _start_func 06DC      start_initialization 0778              start_func@a 000A  
+            ?_start_func 0001                 ?_display 000B              __smallconst 0600  
+               __Hrparam 0000                 __Lrparam 0000             __Lsmallconst 0600  
+               isa$xinst 0000                 display@p 000B             ??_start_func 000A  
+     __end_of_start_func 0714  
