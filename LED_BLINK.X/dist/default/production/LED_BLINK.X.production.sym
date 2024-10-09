@@ -1,25 +1,23 @@
-___aldiv@counter 9 0 COMRAM 1
-__S0 844 0 ABS 0
-__S1 1F 0 ABS 0
+_RC3 7C13 0 ABS 0
+_RB5 7C0D 0 ABS 0
+__S0 7F00 0 ABS 0
+__S1 0 0 ABS 0
 __S4 0 0 ABS 0
 __S5 0 0 ABS 0
 __Hintentry 0 0 ABS 0
 __Lintentry 0 0 ABS 0
-_main 602 0 CODE 0
+_main 7EB0 0 CODE 0
 ___sp 0 0 STACK 2
 start 0 0 CODE 0
-__end_of___aldiv 83E 0 CODE 0
+_TRISB F93 0 ABS 0
 _TRISC F94 0 ABS 0
-_TRISD F95 0 ABS 0
+_PORTB F81 0 ABS 0
 __Hirdata 0 0 CODE 0
 __Lirdata 0 0 CODE 0
-_PORTC F82 0 ABS 0
 __HRAM 0 0 ABS 0
 __LRAM 1 0 ABS 0
 __Hconfig 0 0 ABS 0
 __Lconfig 0 0 ABS 0
-main@i F 0 COMRAM 1
-main@j 17 0 COMRAM 1
 ___inthi_stack_hi 0 0 STACK 2
 __Hbigram 0 0 ABS 0
 __Lbigram 0 0 ABS 0
@@ -43,7 +41,6 @@ __Heeprom_data 0 0 EEDATA 0
 __Leeprom_data 0 0 EEDATA 0
 __Hintsave_regs 0 0 BIGRAM 1
 __Lintsave_regs 0 0 BIGRAM 1
-?___aldiv 1 0 COMRAM 1
 __Hbigbss 0 0 BIGRAM 1
 __Lbigbss 0 0 BIGRAM 1
 __Hintret 0 0 ABS 0
@@ -86,13 +83,12 @@ __Linit 0 0 CODE 0
 __Hintcodelo 0 0 CODE 0
 __Lintcodelo 0 0 CODE 0
 __Hrbss 0 0 COMRAM 1
-__end_of_main 732 0 CODE 0
+__end_of_main 7F00 0 CODE 0
 __Lrbss 0 0 COMRAM 1
 __Htext 0 0 ABS 0
 __Ltext 0 0 ABS 0
 ___heap_lo 0 0 ABS 0
-end_of_initialization 83E 0 CODE 0
-___aldiv@sign A 0 COMRAM 1
+end_of_initialization 7EAA 0 CODE 0
 __Hsivt_lo 0 0 CODE 0
 __Lsivt_lo 0 0 CODE 0
 __Hibigdata 0 0 CODE 0
@@ -115,14 +111,11 @@ __Hpowerup 0 0 CODE 0
 __Lpowerup 0 0 CODE 0
 __Htext0 0 0 ABS 0
 __Ltext0 0 0 ABS 0
-__Htext1 0 0 ABS 0
-__Ltext1 0 0 ABS 0
-__ptext0 602 0 CODE 0
-__ptext1 732 0 CODE 0
+__ptext0 7EB0 0 CODE 0
 ___stack_hi 0 0 STACK 2
 __Hclrtext 0 0 ABS 0
 __Lclrtext 0 0 ABS 0
-__end_of__initialization 83E 0 CODE 0
+__end_of__initialization 7EAA 0 CODE 0
 ___rparam_used 1 0 ABS 0
 __H__absolute__ 0 0 ABS 0
 __L__absolute__ 0 0 ABS 0
@@ -136,24 +129,23 @@ __Hstack 0 0 STACK 2
 __Lstack 0 0 STACK 2
 __Hparam 0 0 COMRAM 1
 __Lparam 0 0 COMRAM 1
-__Hspace_0 844 0 ABS 0
+__Hspace_0 7F00 0 ABS 0
 __HcstackCOMRAM 0 0 ABS 0
 __Lspace_0 0 0 ABS 0
 __LcstackCOMRAM 0 0 ABS 0
-__pcstackCOMRAM 1 0 COMRAM 1
-__Hspace_1 1F 0 ABS 0
+__pcstackCOMRAM 0 0 COMRAM 1
+__Hspace_1 0 0 ABS 0
 __Lspace_1 0 0 ABS 0
-__Hsmallconst 602 0 SMALLCONST 0
-__Lsmallconst 600 0 SMALLCONST 0
-__psmallconst 600 0 SMALLCONST 0
+__Hsmallconst 1402 0 SMALLCONST 0
+__Lsmallconst 1400 0 SMALLCONST 0
+__psmallconst 1400 0 SMALLCONST 0
 __Hspace_2 0 0 ABS 0
 __Lspace_2 0 0 ABS 0
 __Hnvbit 0 0 COMRAM 1
 __Lnvbit 0 0 COMRAM 1
 __Hcinit 0 0 ABS 0
 __Lcinit 0 0 ABS 0
-___aldiv 732 0 CODE 0
-__pcinit 83E 0 CODE 0
+__pcinit 7EAA 0 CODE 0
 __ramtop 600 0 RAM 0
 __mediumconst 0 0 MEDIUMCONST 0
 __Hconst 0 0 CONST 0
@@ -161,12 +153,9 @@ __Lconst 0 0 CONST 0
 __Hspace_4 0 0 ABS 0
 __Lspace_4 0 0 ABS 0
 ___stack_lo 0 0 STACK 2
-main@j_34 1B 0 COMRAM 1
-main@i_35 13 0 COMRAM 1
 ___inthi_sp 0 0 STACK 2
 ___intlo_sp 0 0 STACK 2
-___aldiv@divisor 5 0 COMRAM 1
-__smallconst 600 0 SMALLCONST 0
+__smallconst 1400 0 SMALLCONST 0
 __Hreset_vec 0 0 CODE 0
 __Lreset_vec 0 0 CODE 0
 __accesstop 60 0 ABS 0
@@ -177,63 +166,31 @@ intlevel1 0 0 CODE 0
 intlevel2 0 0 CODE 0
 intlevel3 0 0 CODE 0
 ___inthi_stack_lo 0 0 STACK 2
-start_initialization 83E 0 CODE 0
-___aldiv@quotient B 0 COMRAM 1
+start_initialization 7EAA 0 CODE 0
 ___intlo_stack_lo 0 0 STACK 2
-__initialization 83E 0 CODE 0
+__initialization 7EAA 0 CODE 0
 __activetblptr 0 0 ABS 0
-___aldiv@dividend 1 0 COMRAM 1
 %segments
 reset_vec 0 3 CODE 0 0
-smallconst 600 601 SMALLCONST 600 0
-cstackCOMRAM 1 1E COMRAM 1 1
-text0 602 843 CODE 602 0
+smallconst 1400 1401 SMALLCONST 1400 0
+text0 7EB0 7EFF CODE 7EB0 0
+cinit 7EAA 7EAF CODE 7EAA 0
 %locals
 dist/default/production\LED_BLINK.X.production.o
-C:\Users\ASUS\AppData\Local\Temp\xcAsd28.\driver_tmp_1.s
-953 83E 0 CODE 0
-955 83E 0 CODE 0
-958 83E 0 CODE 0
-964 83E 0 CODE 0
-966 83E 0 CODE 0
-967 840 0 CODE 0
-LED_BLINK.c
-11 602 0 CODE 0
-13 602 0 CODE 0
-14 606 0 CODE 0
-15 60A 0 CODE 0
-17 60A 0 CODE 0
-19 61A 0 CODE 0
-20 61E 0 CODE 0
-21 656 0 CODE 0
-22 688 0 CODE 0
-23 68C 0 CODE 0
-25 69C 0 CODE 0
-26 6A0 0 CODE 0
-27 6D8 0 CODE 0
-C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\aldiv.c
-7 732 0 CODE 0
-13 732 0 CODE 0
-14 736 0 CODE 0
-15 744 0 CODE 0
-16 754 0 CODE 0
-18 758 0 CODE 0
-19 766 0 CODE 0
-20 776 0 CODE 0
-22 77A 0 CODE 0
-23 78A 0 CODE 0
-24 7A0 0 CODE 0
-25 7A4 0 CODE 0
-26 7A8 0 CODE 0
-27 7B2 0 CODE 0
-25 7B4 0 CODE 0
-30 7C2 0 CODE 0
-31 7CC 0 CODE 0
-32 7EA 0 CODE 0
-33 7FA 0 CODE 0
-35 7FC 0 CODE 0
-36 806 0 CODE 0
-38 80C 0 CODE 0
-39 81C 0 CODE 0
-40 82C 0 CODE 0
-41 83C 0 CODE 0
+C:\Users\ASUS\AppData\Local\Temp\xcAs9u8.\driver_tmp_1.s
+956 7EAA 0 CODE 0
+958 7EAA 0 CODE 0
+961 7EAA 0 CODE 0
+967 7EAA 0 CODE 0
+969 7EAA 0 CODE 0
+970 7EAC 0 CODE 0
+SWITCH_LED.c
+11 7EB0 0 CODE 0
+13 7EB0 0 CODE 0
+14 7EB2 0 CODE 0
+17 7EB6 0 CODE 0
+19 7EC4 0 CODE 0
+20 7EC8 0 CODE 0
+22 7EDA 0 CODE 0
+24 7EE8 0 CODE 0
+25 7EEA 0 CODE 0

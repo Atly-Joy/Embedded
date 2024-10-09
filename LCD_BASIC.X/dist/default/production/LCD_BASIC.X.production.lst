@@ -1,0 +1,998 @@
+
+
+Microchip MPLAB XC8 Assembler V2.46 build 20240104201356 
+                                                                                               Thu Sep 26 11:57:47 2024
+
+Microchip MPLAB XC8 C Compiler v2.46 (Free license) build 20240104201356 Og1 
+     1                           	processor	18F4580
+     2                           	fnconf	rparam,??,?,0
+     3                           	pagewidth 120
+     4                           	opt	flic
+     5                           	psect	mediumconst,global,reloc=2,class=MEDIUMCONST,delta=1,noexec
+     6                           	psect	cinit,global,reloc=2,class=CODE,delta=1
+     7                           	psect	cstackCOMRAM,global,class=COMRAM,space=1,delta=1,lowdata,noexec
+     8                           	psect	text0,global,reloc=2,class=CODE,delta=1
+     9                           	psect	text1,global,reloc=2,class=CODE,delta=1
+    10                           	psect	text2,global,reloc=2,class=CODE,delta=1
+    11                           	psect	text3,global,reloc=2,class=CODE,delta=1
+    12                           	psect	text4,global,reloc=2,class=CODE,delta=1
+    13                           	psect	intsave_regs,global,class=BIGRAM,space=1,delta=1,noexec
+    14                           	psect	rparam,global,class=COMRAM,space=1,delta=1,noexec
+    15   000000                     
+    16                           ; Generated 17/10/2023 GMT
+    17                           ; 
+    18                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    19                           ; All rights reserved.
+    20                           ; 
+    21                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    22                           ; 
+    23                           ; Redistribution and use in source and binary forms, with or without modification, are
+    24                           ; permitted provided that the following conditions are met:
+    25                           ; 
+    26                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    27                           ;        conditions and the following disclaimer.
+    28                           ; 
+    29                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    30                           ;        of conditions and the following disclaimer in the documentation and/or other
+    31                           ;        materials provided with the distribution. Publication is not required when
+    32                           ;        this file is used in an embedded application.
+    33                           ; 
+    34                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    35                           ;        software without specific prior written permission.
+    36                           ; 
+    37                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    38                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    39                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    40                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    41                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    42                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    43                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    44                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    45                           ; 
+    46                           ; 
+    47                           ; Code-generator required, PIC18F4580 Definitions
+    48                           ; 
+    49                           ; SFR Addresses
+    50   000000                     _RC1	set	31761
+    51   000000                     _RC0	set	31760
+    52   000000                     _RC3	set	31763
+    53   000000                     _TRISB	set	3987
+    54   000000                     _TRISC	set	3988
+    55   000000                     _RB2	set	31754
+    56   000000                     _TRISD	set	3989
+    57   000000                     _PORTD	set	3971
+    58   000000                     _RC2	set	31762
+    59                           
+    60                           	psect	mediumconst
+    61   007EDE                     __pmediumconst:
+    62                           	callstack 0
+    63   007EDE  00                 	db	0
+    64   007EDF                     STR_2:
+    65   007EDF  41                 	db	65	;'A'
+    66   007EE0  6E                 	db	110	;'n'
+    67   007EE1  74                 	db	116	;'t'
+    68   007EE2  69                 	db	105	;'i'
+    69   007EE3  63                 	db	99	;'c'
+    70   007EE4  6C                 	db	108	;'l'
+    71   007EE5  6F                 	db	111	;'o'
+    72   007EE6  63                 	db	99	;'c'
+    73   007EE7  6B                 	db	107	;'k'
+    74   007EE8  77                 	db	119	;'w'
+    75   007EE9  69                 	db	105	;'i'
+    76   007EEA  73                 	db	115	;'s'
+    77   007EEB  65                 	db	101	;'e'
+    78   007EEC  00                 	db	0
+    79   007EED                     STR_1:
+    80   007EED  43                 	db	67	;'C'
+    81   007EEE  6C                 	db	108	;'l'
+    82   007EEF  6F                 	db	111	;'o'
+    83   007EF0  63                 	db	99	;'c'
+    84   007EF1  6B                 	db	107	;'k'
+    85   007EF2  77                 	db	119	;'w'
+    86   007EF3  69                 	db	105	;'i'
+    87   007EF4  73                 	db	115	;'s'
+    88   007EF5  65                 	db	101	;'e'
+    89   007EF6  00                 	db	0
+    90   007EF7                     STR_3:
+    91   007EF7  53                 	db	83	;'S'
+    92   007EF8  74                 	db	116	;'t'
+    93   007EF9  6F                 	db	111	;'o'
+    94   007EFA  70                 	db	112	;'p'
+    95   007EFB  70                 	db	112	;'p'
+    96   007EFC  65                 	db	101	;'e'
+    97   007EFD  64                 	db	100	;'d'
+    98   007EFE  00                 	db	0
+    99   007EFF  00                 	db	0	; dummy byte at the end
+   100   000000                     
+   101                           ; #config settings
+   102                           
+   103                           	psect	cinit
+   104   007C40                     __pcinit:
+   105                           	callstack 0
+   106   007C40                     start_initialization:
+   107                           	callstack 0
+   108   007C40                     __initialization:
+   109                           	callstack 0
+   110   007C40                     end_of_initialization:
+   111                           	callstack 0
+   112   007C40                     __end_of__initialization:
+   113                           	callstack 0
+   114   007C40  0E00               	movlw	low (__Lmediumconst shr (0+16))
+   115   007C42  6EF8               	movwf	tblptru,c
+   116   007C44  0100               	movlb	0
+   117   007C46  EFC2  F03E         	goto	_main	;jump to C main() function
+   118                           
+   119                           	psect	cstackCOMRAM
+   120   000001                     __pcstackCOMRAM:
+   121                           	callstack 0
+   122   000001                     cmd@a:
+   123                           	callstack 0
+   124   000001                     data@a:
+   125                           	callstack 0
+   126   000001                     delay@j:
+   127                           	callstack 0
+   128                           
+   129                           ; 4 bytes @ 0x0
+   130   000001                     	ds	1
+   131   000002                     cmd@i:
+   132                           	callstack 0
+   133   000002                     data@i:
+   134                           	callstack 0
+   135                           
+   136                           ; 2 bytes @ 0x1
+   137   000002                     	ds	2
+   138   000004                     cmd@i_60:
+   139                           	callstack 0
+   140   000004                     data@i_64:
+   141                           	callstack 0
+   142                           
+   143                           ; 2 bytes @ 0x3
+   144   000004                     	ds	1
+   145   000005                     ??_delay:
+   146                           
+   147                           ; 1 bytes @ 0x4
+   148   000005                     	ds	1
+   149   000006                     display@p:
+   150                           	callstack 0
+   151   000006                     delay@i:
+   152                           	callstack 0
+   153                           
+   154                           ; 4 bytes @ 0x5
+   155   000006                     	ds	2
+   156   000008                     
+   157                           ; 1 bytes @ 0x7
+   158   000008                     	ds	2
+   159   00000A                     main@count:
+   160                           	callstack 0
+   161                           
+   162                           ; 2 bytes @ 0x9
+   163   00000A                     	ds	2
+   164                           
+   165 ;;
+   166 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   167 ;;
+   168 ;; *************** function _main *****************
+   169 ;; Defined at:
+   170 ;;		line 14 in file "HW_lcd_motor_button.c"
+   171 ;; Parameters:    Size  Location     Type
+   172 ;;		None
+   173 ;; Auto vars:     Size  Location     Type
+   174 ;;  count           2    9[COMRAM] int 
+   175 ;; Return value:  Size  Location     Type
+   176 ;;                  1    wreg      void 
+   177 ;; Registers used:
+   178 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   179 ;; Tracked objects:
+   180 ;;		On entry : 0/0
+   181 ;;		On exit  : 0/0
+   182 ;;		Unchanged: 0/0
+   183 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   184 ;;      Params:         0       0       0       0       0       0       0
+   185 ;;      Locals:         2       0       0       0       0       0       0
+   186 ;;      Temps:          0       0       0       0       0       0       0
+   187 ;;      Totals:         2       0       0       0       0       0       0
+   188 ;;Total ram usage:        2 bytes
+   189 ;; Hardware stack levels required when called: 2
+   190 ;; This function calls:
+   191 ;;		_cmd
+   192 ;;		_delay
+   193 ;;		_display
+   194 ;; This function is called by:
+   195 ;;		Startup code after reset
+   196 ;; This function uses a non-reentrant model
+   197 ;;
+   198                           
+   199                           	psect	text0
+   200   007D84                     __ptext0:
+   201                           	callstack 0
+   202   007D84                     _main:
+   203                           	callstack 29
+   204   007D84                     
+   205                           ;HW_lcd_motor_button.c: 16:     TRISC=0x00;
+   206   007D84  0E00               	movlw	0
+   207   007D86  6E94               	movwf	148,c	;volatile
+   208                           
+   209                           ;HW_lcd_motor_button.c: 17:     TRISD=0x00;
+   210   007D88  0E00               	movlw	0
+   211   007D8A  6E95               	movwf	149,c	;volatile
+   212   007D8C                     
+   213                           ;HW_lcd_motor_button.c: 18:     TRISB=0xFF;
+   214   007D8C  6893               	setf	147,c	;volatile
+   215                           
+   216                           ;HW_lcd_motor_button.c: 19:     int count=0;
+   217   007D8E  0E00               	movlw	0
+   218   007D90  6E0B               	movwf	(main@count+1)^0,c
+   219   007D92  0E00               	movlw	0
+   220   007D94  6E0A               	movwf	main@count^0,c
+   221   007D96                     l876:
+   222                           
+   223                           ;HW_lcd_motor_button.c: 21:     {;HW_lcd_motor_button.c: 22:         if(RB2==1 && count=
+      +                          =0)
+   224   007D96  A481               	btfss	3969,2,c	;volatile
+   225   007D98  EFD0  F03E         	goto	u181
+   226   007D9C  EFD2  F03E         	goto	u180
+   227   007DA0                     u181:
+   228   007DA0  EF00  F03F         	goto	l30
+   229   007DA4                     u180:
+   230   007DA4  500A               	movf	main@count^0,w,c
+   231   007DA6  100B               	iorwf	(main@count+1)^0,w,c
+   232   007DA8  A4D8               	btfss	status,2,c
+   233   007DAA  EFD9  F03E         	goto	u191
+   234   007DAE  EFDB  F03E         	goto	u190
+   235   007DB2                     u191:
+   236   007DB2  EF00  F03F         	goto	l30
+   237   007DB6                     u190:
+   238   007DB6                     
+   239                           ;HW_lcd_motor_button.c: 23:         {;HW_lcd_motor_button.c: 24:             RC2=1; RC3=
+      +                          0;
+   240   007DB6  8482               	bsf	3970,2,c	;volatile
+   241   007DB8  9682               	bcf	3970,3,c	;volatile
+   242   007DBA                     
+   243                           ;HW_lcd_motor_button.c: 25:             count=1;
+   244   007DBA  0E00               	movlw	0
+   245   007DBC  6E0B               	movwf	(main@count+1)^0,c
+   246   007DBE  0E01               	movlw	1
+   247   007DC0  6E0A               	movwf	main@count^0,c
+   248   007DC2                     
+   249                           ;HW_lcd_motor_button.c: 26:             cmd(0x01);
+   250   007DC2  0E01               	movlw	1
+   251   007DC4  EC64  F03E         	call	_cmd
+   252   007DC8                     
+   253                           ;HW_lcd_motor_button.c: 27:             cmd(0x0f);
+   254   007DC8  0E0F               	movlw	15
+   255   007DCA  EC64  F03E         	call	_cmd
+   256   007DCE                     
+   257                           ;HW_lcd_motor_button.c: 28:             display("Clockwise");
+   258   007DCE  0EED               	movlw	low STR_1
+   259   007DD0  6E06               	movwf	display@p^0,c
+   260   007DD2  0E7E               	movlw	high STR_1
+   261   007DD4  6E07               	movwf	(display@p+1)^0,c
+   262   007DD6  EC25  F03E         	call	_display	;wreg free
+   263   007DDA                     
+   264                           ;HW_lcd_motor_button.c: 29:             delay(300000);
+   265   007DDA  0EE0               	movlw	224
+   266   007DDC  6E01               	movwf	delay@j^0,c
+   267   007DDE  0E93               	movlw	147
+   268   007DE0  6E02               	movwf	(delay@j+1)^0,c
+   269   007DE2  0E04               	movlw	4
+   270   007DE4  6E03               	movwf	(delay@j+2)^0,c
+   271   007DE6  0E00               	movlw	0
+   272   007DE8  6E04               	movwf	(delay@j+3)^0,c
+   273   007DEA  EC40  F03E         	call	_delay	;wreg free
+   274   007DEE                     l31:
+   275   007DEE  A481               	btfss	3969,2,c	;volatile
+   276   007DF0  EFFC  F03E         	goto	u201
+   277   007DF4  EFFE  F03E         	goto	u200
+   278   007DF8                     u201:
+   279   007DF8  EFF7  F03E         	goto	l31
+   280   007DFC                     u200:
+   281   007DFC  EFCB  F03E         	goto	l876
+   282   007E00                     l30:
+   283   007E00  A481               	btfss	3969,2,c	;volatile
+   284   007E02  EF05  F03F         	goto	u211
+   285   007E06  EF07  F03F         	goto	u210
+   286   007E0A                     u211:
+   287   007E0A  EF35  F03F         	goto	l35
+   288   007E0E                     u210:
+   289   007E0E  040A               	decf	main@count^0,w,c
+   290   007E10  100B               	iorwf	(main@count+1)^0,w,c
+   291   007E12  A4D8               	btfss	status,2,c
+   292   007E14  EF0E  F03F         	goto	u221
+   293   007E18  EF10  F03F         	goto	u220
+   294   007E1C                     u221:
+   295   007E1C  EF35  F03F         	goto	l35
+   296   007E20                     u220:
+   297   007E20                     
+   298                           ;HW_lcd_motor_button.c: 33:         {;HW_lcd_motor_button.c: 34:             RC2=0;RC3=1
+      +                          ;
+   299   007E20  9482               	bcf	3970,2,c	;volatile
+   300   007E22  8682               	bsf	3970,3,c	;volatile
+   301   007E24                     
+   302                           ;HW_lcd_motor_button.c: 35:             count=2;
+   303   007E24  0E00               	movlw	0
+   304   007E26  6E0B               	movwf	(main@count+1)^0,c
+   305   007E28  0E02               	movlw	2
+   306   007E2A  6E0A               	movwf	main@count^0,c
+   307   007E2C                     
+   308                           ;HW_lcd_motor_button.c: 36:             cmd(0x01);
+   309   007E2C  0E01               	movlw	1
+   310   007E2E  EC64  F03E         	call	_cmd
+   311   007E32                     
+   312                           ;HW_lcd_motor_button.c: 37:             cmd(0x0f);
+   313   007E32  0E0F               	movlw	15
+   314   007E34  EC64  F03E         	call	_cmd
+   315   007E38                     
+   316                           ;HW_lcd_motor_button.c: 39:             display("Anticlockwise");
+   317   007E38  0EDF               	movlw	low STR_2
+   318   007E3A  6E06               	movwf	display@p^0,c
+   319   007E3C  0E7E               	movlw	high STR_2
+   320   007E3E  6E07               	movwf	(display@p+1)^0,c
+   321   007E40  EC25  F03E         	call	_display	;wreg free
+   322   007E44                     
+   323                           ;HW_lcd_motor_button.c: 40:             delay(300000);
+   324   007E44  0EE0               	movlw	224
+   325   007E46  6E01               	movwf	delay@j^0,c
+   326   007E48  0E93               	movlw	147
+   327   007E4A  6E02               	movwf	(delay@j+1)^0,c
+   328   007E4C  0E04               	movlw	4
+   329   007E4E  6E03               	movwf	(delay@j+2)^0,c
+   330   007E50  0E00               	movlw	0
+   331   007E52  6E04               	movwf	(delay@j+3)^0,c
+   332   007E54  EC40  F03E         	call	_delay	;wreg free
+   333   007E58                     l36:
+   334   007E58  A481               	btfss	3969,2,c	;volatile
+   335   007E5A  EF31  F03F         	goto	u231
+   336   007E5E  EF33  F03F         	goto	u230
+   337   007E62                     u231:
+   338   007E62  EF2C  F03F         	goto	l36
+   339   007E66                     u230:
+   340   007E66  EFCB  F03E         	goto	l876
+   341   007E6A                     l35:
+   342   007E6A  A481               	btfss	3969,2,c	;volatile
+   343   007E6C  EF3A  F03F         	goto	u241
+   344   007E70  EF3C  F03F         	goto	u240
+   345   007E74                     u241:
+   346   007E74  EF6B  F03F         	goto	l34
+   347   007E78                     u240:
+   348   007E78  0E02               	movlw	2
+   349   007E7A  180A               	xorwf	main@count^0,w,c
+   350   007E7C  100B               	iorwf	(main@count+1)^0,w,c
+   351   007E7E  A4D8               	btfss	status,2,c
+   352   007E80  EF44  F03F         	goto	u251
+   353   007E84  EF46  F03F         	goto	u250
+   354   007E88                     u251:
+   355   007E88  EF6B  F03F         	goto	l34
+   356   007E8C                     u250:
+   357   007E8C                     
+   358                           ;HW_lcd_motor_button.c: 44:         {;HW_lcd_motor_button.c: 45:             RC2=0;RC3=0
+      +                          ;
+   359   007E8C  9482               	bcf	3970,2,c	;volatile
+   360   007E8E  9682               	bcf	3970,3,c	;volatile
+   361   007E90                     
+   362                           ;HW_lcd_motor_button.c: 46:             count=0;
+   363   007E90  0E00               	movlw	0
+   364   007E92  6E0B               	movwf	(main@count+1)^0,c
+   365   007E94  0E00               	movlw	0
+   366   007E96  6E0A               	movwf	main@count^0,c
+   367   007E98                     
+   368                           ;HW_lcd_motor_button.c: 47:             cmd(0x01);
+   369   007E98  0E01               	movlw	1
+   370   007E9A  EC64  F03E         	call	_cmd
+   371   007E9E                     
+   372                           ;HW_lcd_motor_button.c: 48:             cmd(0x0f);
+   373   007E9E  0E0F               	movlw	15
+   374   007EA0  EC64  F03E         	call	_cmd
+   375   007EA4                     
+   376                           ;HW_lcd_motor_button.c: 49:             display("Stopped");
+   377   007EA4  0EF7               	movlw	low STR_3
+   378   007EA6  6E06               	movwf	display@p^0,c
+   379   007EA8  0E7E               	movlw	high STR_3
+   380   007EAA  6E07               	movwf	(display@p+1)^0,c
+   381   007EAC  EC25  F03E         	call	_display	;wreg free
+   382   007EB0                     
+   383                           ;HW_lcd_motor_button.c: 50:             delay(300000);
+   384   007EB0  0EE0               	movlw	224
+   385   007EB2  6E01               	movwf	delay@j^0,c
+   386   007EB4  0E93               	movlw	147
+   387   007EB6  6E02               	movwf	(delay@j+1)^0,c
+   388   007EB8  0E04               	movlw	4
+   389   007EBA  6E03               	movwf	(delay@j+2)^0,c
+   390   007EBC  0E00               	movlw	0
+   391   007EBE  6E04               	movwf	(delay@j+3)^0,c
+   392   007EC0  EC40  F03E         	call	_delay	;wreg free
+   393   007EC4                     l41:
+   394   007EC4  A481               	btfss	3969,2,c	;volatile
+   395   007EC6  EF67  F03F         	goto	u261
+   396   007ECA  EF69  F03F         	goto	u260
+   397   007ECE                     u261:
+   398   007ECE  EF62  F03F         	goto	l41
+   399   007ED2                     u260:
+   400   007ED2  EFCB  F03E         	goto	l876
+   401   007ED6                     l34:
+   402   007ED6  EFCB  F03E         	goto	l876
+   403   007EDA  EF00  F000         	goto	start
+   404   007EDE                     __end_of_main:
+   405                           	callstack 0
+   406                           
+   407 ;; *************** function _display *****************
+   408 ;; Defined at:
+   409 ;;		line 77 in file "HW_lcd_motor_button.c"
+   410 ;; Parameters:    Size  Location     Type
+   411 ;;  p               2    5[COMRAM] PTR const unsigned char 
+   412 ;;		 -> STR_3(8), STR_2(14), STR_1(10), 
+   413 ;; Auto vars:     Size  Location     Type
+   414 ;;		None
+   415 ;; Return value:  Size  Location     Type
+   416 ;;                  1    wreg      void 
+   417 ;; Registers used:
+   418 ;;		wreg, status,2, status,0, tblptrl, tblptrh, tblptru, cstack
+   419 ;; Tracked objects:
+   420 ;;		On entry : 0/0
+   421 ;;		On exit  : 0/0
+   422 ;;		Unchanged: 0/0
+   423 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   424 ;;      Params:         2       0       0       0       0       0       0
+   425 ;;      Locals:         0       0       0       0       0       0       0
+   426 ;;      Temps:          0       0       0       0       0       0       0
+   427 ;;      Totals:         2       0       0       0       0       0       0
+   428 ;;Total ram usage:        2 bytes
+   429 ;; Hardware stack levels used: 1
+   430 ;; Hardware stack levels required when called: 1
+   431 ;; This function calls:
+   432 ;;		_data
+   433 ;; This function is called by:
+   434 ;;		_main
+   435 ;; This function uses a non-reentrant model
+   436 ;;
+   437                           
+   438                           	psect	text1
+   439   007C4A                     __ptext1:
+   440                           	callstack 0
+   441   007C4A                     _display:
+   442                           	callstack 29
+   443   007C4A                     
+   444                           ;HW_lcd_motor_button.c: 77: void display(const char *p);HW_lcd_motor_button.c: 78: {;HW_
+      +                          lcd_motor_button.c: 79:     while(*p)
+   445   007C4A  EF31  F03E         	goto	l866
+   446   007C4E                     l862:
+   447                           
+   448                           ;HW_lcd_motor_button.c: 80:     {;HW_lcd_motor_button.c: 81:         data(*p);
+   449   007C4E  C006  FFF6         	movff	display@p,tblptrl
+   450   007C52  C007  FFF7         	movff	display@p+1,tblptrh
+   451   007C56                     	if	0	;tblptru may be non-zero
+   452   007C56                     	endif
+   453   007C56                     	if	0	;tblptru may be non-zero
+   454   007C56                     	endif
+   455   007C56  0008               	tblrd		*
+   456   007C58  50F5               	movf	tablat,w,c
+   457   007C5A  EC93  F03E         	call	_data
+   458   007C5E                     
+   459                           ;HW_lcd_motor_button.c: 82:         p++;
+   460   007C5E  4A06               	infsnz	display@p^0,f,c
+   461   007C60  2A07               	incf	(display@p+1)^0,f,c
+   462   007C62                     l866:
+   463                           
+   464                           ;HW_lcd_motor_button.c: 79:     while(*p)
+   465   007C62  C006  FFF6         	movff	display@p,tblptrl
+   466   007C66  C007  FFF7         	movff	display@p+1,tblptrh
+   467   007C6A                     	if	0	;tblptru may be non-zero
+   468   007C6A                     	endif
+   469   007C6A                     	if	0	;tblptru may be non-zero
+   470   007C6A                     	endif
+   471   007C6A  0008               	tblrd		*
+   472   007C6C  50F5               	movf	tablat,w,c
+   473   007C6E  0900               	iorlw	0
+   474   007C70  A4D8               	btfss	status,2,c
+   475   007C72  EF3D  F03E         	goto	u161
+   476   007C76  EF3F  F03E         	goto	u160
+   477   007C7A                     u161:
+   478   007C7A  EF27  F03E         	goto	l862
+   479   007C7E                     u160:
+   480   007C7E  0012               	return		;funcret
+   481   007C80                     __end_of_display:
+   482                           	callstack 0
+   483                           
+   484 ;; *************** function _data *****************
+   485 ;; Defined at:
+   486 ;;		line 67 in file "HW_lcd_motor_button.c"
+   487 ;; Parameters:    Size  Location     Type
+   488 ;;  a               1    wreg     unsigned char 
+   489 ;; Auto vars:     Size  Location     Type
+   490 ;;  a               1    0[COMRAM] unsigned char 
+   491 ;;  i               2    3[COMRAM] int 
+   492 ;;  i               2    1[COMRAM] int 
+   493 ;; Return value:  Size  Location     Type
+   494 ;;                  1    wreg      void 
+   495 ;; Registers used:
+   496 ;;		wreg, status,2, status,0
+   497 ;; Tracked objects:
+   498 ;;		On entry : 0/0
+   499 ;;		On exit  : 0/0
+   500 ;;		Unchanged: 0/0
+   501 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   502 ;;      Params:         0       0       0       0       0       0       0
+   503 ;;      Locals:         5       0       0       0       0       0       0
+   504 ;;      Temps:          0       0       0       0       0       0       0
+   505 ;;      Totals:         5       0       0       0       0       0       0
+   506 ;;Total ram usage:        5 bytes
+   507 ;; Hardware stack levels used: 1
+   508 ;; This function calls:
+   509 ;;		Nothing
+   510 ;; This function is called by:
+   511 ;;		_display
+   512 ;; This function uses a non-reentrant model
+   513 ;;
+   514                           
+   515                           	psect	text2
+   516   007D26                     __ptext2:
+   517                           	callstack 0
+   518   007D26                     _data:
+   519                           	callstack 29
+   520                           
+   521                           ;incstack = 0
+   522                           ;data@a stored from wreg
+   523   007D26  6E01               	movwf	data@a^0,c
+   524   007D28                     
+   525                           ;HW_lcd_motor_button.c: 67: void data(unsigned char a );HW_lcd_motor_button.c: 68: {;HW_
+      +                          lcd_motor_button.c: 69:     RC0=1;
+   526   007D28  8082               	bsf	3970,0,c	;volatile
+   527   007D2A                     
+   528                           ;HW_lcd_motor_button.c: 70:     PORTD=a;
+   529   007D2A  C001  FF83         	movff	data@a,3971	;volatile
+   530   007D2E                     
+   531                           ;HW_lcd_motor_button.c: 71:     RC1=1;
+   532   007D2E  8282               	bsf	3970,1,c	;volatile
+   533   007D30                     
+   534                           ;HW_lcd_motor_button.c: 72:     for(int i=0;i<=1000;i++);
+   535   007D30  0E00               	movlw	0
+   536   007D32  6E03               	movwf	(data@i+1)^0,c
+   537   007D34  0E00               	movlw	0
+   538   007D36  6E02               	movwf	data@i^0,c
+   539   007D38                     l760:
+   540   007D38  4A02               	infsnz	data@i^0,f,c
+   541   007D3A  2A03               	incf	(data@i+1)^0,f,c
+   542   007D3C  BE03               	btfsc	(data@i+1)^0,7,c
+   543   007D3E  EFAA  F03E         	goto	u11
+   544   007D42  0EE9               	movlw	233
+   545   007D44  5C02               	subwf	data@i^0,w,c
+   546   007D46  0E03               	movlw	3
+   547   007D48  5803               	subwfb	(data@i+1)^0,w,c
+   548   007D4A  A0D8               	btfss	status,0,c
+   549   007D4C  EFAA  F03E         	goto	u11
+   550   007D50  EFAC  F03E         	goto	u10
+   551   007D54                     u11:
+   552   007D54  EF9C  F03E         	goto	l760
+   553   007D58                     u10:
+   554   007D58                     
+   555                           ;HW_lcd_motor_button.c: 73:     RC1=0;
+   556   007D58  9282               	bcf	3970,1,c	;volatile
+   557   007D5A                     
+   558                           ;HW_lcd_motor_button.c: 74:     for(int i=0;i<=5000;i++);
+   559   007D5A  0E00               	movlw	0
+   560   007D5C  6E05               	movwf	(data@i_64+1)^0,c
+   561   007D5E  0E00               	movlw	0
+   562   007D60  6E04               	movwf	data@i_64^0,c
+   563   007D62                     l770:
+   564   007D62  4A04               	infsnz	data@i_64^0,f,c
+   565   007D64  2A05               	incf	(data@i_64+1)^0,f,c
+   566   007D66  BE05               	btfsc	(data@i_64+1)^0,7,c
+   567   007D68  EFBF  F03E         	goto	u21
+   568   007D6C  0E89               	movlw	137
+   569   007D6E  5C04               	subwf	data@i_64^0,w,c
+   570   007D70  0E13               	movlw	19
+   571   007D72  5805               	subwfb	(data@i_64+1)^0,w,c
+   572   007D74  A0D8               	btfss	status,0,c
+   573   007D76  EFBF  F03E         	goto	u21
+   574   007D7A  EFC1  F03E         	goto	u20
+   575   007D7E                     u21:
+   576   007D7E  EFB1  F03E         	goto	l770
+   577   007D82                     u20:
+   578   007D82  0012               	return		;funcret
+   579   007D84                     __end_of_data:
+   580                           	callstack 0
+   581                           
+   582 ;; *************** function _delay *****************
+   583 ;; Defined at:
+   584 ;;		line 85 in file "HW_lcd_motor_button.c"
+   585 ;; Parameters:    Size  Location     Type
+   586 ;;  j               4    0[COMRAM] long 
+   587 ;; Auto vars:     Size  Location     Type
+   588 ;;  i               4    5[COMRAM] long 
+   589 ;; Return value:  Size  Location     Type
+   590 ;;                  1    wreg      void 
+   591 ;; Registers used:
+   592 ;;		wreg, status,2, status,0
+   593 ;; Tracked objects:
+   594 ;;		On entry : 0/0
+   595 ;;		On exit  : 0/0
+   596 ;;		Unchanged: 0/0
+   597 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   598 ;;      Params:         4       0       0       0       0       0       0
+   599 ;;      Locals:         4       0       0       0       0       0       0
+   600 ;;      Temps:          1       0       0       0       0       0       0
+   601 ;;      Totals:         9       0       0       0       0       0       0
+   602 ;;Total ram usage:        9 bytes
+   603 ;; Hardware stack levels used: 1
+   604 ;; This function calls:
+   605 ;;		Nothing
+   606 ;; This function is called by:
+   607 ;;		_main
+   608 ;; This function uses a non-reentrant model
+   609 ;;
+   610                           
+   611                           	psect	text3
+   612   007C80                     __ptext3:
+   613                           	callstack 0
+   614   007C80                     _delay:
+   615                           	callstack 30
+   616   007C80                     
+   617                           ;HW_lcd_motor_button.c: 85: void delay(long j);HW_lcd_motor_button.c: 86: {;HW_lcd_motor
+      +                          _button.c: 87:     for(long i=0;i<=j;i++);
+   618   007C80  0E00               	movlw	0
+   619   007C82  6E06               	movwf	delay@i^0,c
+   620   007C84  0E00               	movlw	0
+   621   007C86  6E07               	movwf	(delay@i+1)^0,c
+   622   007C88  0E00               	movlw	0
+   623   007C8A  6E08               	movwf	(delay@i+2)^0,c
+   624   007C8C  0E00               	movlw	0
+   625   007C8E  6E09               	movwf	(delay@i+3)^0,c
+   626   007C90  EF50  F03E         	goto	l69
+   627   007C94                     l870:
+   628   007C94  0E01               	movlw	1
+   629   007C96  2606               	addwf	delay@i^0,f,c
+   630   007C98  0E00               	movlw	0
+   631   007C9A  2207               	addwfc	(delay@i+1)^0,f,c
+   632   007C9C  2208               	addwfc	(delay@i+2)^0,f,c
+   633   007C9E  2209               	addwfc	(delay@i+3)^0,f,c
+   634   007CA0                     l69:
+   635   007CA0  5006               	movf	delay@i^0,w,c
+   636   007CA2  5C01               	subwf	delay@j^0,w,c
+   637   007CA4  5007               	movf	(delay@i+1)^0,w,c
+   638   007CA6  5802               	subwfb	(delay@j+1)^0,w,c
+   639   007CA8  5008               	movf	(delay@i+2)^0,w,c
+   640   007CAA  5803               	subwfb	(delay@j+2)^0,w,c
+   641   007CAC  5004               	movf	(delay@j+3)^0,w,c
+   642   007CAE  0A80               	xorlw	128
+   643   007CB0  6E05               	movwf	??_delay^0,c
+   644   007CB2  5009               	movf	(delay@i+3)^0,w,c
+   645   007CB4  0A80               	xorlw	128
+   646   007CB6  5805               	subwfb	??_delay^0,w,c
+   647   007CB8  B0D8               	btfsc	status,0,c
+   648   007CBA  EF61  F03E         	goto	u171
+   649   007CBE  EF63  F03E         	goto	u170
+   650   007CC2                     u171:
+   651   007CC2  EF4A  F03E         	goto	l870
+   652   007CC6                     u170:
+   653   007CC6  0012               	return		;funcret
+   654   007CC8                     __end_of_delay:
+   655                           	callstack 0
+   656                           
+   657 ;; *************** function _cmd *****************
+   658 ;; Defined at:
+   659 ;;		line 58 in file "HW_lcd_motor_button.c"
+   660 ;; Parameters:    Size  Location     Type
+   661 ;;  a               1    wreg     unsigned char 
+   662 ;; Auto vars:     Size  Location     Type
+   663 ;;  a               1    0[COMRAM] unsigned char 
+   664 ;;  i               2    3[COMRAM] int 
+   665 ;;  i               2    1[COMRAM] int 
+   666 ;; Return value:  Size  Location     Type
+   667 ;;                  1    wreg      void 
+   668 ;; Registers used:
+   669 ;;		wreg, status,2, status,0
+   670 ;; Tracked objects:
+   671 ;;		On entry : 0/0
+   672 ;;		On exit  : 0/0
+   673 ;;		Unchanged: 0/0
+   674 ;; Data sizes:     COMRAM   BANK0   BANK1   BANK2   BANK3   BANK4   BANK5
+   675 ;;      Params:         0       0       0       0       0       0       0
+   676 ;;      Locals:         5       0       0       0       0       0       0
+   677 ;;      Temps:          0       0       0       0       0       0       0
+   678 ;;      Totals:         5       0       0       0       0       0       0
+   679 ;;Total ram usage:        5 bytes
+   680 ;; Hardware stack levels used: 1
+   681 ;; This function calls:
+   682 ;;		Nothing
+   683 ;; This function is called by:
+   684 ;;		_main
+   685 ;; This function uses a non-reentrant model
+   686 ;;
+   687                           
+   688                           	psect	text4
+   689   007CC8                     __ptext4:
+   690                           	callstack 0
+   691   007CC8                     _cmd:
+   692                           	callstack 30
+   693                           
+   694                           ;incstack = 0
+   695                           ;cmd@a stored from wreg
+   696   007CC8  6E01               	movwf	cmd@a^0,c
+   697   007CCA                     
+   698                           ;HW_lcd_motor_button.c: 58: void cmd(unsigned char a );HW_lcd_motor_button.c: 59: {;HW_l
+      +                          cd_motor_button.c: 60:     RC0=0;
+   699   007CCA  9082               	bcf	3970,0,c	;volatile
+   700   007CCC                     
+   701                           ;HW_lcd_motor_button.c: 61:     PORTD=a;
+   702   007CCC  C001  FF83         	movff	cmd@a,3971	;volatile
+   703   007CD0                     
+   704                           ;HW_lcd_motor_button.c: 62:     RC1=1;
+   705   007CD0  8282               	bsf	3970,1,c	;volatile
+   706   007CD2                     
+   707                           ;HW_lcd_motor_button.c: 63:     for(int i=0;i<=1000;i++);
+   708   007CD2  0E00               	movlw	0
+   709   007CD4  6E03               	movwf	(cmd@i+1)^0,c
+   710   007CD6  0E00               	movlw	0
+   711   007CD8  6E02               	movwf	cmd@i^0,c
+   712   007CDA                     l786:
+   713   007CDA  4A02               	infsnz	cmd@i^0,f,c
+   714   007CDC  2A03               	incf	(cmd@i+1)^0,f,c
+   715   007CDE  BE03               	btfsc	(cmd@i+1)^0,7,c
+   716   007CE0  EF7B  F03E         	goto	u31
+   717   007CE4  0EE9               	movlw	233
+   718   007CE6  5C02               	subwf	cmd@i^0,w,c
+   719   007CE8  0E03               	movlw	3
+   720   007CEA  5803               	subwfb	(cmd@i+1)^0,w,c
+   721   007CEC  A0D8               	btfss	status,0,c
+   722   007CEE  EF7B  F03E         	goto	u31
+   723   007CF2  EF7D  F03E         	goto	u30
+   724   007CF6                     u31:
+   725   007CF6  EF6D  F03E         	goto	l786
+   726   007CFA                     u30:
+   727   007CFA                     
+   728                           ;HW_lcd_motor_button.c: 64:     RC1=0;
+   729   007CFA  9282               	bcf	3970,1,c	;volatile
+   730   007CFC                     
+   731                           ;HW_lcd_motor_button.c: 65:     for(int i=0;i<=5000;i++);
+   732   007CFC  0E00               	movlw	0
+   733   007CFE  6E05               	movwf	(cmd@i_60+1)^0,c
+   734   007D00  0E00               	movlw	0
+   735   007D02  6E04               	movwf	cmd@i_60^0,c
+   736   007D04                     l796:
+   737   007D04  4A04               	infsnz	cmd@i_60^0,f,c
+   738   007D06  2A05               	incf	(cmd@i_60+1)^0,f,c
+   739   007D08  BE05               	btfsc	(cmd@i_60+1)^0,7,c
+   740   007D0A  EF90  F03E         	goto	u41
+   741   007D0E  0E89               	movlw	137
+   742   007D10  5C04               	subwf	cmd@i_60^0,w,c
+   743   007D12  0E13               	movlw	19
+   744   007D14  5805               	subwfb	(cmd@i_60+1)^0,w,c
+   745   007D16  A0D8               	btfss	status,0,c
+   746   007D18  EF90  F03E         	goto	u41
+   747   007D1C  EF92  F03E         	goto	u40
+   748   007D20                     u41:
+   749   007D20  EF82  F03E         	goto	l796
+   750   007D24                     u40:
+   751   007D24  0012               	return		;funcret
+   752   007D26                     __end_of_cmd:
+   753                           	callstack 0
+   754                           
+   755                           	psect	rparam
+   756   000000                     tosu	equ	0xFFF
+   757                           tosh	equ	0xFFE
+   758                           tosl	equ	0xFFD
+   759                           stkptr	equ	0xFFC
+   760                           pclatu	equ	0xFFB
+   761                           pclath	equ	0xFFA
+   762                           pcl	equ	0xFF9
+   763                           tblptru	equ	0xFF8
+   764                           tblptrh	equ	0xFF7
+   765                           tblptrl	equ	0xFF6
+   766                           tablat	equ	0xFF5
+   767                           prodh	equ	0xFF4
+   768                           prodl	equ	0xFF3
+   769                           indf0	equ	0xFEF
+   770                           postinc0	equ	0xFEE
+   771                           postdec0	equ	0xFED
+   772                           preinc0	equ	0xFEC
+   773                           plusw0	equ	0xFEB
+   774                           fsr0h	equ	0xFEA
+   775                           fsr0l	equ	0xFE9
+   776                           wreg	equ	0xFE8
+   777                           indf1	equ	0xFE7
+   778                           postinc1	equ	0xFE6
+   779                           postdec1	equ	0xFE5
+   780                           preinc1	equ	0xFE4
+   781                           plusw1	equ	0xFE3
+   782                           fsr1h	equ	0xFE2
+   783                           fsr1l	equ	0xFE1
+   784                           bsr	equ	0xFE0
+   785                           indf2	equ	0xFDF
+   786                           postinc2	equ	0xFDE
+   787                           postdec2	equ	0xFDD
+   788                           preinc2	equ	0xFDC
+   789                           plusw2	equ	0xFDB
+   790                           fsr2h	equ	0xFDA
+   791                           fsr2l	equ	0xFD9
+   792                           status	equ	0xFD8
+
+Data Sizes:
+    Strings     32
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMRAM           95     11      11
+    BANK0           160      0       0
+    BANK1           256      0       0
+    BANK2           256      0       0
+    BANK3           256      0       0
+    BANK4           256      0       0
+    BANK5           256      0       0
+
+Pointer List with Targets:
+
+    display@p	PTR const unsigned char  size(2) Largest target is 14
+		 -> STR_1(CODE[10]), STR_2(CODE[14]), STR_3(CODE[8]), 
+
+
+Critical Paths under _main in COMRAM
+
+    _main->_delay
+    _display->_data
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Critical Paths under _main in BANK3
+
+    None.
+
+Critical Paths under _main in BANK4
+
+    None.
+
+Critical Paths under _main in BANK5
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 2     2      0     767
+                                              9 COMRAM     2     2      0
+                                _cmd
+                              _delay
+                            _display
+ ---------------------------------------------------------------------------------
+ (1) _display                                              2     0      2     348
+                                              5 COMRAM     2     0      2
+                               _data
+ ---------------------------------------------------------------------------------
+ (2) _data                                                 5     5      0      75
+                                              0 COMRAM     5     5      0
+ ---------------------------------------------------------------------------------
+ (1) _delay                                                9     5      4     274
+                                              0 COMRAM     9     5      4
+ ---------------------------------------------------------------------------------
+ (1) _cmd                                                  5     5      0      75
+                                              0 COMRAM     5     5      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _cmd
+   _delay
+   _display
+     _data
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMRAM           5F      0       0       0        0.0%
+EEDATA             100      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMRAM              5F      B       B       1       11.6%
+STACK                0      0       0       2        0.0%
+DATA                 0      0       0       3        0.0%
+BITBANK0            A0      0       0       4        0.0%
+BANK0               A0      0       0       5        0.0%
+BITBANK1           100      0       0       6        0.0%
+BANK1              100      0       0       7        0.0%
+BITBANK2           100      0       0       8        0.0%
+BANK2              100      0       0       9        0.0%
+BITBANK3           100      0       0      10        0.0%
+BANK3              100      0       0      11        0.0%
+BITBANK4           100      0       0      12        0.0%
+BANK4              100      0       0      13        0.0%
+BITBANK5           100      0       0      14        0.0%
+BANK5              100      0       0      15        0.0%
+BITBIGSFRh          6A      0       0      16        0.0%
+BITBIGSFRlh          F      0       0      17        0.0%
+BITBIGSFRll        281      0       0      18        0.0%
+ABS                  0      0       0      19        0.0%
+BIGRAM             5FF      0       0      20        0.0%
+BIGSFR               0      0       0     200        0.0%
+BITSFR_3             0      0       0     200        0.0%
+SFR_3                0      0       0     200        0.0%
+BITSFR_2             0      0       0     200        0.0%
+SFR_2                0      0       0     200        0.0%
+BITSFR_1             0      0       0     200        0.0%
+SFR_1                0      0       0     200        0.0%
+BITSFR               0      0       0     200        0.0%
+SFR                  0      0       0     200        0.0%
+
+
+Microchip Technology PIC18 Macro Assembler V2.46 build 20240104201356 
+Symbol Table                                                                                   Thu Sep 26 11:57:47 2024
+
+                     l30 7E00                       l31 7DEE                       l41 7EC4  
+                     l50 7CFA                       l34 7ED6                       l35 7E6A  
+                     l60 7D82                       l36 7E58                       l53 7D24  
+                     l72 7CC6                       l57 7D58                       l66 7C7E  
+                     l69 7CA0                       u10 7D58                       u11 7D54  
+                     u20 7D82                       u21 7D7E                       u30 7CFA  
+                     u31 7CF6                       u40 7D24                       u41 7D20  
+                    l900 7E32                      l750 7D2A                      l910 7E90  
+                    l902 7E38                      l760 7D38                      l752 7D2E  
+                    l912 7E98                      l904 7E44                      l770 7D62  
+                    l762 7D3C                      l754 7D30                      l914 7E9E  
+                    l906 7E78                      l780 7CD2                      l772 7D66  
+                    l764 7D5A                      l748 7D28                      l860 7C4A  
+                    l916 7EA4                      l908 7E8C                      l790 7CFC  
+                    l774 7CCA                      l870 7C94                      l862 7C4E  
+                    l918 7EB0                      l776 7CCC                      l864 7C5E  
+                    l880 7DB6                      l872 7D84                      l786 7CDA  
+                    l778 7CD0                      l866 7C62                      l890 7DDA  
+                    l882 7DBA                      l874 7D8C                      l796 7D04  
+                    l788 7CDE                      l868 7C80                      l892 7E0E  
+                    l884 7DC2                      l876 7D96                      l798 7D08  
+                    l894 7E20                      l886 7DC8                      l878 7DA4  
+                    l896 7E24                      l888 7DCE                      l898 7E2C  
+                    _RB2 7C0A                      _RC0 7C10                      _RC1 7C11  
+                    _RC2 7C12                      _RC3 7C13                      u200 7DFC  
+                    u201 7DF8                      u210 7E0E                      u211 7E0A  
+                    u220 7E20                      u221 7E1C                      u230 7E66  
+                    u231 7E62                      u160 7C7E                      u240 7E78  
+                    u161 7C7A                      u241 7E74                      u170 7CC6  
+                    u250 7E8C                      u171 7CC2                      u251 7E88  
+                    u260 7ED2                      u180 7DA4                      u261 7ECE  
+                    u181 7DA0                      u190 7DB6                      u191 7DB2  
+                    _cmd 7CC8                     ?_cmd 0001                     STR_1 7EED  
+                   STR_2 7EDF                     STR_3 7EF7                     _data 7D26  
+                   cmd@a 0001                     cmd@i 0002                     _main 7D84  
+                   start 0000             ___param_bank 0000                    ??_cmd 0001  
+                  ?_data 0001                    ?_main 0001                    _PORTD 0F83  
+                  _TRISB 0F93                    _TRISC 0F94                    _TRISD 0F95  
+        __end_of_display 7C80                    _delay 7C80                    data@a 0001  
+                  data@i 0002                    tablat 0FF5                    status 0FD8  
+        __initialization 7C40             __end_of_data 7D84             __end_of_main 7EDE  
+                 ??_data 0001                   ??_main 000A            __activetblptr 0002  
+                 ?_delay 0001                   delay@i 0006                   delay@j 0001  
+                 isa$std 0001                ??_display 0008             __mediumconst 7EDE  
+                 tblptrh 0FF7                   tblptrl 0FF6                   tblptru 0FF8  
+             __accesstop 0060  __end_of__initialization 7C40            ___rparam_used 0001  
+         __pcstackCOMRAM 0001            __end_of_delay 7CC8                  ??_delay 0005  
+                __Hparam 0000                  __Lparam 0000                  __pcinit 7C40  
+                __ramtop 0600                  __ptext0 7D84                  cmd@i_60 0004  
+                __ptext1 7C4A                  __ptext2 7D26                  __ptext3 7C80  
+                __ptext4 7CC8                  _display 7C4A     end_of_initialization 7C40  
+          __Lmediumconst 7EDE      start_initialization 7C40              __end_of_cmd 7D26  
+          __pmediumconst 7EDE                 ?_display 0006                main@count 000A  
+               __Hrparam 0000                 __Lrparam 0000                 data@i_64 0004  
+               isa$xinst 0000                 display@p 0006  

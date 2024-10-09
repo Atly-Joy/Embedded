@@ -3,15 +3,15 @@
   <executable name="dist/default/production\ADC.X.production.hex">
     <memory name="program">
       <units>bytes</units>
-      <length>32768</length>
-      <used>2296</used>
-      <free>30472</free>
+      <length>27393</length>
+      <used>4030</used>
+      <free>23363</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>132</used>
-      <free>1404</free>
+      <used>124</used>
+      <free>1412</free>
     </memory>
   </executable>
 </project>

@@ -10,11 +10,10 @@
 
 void main(void) 
 {
-    TRISC=0x00;
-    TRISD=0x00;
+    TRISB=0x00;
     while(1)
     {
-        for(long j=1;j<=128;j=j*2)
+        /*for(long j=1;j<=128;j=j*2)
         {
             PORTC=j;
             for(unsigned long i=0;i<3000;i++);
@@ -24,7 +23,12 @@ void main(void)
         {
             PORTC=j;
             for(unsigned long i=0;i<3000;i++);
-        }
+        }*/
+        PORTB=0xFF;
+        for(unsigned long i=0;i<50000;i++);
+        PORTB=0x00;
+        for(unsigned long i=0;i<50000;i++);
     }
+    
     return;
 }

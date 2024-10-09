@@ -3,8 +3,6 @@
 [d edition pro ]
 [d chip 18F4580 ]
 [d frameptr 4065 ]
-"7 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\fleq.c
 [v ___fleq __fleq `(b  1 e 0 0 ]
 "62 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\float.c
@@ -29,11 +27,12 @@
 [v ___lmul __lmul `(ul  1 e 4 0 ]
 "91 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\Umul64.c
 [v ___omul __omul `(uo  1 e 8 0 ]
-"9 D:\MPLAB\Interrupt_demo.X\Interrupt_INTCON2.c
+"10 D:\MPLAB\Interrupt_demo.X\Interrupt.c
 [v _delay delay `(v  1 e 1 0 ]
-"14
+[v i2_delay delay `(v  1 e 1 0 ]
+"22
 [v _main main `(v  1 e 1 0 ]
-"31
+"49
 [v _isr isr `IIH(v  1 e 1 0 ]
 "25888 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
 [v _PORTC PORTC `VEuc  1 e 1 @3970 ]
@@ -43,51 +42,39 @@
 [v _TRISC TRISC `VEuc  1 e 1 @3988 ]
 "30188
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @4033 ]
-"31986
-[v _INTCON3 INTCON3 `VEuc  1 e 1 @4080 ]
+"31636
+[v _T0CON T0CON `VEuc  1 e 1 @4053 ]
+"31712
+[v _TMR0 TMR0 `VEus  1 e 2 @4054 ]
 "32155
 [v _INTCON INTCON `VEuc  1 e 1 @4082 ]
 "35578
 [v _INT0IF INT0IF `VEb  1 e 0 @32657 ]
-"35593
-[v _INT1IF INT1IF `VEb  1 e 0 @32640 ]
-"14 D:\MPLAB\Interrupt_demo.X\Interrupt_INTCON2.c
+"39100
+[v _TMR0IF TMR0IF `VEb  1 e 0 @32658 ]
+"21 D:\MPLAB\Interrupt_demo.X\Interrupt.c
+[v _count count `i  1 e 2 0 ]
+"22
 [v _main main `(v  1 e 1 0 ]
 {
-"29
+"47
 } 0
-"9
+"10
 [v _delay delay `(v  1 e 1 0 ]
 {
-"11
-[v delay@i i `l  1 a 4 35 ]
-"9
-[v delay@j j `l  1 p 4 30 ]
 "12
+[v delay@i i `i  1 a 2 2 ]
+"20
 } 0
-"31
+"49
 [v _isr isr `IIH(v  1 e 1 0 ]
 {
-"48
-[v isr@i_49 i `ul  1 a 4 18 ]
-"38
-[v isr@i i `ul  1 a 4 14 ]
-"45
-[v isr@j_48 j `l  1 a 4 26 ]
-"35
-[v isr@j j `l  1 a 4 22 ]
-"52
+"62
 } 0
-"7 C:\Program Files\Microchip\xc8\v2.46\pic\sources\c99\common\aldiv.c
-[v ___aldiv __aldiv `(l  1 e 4 0 ]
-{
 "10
-[v ___aldiv@quotient quotient `l  1 a 4 10 ]
-"11
-[v ___aldiv@sign sign `uc  1 a 1 9 ]
-[v ___aldiv@counter counter `uc  1 a 1 8 ]
-"7
-[v ___aldiv@dividend dividend `l  1 p 4 0 ]
-[v ___aldiv@divisor divisor `l  1 p 4 4 ]
-"41
+[v i2_delay delay `(v  1 e 1 0 ]
+{
+"12
+[v i2delay@i i `i  1 a 2 0 ]
+"20
 } 0

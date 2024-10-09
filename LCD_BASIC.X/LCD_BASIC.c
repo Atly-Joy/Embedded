@@ -16,21 +16,19 @@ void main(void) {
 void cmd(unsigned char a )
 {
     RC0=0;
-    RC1=0;
     PORTD=a;
-    RC2=1;
-    for(int i=0;i<=100;i++);
-    RC2=0;
+    RC1=1;
+    for(int i=0;i<=1000;i++);
+    RC1=0;
     for(int i=0;i<=5000;i++);
 }
 void data(unsigned char a )
 {
     RC0=1;
-    RC1=0;
     PORTD=a;
-    RC2=1;
-    for(int i=0;i<=100;i++);
-    RC2=0;
+    RC1=1;
+    for(int i=0;i<=1000;i++);
+    RC1=0;
     for(int i=0;i<=5000;i++);
 }
 

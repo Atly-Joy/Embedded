@@ -17,17 +17,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36232 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 36232: extern volatile __bit __attribute__((__deprecated__)) RC0 __attribute__((address(0x7C10)));
 [v _RC0 `Vb ~T1 @X0 0 e@31760 ]
-[t T1 __deprecated__ ]
-"36235
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 36235: extern volatile __bit __attribute__((__deprecated__)) RC1 __attribute__((address(0x7C11)));
-[v _RC1 `Vb ~T1 @X0 0 e@31761 ]
 "26058
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 26058: extern volatile unsigned char PORTD __attribute__((address(0xF83)));
 [v _PORTD `Vuc ~T0 @X0 0 e@3971 ]
 [t T1 __deprecated__ ]
-"36247
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 36247: extern volatile __bit __attribute__((__deprecated__)) RC2 __attribute__((address(0x7C12)));
-[v _RC2 `Vb ~T1 @X0 0 e@31762 ]
+"36235
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 36235: extern volatile __bit __attribute__((__deprecated__)) RC1 __attribute__((address(0x7C11)));
+[v _RC1 `Vb ~T1 @X0 0 e@31761 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 54: __asm("RXF6SIDH equ 0D60h");
 [; <" RXF6SIDH equ 0D60h ;# ">
@@ -1316,31 +1312,28 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;LCD_BASIC.c: 18:     RC0=0;
 [e = _RC0 -> -> 0 `i `b ]
 "19
-[; ;LCD_BASIC.c: 19:     RC1=0;
-[e = _RC1 -> -> 0 `i `b ]
-"20
-[; ;LCD_BASIC.c: 20:     PORTD=a;
+[; ;LCD_BASIC.c: 19:     PORTD=a;
 [e = _PORTD _a ]
+"20
+[; ;LCD_BASIC.c: 20:     RC1=1;
+[e = _RC1 -> -> 1 `i `b ]
 "21
-[; ;LCD_BASIC.c: 21:     RC2=1;
-[e = _RC2 -> -> 1 `i `b ]
-"22
-[; ;LCD_BASIC.c: 22:     for(int i=0;i<=100;i++);
+[; ;LCD_BASIC.c: 21:     for(int i=0;i<=1000;i++);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ <= _i -> 100 `i 1093  ]
+[e $ <= _i -> 1000 `i 1093  ]
 [e $U 1094  ]
 [e :U 1093 ]
 [e ++ _i -> 1 `i ]
-[e $ <= _i -> 100 `i 1093  ]
+[e $ <= _i -> 1000 `i 1093  ]
 [e :U 1094 ]
 }
+"22
+[; ;LCD_BASIC.c: 22:     RC1=0;
+[e = _RC1 -> -> 0 `i `b ]
 "23
-[; ;LCD_BASIC.c: 23:     RC2=0;
-[e = _RC2 -> -> 0 `i `b ]
-"24
-[; ;LCD_BASIC.c: 24:     for(int i=0;i<=5000;i++);
+[; ;LCD_BASIC.c: 23:     for(int i=0;i<=5000;i++);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -1351,52 +1344,49 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ <= _i -> 5000 `i 1096  ]
 [e :U 1097 ]
 }
-"25
-[; ;LCD_BASIC.c: 25: }
+"24
+[; ;LCD_BASIC.c: 24: }
 [e :UE 1092 ]
 }
-"26
-[; ;LCD_BASIC.c: 26: void data(unsigned char a )
+"25
+[; ;LCD_BASIC.c: 25: void data(unsigned char a )
 [v _data `(v ~T0 @X0 1 ef1`uc ]
-"27
-[; ;LCD_BASIC.c: 27: {
+"26
+[; ;LCD_BASIC.c: 26: {
 {
 [e :U _data ]
-"26
-[; ;LCD_BASIC.c: 26: void data(unsigned char a )
+"25
+[; ;LCD_BASIC.c: 25: void data(unsigned char a )
 [v _a `uc ~T0 @X0 1 r1 ]
-"27
-[; ;LCD_BASIC.c: 27: {
+"26
+[; ;LCD_BASIC.c: 26: {
 [f ]
-"28
-[; ;LCD_BASIC.c: 28:     RC0=1;
+"27
+[; ;LCD_BASIC.c: 27:     RC0=1;
 [e = _RC0 -> -> 1 `i `b ]
-"29
-[; ;LCD_BASIC.c: 29:     RC1=0;
-[e = _RC1 -> -> 0 `i `b ]
-"30
-[; ;LCD_BASIC.c: 30:     PORTD=a;
+"28
+[; ;LCD_BASIC.c: 28:     PORTD=a;
 [e = _PORTD _a ]
-"31
-[; ;LCD_BASIC.c: 31:     RC2=1;
-[e = _RC2 -> -> 1 `i `b ]
-"32
-[; ;LCD_BASIC.c: 32:     for(int i=0;i<=100;i++);
+"29
+[; ;LCD_BASIC.c: 29:     RC1=1;
+[e = _RC1 -> -> 1 `i `b ]
+"30
+[; ;LCD_BASIC.c: 30:     for(int i=0;i<=1000;i++);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
-[e $ <= _i -> 100 `i 1100  ]
+[e $ <= _i -> 1000 `i 1100  ]
 [e $U 1101  ]
 [e :U 1100 ]
 [e ++ _i -> 1 `i ]
-[e $ <= _i -> 100 `i 1100  ]
+[e $ <= _i -> 1000 `i 1100  ]
 [e :U 1101 ]
 }
-"33
-[; ;LCD_BASIC.c: 33:     RC2=0;
-[e = _RC2 -> -> 0 `i `b ]
-"34
-[; ;LCD_BASIC.c: 34:     for(int i=0;i<=5000;i++);
+"31
+[; ;LCD_BASIC.c: 31:     RC1=0;
+[e = _RC1 -> -> 0 `i `b ]
+"32
+[; ;LCD_BASIC.c: 32:     for(int i=0;i<=5000;i++);
 {
 [v _i `i ~T0 @X0 1 a ]
 [e = _i -> 0 `i ]
@@ -1407,46 +1397,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e $ <= _i -> 5000 `i 1103  ]
 [e :U 1104 ]
 }
-"35
-[; ;LCD_BASIC.c: 35: }
+"33
+[; ;LCD_BASIC.c: 33: }
 [e :UE 1099 ]
 }
-"37
-[; ;LCD_BASIC.c: 37: void display(const char *p)
+"35
+[; ;LCD_BASIC.c: 35: void display(const char *p)
 [v _display `(v ~T0 @X0 1 ef1`*Cuc ]
-"38
-[; ;LCD_BASIC.c: 38: {
+"36
+[; ;LCD_BASIC.c: 36: {
 {
 [e :U _display ]
-"37
-[; ;LCD_BASIC.c: 37: void display(const char *p)
+"35
+[; ;LCD_BASIC.c: 35: void display(const char *p)
 [v _p `*Cuc ~T0 @X0 1 r1 ]
-"38
-[; ;LCD_BASIC.c: 38: {
+"36
+[; ;LCD_BASIC.c: 36: {
 [f ]
-"39
-[; ;LCD_BASIC.c: 39:     while(*p)
+"37
+[; ;LCD_BASIC.c: 37:     while(*p)
 [e $U 1107  ]
 [e :U 1108 ]
-"40
-[; ;LCD_BASIC.c: 40:     {
+"38
+[; ;LCD_BASIC.c: 38:     {
 {
-"41
-[; ;LCD_BASIC.c: 41:         data(*p);
+"39
+[; ;LCD_BASIC.c: 39:         data(*p);
 [e ( _data (1 -> *U _p `uc ]
-"42
-[; ;LCD_BASIC.c: 42:         p++;
+"40
+[; ;LCD_BASIC.c: 40:         p++;
 [e ++ _p * -> -> 1 `i `x -> -> # *U _p `i `x ]
-"43
-[; ;LCD_BASIC.c: 43:     }
+"41
+[; ;LCD_BASIC.c: 41:     }
 }
 [e :U 1107 ]
-"39
-[; ;LCD_BASIC.c: 39:     while(*p)
+"37
+[; ;LCD_BASIC.c: 37:     while(*p)
 [e $ != -> *U _p `i -> 0 `i 1108  ]
 [e :U 1109 ]
-"44
-[; ;LCD_BASIC.c: 44: }
+"42
+[; ;LCD_BASIC.c: 42: }
 [e :UE 1106 ]
 }
 [a 1C 104 101 108 108 111 0 ]

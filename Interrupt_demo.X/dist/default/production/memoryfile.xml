@@ -3,15 +3,15 @@
   <executable name="dist/default/production\Interrupt_demo.X.production.hex">
     <memory name="program">
       <units>bytes</units>
-      <length>32768</length>
-      <used>760</used>
-      <free>32008</free>
+      <length>27393</length>
+      <used>332</used>
+      <free>27061</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>40</used>
-      <free>1496</free>
+      <used>9</used>
+      <free>1527</free>
     </memory>
   </executable>
 </project>

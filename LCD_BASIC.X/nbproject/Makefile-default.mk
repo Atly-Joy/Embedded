@@ -51,17 +51,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=LCD_BASIC.c LCD_MOTOR_BUTTON.c BackSpace_LCD.c LCD_DoubleMotor.c Custom_Char.c NameScroll.c
+SOURCEFILES_QUOTED_IF_SPACED=HW_lcd_motor_button.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/LCD_BASIC.p1 ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1 ${OBJECTDIR}/BackSpace_LCD.p1 ${OBJECTDIR}/LCD_DoubleMotor.p1 ${OBJECTDIR}/Custom_Char.p1 ${OBJECTDIR}/NameScroll.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/LCD_BASIC.p1.d ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d ${OBJECTDIR}/BackSpace_LCD.p1.d ${OBJECTDIR}/LCD_DoubleMotor.p1.d ${OBJECTDIR}/Custom_Char.p1.d ${OBJECTDIR}/NameScroll.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/HW_lcd_motor_button.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/HW_lcd_motor_button.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/LCD_BASIC.p1 ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1 ${OBJECTDIR}/BackSpace_LCD.p1 ${OBJECTDIR}/LCD_DoubleMotor.p1 ${OBJECTDIR}/Custom_Char.p1 ${OBJECTDIR}/NameScroll.p1
+OBJECTFILES=${OBJECTDIR}/HW_lcd_motor_button.p1
 
 # Source Files
-SOURCEFILES=LCD_BASIC.c LCD_MOTOR_BUTTON.c BackSpace_LCD.c LCD_DoubleMotor.c Custom_Char.c NameScroll.c
+SOURCEFILES=HW_lcd_motor_button.c
 
 
 
@@ -88,102 +88,22 @@ MP_PROCESSOR_OPTION=18F4580
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/LCD_BASIC.p1: LCD_BASIC.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/HW_lcd_motor_button.p1: HW_lcd_motor_button.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCD_BASIC.p1.d 
-	@${RM} ${OBJECTDIR}/LCD_BASIC.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/LCD_BASIC.p1 LCD_BASIC.c 
-	@-${MV} ${OBJECTDIR}/LCD_BASIC.d ${OBJECTDIR}/LCD_BASIC.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCD_BASIC.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LCD_MOTOR_BUTTON.p1: LCD_MOTOR_BUTTON.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d 
-	@${RM} ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1 LCD_MOTOR_BUTTON.c 
-	@-${MV} ${OBJECTDIR}/LCD_MOTOR_BUTTON.d ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/BackSpace_LCD.p1: BackSpace_LCD.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/BackSpace_LCD.p1.d 
-	@${RM} ${OBJECTDIR}/BackSpace_LCD.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/BackSpace_LCD.p1 BackSpace_LCD.c 
-	@-${MV} ${OBJECTDIR}/BackSpace_LCD.d ${OBJECTDIR}/BackSpace_LCD.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/BackSpace_LCD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LCD_DoubleMotor.p1: LCD_DoubleMotor.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCD_DoubleMotor.p1.d 
-	@${RM} ${OBJECTDIR}/LCD_DoubleMotor.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/LCD_DoubleMotor.p1 LCD_DoubleMotor.c 
-	@-${MV} ${OBJECTDIR}/LCD_DoubleMotor.d ${OBJECTDIR}/LCD_DoubleMotor.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCD_DoubleMotor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/Custom_Char.p1: Custom_Char.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Custom_Char.p1.d 
-	@${RM} ${OBJECTDIR}/Custom_Char.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/Custom_Char.p1 Custom_Char.c 
-	@-${MV} ${OBJECTDIR}/Custom_Char.d ${OBJECTDIR}/Custom_Char.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/Custom_Char.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/NameScroll.p1: NameScroll.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/NameScroll.p1.d 
-	@${RM} ${OBJECTDIR}/NameScroll.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/NameScroll.p1 NameScroll.c 
-	@-${MV} ${OBJECTDIR}/NameScroll.d ${OBJECTDIR}/NameScroll.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/NameScroll.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/HW_lcd_motor_button.p1.d 
+	@${RM} ${OBJECTDIR}/HW_lcd_motor_button.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -mdebugger=none   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=1400-7f00 -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/HW_lcd_motor_button.p1 HW_lcd_motor_button.c 
+	@-${MV} ${OBJECTDIR}/HW_lcd_motor_button.d ${OBJECTDIR}/HW_lcd_motor_button.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/HW_lcd_motor_button.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
-${OBJECTDIR}/LCD_BASIC.p1: LCD_BASIC.c  nbproject/Makefile-${CND_CONF}.mk 
+${OBJECTDIR}/HW_lcd_motor_button.p1: HW_lcd_motor_button.c  nbproject/Makefile-${CND_CONF}.mk 
 	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCD_BASIC.p1.d 
-	@${RM} ${OBJECTDIR}/LCD_BASIC.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/LCD_BASIC.p1 LCD_BASIC.c 
-	@-${MV} ${OBJECTDIR}/LCD_BASIC.d ${OBJECTDIR}/LCD_BASIC.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCD_BASIC.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LCD_MOTOR_BUTTON.p1: LCD_MOTOR_BUTTON.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d 
-	@${RM} ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1 LCD_MOTOR_BUTTON.c 
-	@-${MV} ${OBJECTDIR}/LCD_MOTOR_BUTTON.d ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCD_MOTOR_BUTTON.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/BackSpace_LCD.p1: BackSpace_LCD.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/BackSpace_LCD.p1.d 
-	@${RM} ${OBJECTDIR}/BackSpace_LCD.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/BackSpace_LCD.p1 BackSpace_LCD.c 
-	@-${MV} ${OBJECTDIR}/BackSpace_LCD.d ${OBJECTDIR}/BackSpace_LCD.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/BackSpace_LCD.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/LCD_DoubleMotor.p1: LCD_DoubleMotor.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/LCD_DoubleMotor.p1.d 
-	@${RM} ${OBJECTDIR}/LCD_DoubleMotor.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/LCD_DoubleMotor.p1 LCD_DoubleMotor.c 
-	@-${MV} ${OBJECTDIR}/LCD_DoubleMotor.d ${OBJECTDIR}/LCD_DoubleMotor.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/LCD_DoubleMotor.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/Custom_Char.p1: Custom_Char.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/Custom_Char.p1.d 
-	@${RM} ${OBJECTDIR}/Custom_Char.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/Custom_Char.p1 Custom_Char.c 
-	@-${MV} ${OBJECTDIR}/Custom_Char.d ${OBJECTDIR}/Custom_Char.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/Custom_Char.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
-	
-${OBJECTDIR}/NameScroll.p1: NameScroll.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/NameScroll.p1.d 
-	@${RM} ${OBJECTDIR}/NameScroll.p1 
-	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/NameScroll.p1 NameScroll.c 
-	@-${MV} ${OBJECTDIR}/NameScroll.d ${OBJECTDIR}/NameScroll.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/NameScroll.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	@${RM} ${OBJECTDIR}/HW_lcd_motor_button.p1.d 
+	@${RM} ${OBJECTDIR}/HW_lcd_motor_button.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=1400-7f00 -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     -o ${OBJECTDIR}/HW_lcd_motor_button.p1 HW_lcd_motor_button.c 
+	@-${MV} ${OBJECTDIR}/HW_lcd_motor_button.d ${OBJECTDIR}/HW_lcd_motor_button.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/HW_lcd_motor_button.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
@@ -204,14 +124,14 @@ endif
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=none  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.map  -D__DEBUG=1  -mdebugger=none  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=1400-7f00 -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto        $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	@${RM} ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.hex 
 	
 	
 else
 ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} ${DISTDIR} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -Wl,-Map=${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)  -Wl,--defsym=__MPLAB_BUILD=1   -mdfp="${DFP_DIR}/xc8"  -fno-short-double -fno-short-float -memi=wordwrite -mrom=1400-7f00 -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -mwarn=-3 -Wa,-a -msummary=-psect,-class,+mem,-hex,-file  -ginhx32 -Wl,--data-init -mno-keep-startup -mno-download -mno-default-config-bits -std=c99 -gdwarf-3 -mstack=compiled:auto:auto:auto     $(COMPARISON_BUILD) -Wl,--memorysummary,${DISTDIR}/memoryfile.xml -o ${DISTDIR}/LCD_BASIC.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 	
 endif

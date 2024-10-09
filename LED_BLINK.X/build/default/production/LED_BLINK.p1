@@ -1,14 +1,11 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"27281 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 27281: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
-[v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
-"27503
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 27503: extern volatile unsigned char TRISD __attribute__((address(0xF95)));
-[v _TRISD `Vuc ~T0 @X0 0 e@3989 ]
-"25888
-[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 25888: extern volatile unsigned char PORTC __attribute__((address(0xF82)));
-[v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
+"27059 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 27059: extern volatile unsigned char TRISB __attribute__((address(0xF93)));
+[v _TRISB `Vuc ~T0 @X0 0 e@3987 ]
+"25714
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 25714: extern volatile unsigned char PORTB __attribute__((address(0xF81)));
+[v _PORTB `Vuc ~T0 @X0 0 e@3969 ]
 "54 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 54: __asm("RXF6SIDH equ 0D60h");
 [; <" RXF6SIDH equ 0D60h ;# ">
@@ -1258,96 +1255,54 @@ Version 4.0 HI-TECH Software Intermediate Code
 [e :U _main ]
 [f ]
 "13
-[; ;LED_BLINK.c: 13:     TRISC=0x00;
-[e = _TRISC -> -> 0 `i `uc ]
+[; ;LED_BLINK.c: 13:     TRISB=0x00;
+[e = _TRISB -> -> 0 `i `uc ]
 "14
-[; ;LED_BLINK.c: 14:     TRISD=0x00;
-[e = _TRISD -> -> 0 `i `uc ]
-"15
-[; ;LED_BLINK.c: 15:     while(1)
+[; ;LED_BLINK.c: 14:     while(1)
 [e :U 1090 ]
-"16
-[; ;LED_BLINK.c: 16:     {
+"15
+[; ;LED_BLINK.c: 15:     {
 {
-"17
-[; ;LED_BLINK.c: 17:         for(long j=1;j<=128;j=j*2)
-{
-[v _j `l ~T0 @X0 1 a ]
-[e = _j -> -> 1 `i `l ]
-[e $ <= _j -> -> 128 `i `l 1092  ]
-[e $U 1093  ]
-[e :U 1092 ]
-"18
-[; ;LED_BLINK.c: 18:         {
-{
-"19
-[; ;LED_BLINK.c: 19:             PORTC=j;
-[e = _PORTC -> _j `uc ]
-"20
-[; ;LED_BLINK.c: 20:             for(unsigned long i=0;i<3000;i++);
+"27
+[; ;LED_BLINK.c: 27:         PORTB=0xFF;
+[e = _PORTB -> -> 255 `i `uc ]
+"28
+[; ;LED_BLINK.c: 28:         for(unsigned long i=0;i<50000;i++);
 {
 [v _i `ul ~T0 @X0 1 a ]
 [e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> -> 3000 `i `l `ul 1095  ]
+[e $ < _i -> -> 50000 `l `ul 1092  ]
+[e $U 1093  ]
+[e :U 1092 ]
+[e ++ _i -> -> -> 1 `i `l `ul ]
+[e $ < _i -> -> 50000 `l `ul 1092  ]
+[e :U 1093 ]
+}
+"29
+[; ;LED_BLINK.c: 29:         PORTB=0x00;
+[e = _PORTB -> -> 0 `i `uc ]
+"30
+[; ;LED_BLINK.c: 30:         for(unsigned long i=0;i<50000;i++);
+{
+[v _i `ul ~T0 @X0 1 a ]
+[e = _i -> -> -> 0 `i `l `ul ]
+[e $ < _i -> -> 50000 `l `ul 1095  ]
 [e $U 1096  ]
 [e :U 1095 ]
 [e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> -> 3000 `i `l `ul 1095  ]
+[e $ < _i -> -> 50000 `l `ul 1095  ]
 [e :U 1096 ]
 }
-"21
-[; ;LED_BLINK.c: 21:         }
-}
-[e = _j * _j -> -> 2 `i `l ]
-[e $ <= _j -> -> 128 `i `l 1092  ]
-[e :U 1093 ]
-}
-"22
-[; ;LED_BLINK.c: 22:         PORTC=0x00;
-[e = _PORTC -> -> 0 `i `uc ]
-"23
-[; ;LED_BLINK.c: 23:         for(long j=128;j>=1;j=j/2)
-{
-[v _j `l ~T0 @X0 1 a ]
-[e = _j -> -> 128 `i `l ]
-[e $ >= _j -> -> 1 `i `l 1098  ]
-[e $U 1099  ]
-[e :U 1098 ]
-"24
-[; ;LED_BLINK.c: 24:         {
-{
-"25
-[; ;LED_BLINK.c: 25:             PORTC=j;
-[e = _PORTC -> _j `uc ]
-"26
-[; ;LED_BLINK.c: 26:             for(unsigned long i=0;i<3000;i++);
-{
-[v _i `ul ~T0 @X0 1 a ]
-[e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> -> 3000 `i `l `ul 1101  ]
-[e $U 1102  ]
-[e :U 1101 ]
-[e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> -> 3000 `i `l `ul 1101  ]
-[e :U 1102 ]
-}
-"27
-[; ;LED_BLINK.c: 27:         }
-}
-[e = _j / _j -> -> 2 `i `l ]
-[e $ >= _j -> -> 1 `i `l 1098  ]
-[e :U 1099 ]
-}
-"28
-[; ;LED_BLINK.c: 28:     }
+"31
+[; ;LED_BLINK.c: 31:     }
 }
 [e :U 1089 ]
 [e $U 1090  ]
 [e :U 1091 ]
-"29
-[; ;LED_BLINK.c: 29:     return;
+"33
+[; ;LED_BLINK.c: 33:     return;
 [e $UE 1088  ]
-"30
-[; ;LED_BLINK.c: 30: }
+"34
+[; ;LED_BLINK.c: 34: }
 [e :UE 1088 ]
 }

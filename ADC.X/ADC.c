@@ -15,22 +15,20 @@ void delay(long j)
 void start_func(unsigned char a)
 {
     RC0=0; //RS=0
-    RC1=0;
     PORTD=a;
-    RC2=1;
+    RC1=1;
     delay(100);
-    RC2=0;
+    RC1=0;
     delay(5000);
 }
 void data(unsigned char a)
 {
     RC0=1; //RS=1
-    RC1=0;
     PORTD=a;
-    RC2=1;
+    RC1=1;
     delay(100);//enable communication delay,ie;enable pin high 
                     //to low transfer time
-    RC2=0;
+    RC1=0;
     delay(5000);//enable execution delay
 }
 void display(const char *p)
@@ -46,8 +44,8 @@ void main(void)
     TRISC=0x00;
     TRISD=0x00;
     start_func(0x01);//clear
-    start_func(0x0C);//cursor and LCD On
-    ADCON0=0x01;//channel select(analog pin)
+    start_func(0x0f);//cursor and LCD On
+    ADCON0=0x05;//channel select(analog pin)
     ADCON1=0x00;
     ADCON2=0x86;
     //ADFM=1;

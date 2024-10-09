@@ -1,6 +1,12 @@
 Version 4.0 HI-TECH Software Intermediate Code
+"31712 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 31712: extern volatile unsigned short TMR0 __attribute__((address(0xFD6)));
+[v _TMR0 `Vus ~T0 @X0 0 e@4054 ]
+"39100
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 39100: extern volatile __bit TMR0IF __attribute__((address(0x7F92)));
+[v _TMR0IF `Vb ~T0 @X0 0 e@32658 ]
 [p mainexit ]
-"27281 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h
+"27281
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 27281: extern volatile unsigned char TRISC __attribute__((address(0xF94)));
 [v _TRISC `Vuc ~T0 @X0 0 e@3988 ]
 "27059
@@ -12,6 +18,9 @@ Version 4.0 HI-TECH Software Intermediate Code
 "30188
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 30188: extern volatile unsigned char ADCON1 __attribute__((address(0xFC1)));
 [v _ADCON1 `Vuc ~T0 @X0 0 e@4033 ]
+"31636
+[; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 31636: extern volatile unsigned char T0CON __attribute__((address(0xFD5)));
+[v _T0CON `Vuc ~T0 @X0 0 e@4053 ]
 "25888
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 25888: extern volatile unsigned char PORTC __attribute__((address(0xF82)));
 [v _PORTC `Vuc ~T0 @X0 0 e@3970 ]
@@ -1260,139 +1269,185 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC18Fxxxx_DFP/1.6.159/xc8\pic\include\proc\pic18f4580.h: 32464: __asm("TOSU equ 0FFFh");
 [; <" TOSU equ 0FFFh ;# ">
 "10 Interrupt.c
-[; ;Interrupt.c: 10: void delay(long j)
-[v _delay `(v ~T0 @X0 1 ef1`l ]
+[; ;Interrupt.c: 10: void delay(void)
+[v _delay `(v ~T0 @X0 1 ef ]
 "11
 [; ;Interrupt.c: 11: {
 {
 [e :U _delay ]
-"10
-[; ;Interrupt.c: 10: void delay(long j)
-[v _j `l ~T0 @X0 1 r1 ]
-"11
-[; ;Interrupt.c: 11: {
 [f ]
 "12
-[; ;Interrupt.c: 12:     for(long i=0;i<=j;i++);
+[; ;Interrupt.c: 12:     for(int i=0;i<=100;i++)
 {
-[v _i `l ~T0 @X0 1 a ]
-[e = _i -> -> 0 `i `l ]
-[e $U 1092  ]
+[v _i `i ~T0 @X0 1 a ]
+[e = _i -> 0 `i ]
+[e $ <= _i -> 100 `i 1089  ]
+[e $U 1090  ]
 [e :U 1089 ]
-[e ++ _i -> -> 1 `i `l ]
+"13
+[; ;Interrupt.c: 13:     {
+{
+"14
+[; ;Interrupt.c: 14:         TMR0=61;
+[e = _TMR0 -> -> 61 `i `us ]
+"15
+[; ;Interrupt.c: 15:         while(TMR0IF==0);
+[e $U 1092  ]
+[e :U 1093 ]
 [e :U 1092 ]
-[e $ <= _i _j 1089  ]
+[e $ == -> _TMR0IF `i -> 0 `i 1093  ]
+[e :U 1094 ]
+"16
+[; ;Interrupt.c: 16:         TMR0IF=0;
+[e = _TMR0IF -> -> 0 `i `b ]
+"17
+[; ;Interrupt.c: 17:     }
+}
+[e ++ _i -> 1 `i ]
+[e $ <= _i -> 100 `i 1089  ]
 [e :U 1090 ]
 }
-"13
-[; ;Interrupt.c: 13: }
+"20
+[; ;Interrupt.c: 20: }
 [e :UE 1088 ]
 }
+"21
+[; ;Interrupt.c: 21: int count=0;
+[v _count `i ~T0 @X0 1 e ]
+[i _count
+-> 0 `i
+]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"15
-[; ;Interrupt.c: 15: void main(void)
+"22
+[; ;Interrupt.c: 22: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"16
-[; ;Interrupt.c: 16: {
+"23
+[; ;Interrupt.c: 23: {
 {
 [e :U _main ]
 [f ]
-"17
-[; ;Interrupt.c: 17:     TRISC=0x00;
-[e = _TRISC -> -> 0 `i `uc ]
-"18
-[; ;Interrupt.c: 18:     TRISB=0x01;
-[e = _TRISB -> -> 1 `i `uc ]
-"19
-[; ;Interrupt.c: 19:     INTCON=0xD0;
-[e = _INTCON -> -> 208 `i `uc ]
-"20
-[; ;Interrupt.c: 20:     ADCON1=0X0f;
-[e = _ADCON1 -> -> 15 `i `uc ]
-"21
-[; ;Interrupt.c: 21:     while(1)
-[e :U 1095 ]
-"22
-[; ;Interrupt.c: 22:     {
-{
-"23
-[; ;Interrupt.c: 23:         PORTC=0xFF;
-[e = _PORTC -> -> 255 `i `uc ]
 "24
-[; ;Interrupt.c: 24:         delay(1000);
-[e ( _delay (1 -> -> 1000 `i `l ]
+[; ;Interrupt.c: 24:     TRISC=0x00;
+[e = _TRISC -> -> 0 `i `uc ]
 "25
-[; ;Interrupt.c: 25:         PORTC=0x00;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;Interrupt.c: 25:     TRISB=0x01;
+[e = _TRISB -> -> 1 `i `uc ]
 "26
-[; ;Interrupt.c: 26:         delay(1000);
-[e ( _delay (1 -> -> 1000 `i `l ]
+[; ;Interrupt.c: 26:     INTCON=0xD0;
+[e = _INTCON -> -> 208 `i `uc ]
 "27
-[; ;Interrupt.c: 27:     }
-}
-[e :U 1094 ]
-[e $U 1095  ]
-[e :U 1096 ]
+[; ;Interrupt.c: 27:     ADCON1=0X0f;
+[e = _ADCON1 -> -> 15 `i `uc ]
+"28
+[; ;Interrupt.c: 28:     T0CON=0xC7;
+[e = _T0CON -> -> 199 `i `uc ]
 "29
-[; ;Interrupt.c: 29: }
-[e :UE 1093 ]
+[; ;Interrupt.c: 29:     while(1)
+[e :U 1097 ]
+"30
+[; ;Interrupt.c: 30:     {
+{
+"31
+[; ;Interrupt.c: 31:         switch (count)
+[e $U 1100  ]
+"32
+[; ;Interrupt.c: 32:         {
+{
+"33
+[; ;Interrupt.c: 33:             case 1:
+[e :U 1101 ]
+"34
+[; ;Interrupt.c: 34:                 PORTC=0XFF;
+[e = _PORTC -> -> 255 `i `uc ]
+"35
+[; ;Interrupt.c: 35:                 break;
+[e $U 1099  ]
+"36
+[; ;Interrupt.c: 36:             case 2:
+[e :U 1102 ]
+"37
+[; ;Interrupt.c: 37:                 PORTC=0X00;
+[e = _PORTC -> -> 0 `i `uc ]
+"38
+[; ;Interrupt.c: 38:                 break;
+[e $U 1099  ]
+"39
+[; ;Interrupt.c: 39:             case 3:
+[e :U 1103 ]
+"40
+[; ;Interrupt.c: 40:                 PORTC=0XFF;
+[e = _PORTC -> -> 255 `i `uc ]
+"41
+[; ;Interrupt.c: 41:                 delay();
+[e ( _delay ..  ]
+"42
+[; ;Interrupt.c: 42:                 PORTC=0X00;
+[e = _PORTC -> -> 0 `i `uc ]
+"43
+[; ;Interrupt.c: 43:                 delay();
+[e ( _delay ..  ]
+"44
+[; ;Interrupt.c: 44:         }
+}
+[e $U 1099  ]
+[e :U 1100 ]
+[e [\ _count , $ -> 1 `i 1101
+ , $ -> 2 `i 1102
+ , $ -> 3 `i 1103
+ 1099 ]
+[e :U 1099 ]
+"45
+[; ;Interrupt.c: 45:     }
+}
+[e :U 1096 ]
+[e $U 1097  ]
+[e :U 1098 ]
+"47
+[; ;Interrupt.c: 47: }
+[e :UE 1095 ]
 }
 [v $root$_isr `(v ~T0 @X0 0 e ]
-"31
-[; ;Interrupt.c: 31: void __attribute__((picinterrupt(("")))) isr(void)
+"49
+[; ;Interrupt.c: 49: void __attribute__((picinterrupt(("")))) isr(void)
 [v _isr `(v ~T46 @X0 1 ef ]
-"32
-[; ;Interrupt.c: 32: {
+"50
+[; ;Interrupt.c: 50: {
 {
 [e :U _isr ]
 [f ]
-"33
-[; ;Interrupt.c: 33:     if(INT0IF==1)
-[e $ ! == -> _INT0IF `i -> 1 `i 1098  ]
-"34
-[; ;Interrupt.c: 34:     {
+"51
+[; ;Interrupt.c: 51:     if(INT0IF==1)
+[e $ ! == -> _INT0IF `i -> 1 `i 1105  ]
+"52
+[; ;Interrupt.c: 52:     {
 {
-"35
-[; ;Interrupt.c: 35:         for(long j=1;j<=255;j=((j*2)))
+"54
+[; ;Interrupt.c: 54:         if(count==3)
+[e $ ! == _count -> 3 `i 1106  ]
+"55
+[; ;Interrupt.c: 55:         {
 {
-[v _j `l ~T0 @X0 1 a ]
-[e = _j -> -> 1 `i `l ]
-[e $ <= _j -> -> 255 `i `l 1099  ]
-[e $U 1100  ]
-[e :U 1099 ]
-"36
-[; ;Interrupt.c: 36:         {
-{
-"37
-[; ;Interrupt.c: 37:             PORTC=j;
-[e = _PORTC -> _j `uc ]
-"38
-[; ;Interrupt.c: 38:             for(unsigned long i=0;i<30000;i++);
-{
-[v _i `ul ~T0 @X0 1 a ]
-[e = _i -> -> -> 0 `i `l `ul ]
-[e $ < _i -> -> -> 30000 `i `l `ul 1102  ]
-[e $U 1103  ]
-[e :U 1102 ]
-[e ++ _i -> -> -> 1 `i `l `ul ]
-[e $ < _i -> -> -> 30000 `i `l `ul 1102  ]
-[e :U 1103 ]
+"56
+[; ;Interrupt.c: 56:             count=0;
+[e = _count -> 0 `i ]
+"57
+[; ;Interrupt.c: 57:         }
 }
-"39
-[; ;Interrupt.c: 39:         }
-}
-[e = _j * _j -> -> 2 `i `l ]
-[e $ <= _j -> -> 255 `i `l 1099  ]
-[e :U 1100 ]
-}
-"40
-[; ;Interrupt.c: 40:         INT0IF=0;
+[e :U 1106 ]
+"58
+[; ;Interrupt.c: 58:         delay();
+[e ( _delay ..  ]
+"59
+[; ;Interrupt.c: 59:         count++;
+[e ++ _count -> 1 `i ]
+"60
+[; ;Interrupt.c: 60:         INT0IF=0;
 [e = _INT0IF -> -> 0 `i `b ]
-"41
-[; ;Interrupt.c: 41:     }
+"61
+[; ;Interrupt.c: 61:     }
 }
-[e :U 1098 ]
-"42
-[; ;Interrupt.c: 42: }
-[e :UE 1097 ]
+[e :U 1105 ]
+"62
+[; ;Interrupt.c: 62: }
+[e :UE 1104 ]
 }

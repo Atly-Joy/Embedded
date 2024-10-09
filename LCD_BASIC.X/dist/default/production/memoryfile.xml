@@ -3,15 +3,15 @@
   <executable name="dist/default/production\LCD_BASIC.X.production.hex">
     <memory name="program">
       <units>bytes</units>
-      <length>32768</length>
-      <used>298</used>
-      <free>32470</free>
+      <length>27393</length>
+      <used>708</used>
+      <free>26685</free>
     </memory>
     <memory name="data">
       <units>bytes</units>
       <length>1536</length>
-      <used>6</used>
-      <free>1530</free>
+      <used>11</used>
+      <free>1525</free>
     </memory>
   </executable>
 </project>

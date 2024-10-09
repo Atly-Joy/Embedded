@@ -18014,23 +18014,41 @@ unsigned char __t3rd16on(void);
 # 33 "C:\\Program Files\\Microchip\\xc8\\v2.46\\pic\\include\\xc.h" 2 3
 # 9 "Interrupt.c" 2
 
-void delay(long j)
+void delay(void)
 {
-    for(long i=0;i<=j;i++);
-}
+    for(int i=0;i<=100;i++)
+    {
+        TMR0=61;
+        while(TMR0IF==0);
+        TMR0IF=0;
+    }
 
+
+}
+int count=0;
 void main(void)
 {
     TRISC=0x00;
     TRISB=0x01;
     INTCON=0xD0;
     ADCON1=0X0f;
+    T0CON=0xC7;
     while(1)
     {
-        PORTC=0xFF;
-        delay(1000);
-        PORTC=0x00;
-        delay(1000);
+        switch (count)
+        {
+            case 1:
+                PORTC=0XFF;
+                break;
+            case 2:
+                PORTC=0X00;
+                break;
+            case 3:
+                PORTC=0XFF;
+                delay();
+                PORTC=0X00;
+                delay();
+        }
     }
 
 }
@@ -18039,11 +18057,13 @@ void __attribute__((picinterrupt(("")))) isr(void)
 {
     if(INT0IF==1)
     {
-        for(long j=1;j<=255;j=((j*2)))
+
+        if(count==3)
         {
-            PORTC=j;
-            for(unsigned long i=0;i<30000;i++);
+            count=0;
         }
+        delay();
+        count++;
         INT0IF=0;
     }
 }
